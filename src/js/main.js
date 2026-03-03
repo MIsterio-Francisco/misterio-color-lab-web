@@ -306,6 +306,5 @@ document.addEventListener('DOMContentLoaded', () => {
             newReveals.forEach(r => r.classList.add('active'));
         }, 100);
     };
+    setTimeout(window.renderDynamicSettings, 300);
 });
-
-setTimeout(window.renderDynamicSettings, 300);
