@@ -137,3 +137,13 @@ collections:
             fields:
               - {label: "English", name: "en", widget: "string", default: "Crafting the visual soul of your story."}
               - {label: "Spanish", name: "es", widget: "string", default: "Creando el alma visual de tu historia."}
+
+  - name: "dynamic_pages"
+    label: "Pages (Custom)"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body content", name: "body", widget: "markdown"}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Misterio Color Lab - Post-producción de color de alto nivel para cine, televisión y publicidad.">
+    <title>{{ title | default("Misterio Color Lab") }}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body data-lang="en">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <img src="/img/logo_white.png" alt="Misterio Color Lab" class="brand-logo-img">
+            </a>
+
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="/#work" class="nav-link" data-i18n="nav_work" id="cms-nav_work">Work</a></li>
+                    <li><a href="/#about" class="nav-link" data-i18n="nav_studio" id="cms-nav_studio">Studio</a></li>
+                    <li><a href="/brochure" class="nav-link" data-i18n="nav_brochure" id="cms-nav_brochure">Brochure</a></li>
+                    <li><a href="/#contact" class="nav-link" data-i18n="nav_contact" id="cms-nav_contact">Contact</a></li>
+                </ul>
+
+                <div class="lang-toggle">
+                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <span class="separator">|</span>
+                    <button id="lang-es" class="lang-btn">ES</button>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {{ content | safe }}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="/img/logo_white_hq.png" alt="Misterio Color Lab" class="footer-logo">
+                <p class="footer-desc" id="cms-footer_description" data-i18n="footer_description">Boutique Color Grading Studio based in Madrid.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Social</h4>
+                <ul id="cms-footer-social">
+                    <li><a href="https://instagram.com/misteriocolorlab" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    <li><a href="https://vimeo.com/misteriocolorlab" target="_blank" rel="noopener noreferrer">Vimeo</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <p id="cms-footer_email">hola@misteriocolorlab.com</p>
+                <p id="cms-footer_phone">+34 910 000 000</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Misterio Color Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Content Data Mapping -->
+    <script>
+        {% raw %}window.cmsData = window.cmsData || {};{% endraw %}
+    </script>
+    <script src="/js/cms-settings.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
