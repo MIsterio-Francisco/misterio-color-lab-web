@@ -15,7 +15,7 @@ body.brochure-active {
 
 .deck-header {
     background-color: #000000;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
     text-align: center;
 }
 
@@ -31,8 +31,13 @@ body.brochure-active {
 }
 
 .deck-contact p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.deck-contact p:last-child {
+    margin-bottom: 0;
 }
 
 .deck-intro {
@@ -54,7 +59,7 @@ body.brochure-active {
     display: grid;
     gap: 1.5rem;
     padding: 0 5%;
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -65,8 +70,8 @@ body.brochure-active {
 .deck-grid-2 {
     grid-template-columns: repeat(2, 1fr);
     margin-top: 1.5rem;
-    max-width: 933px;
-    /* Approximate width for 2 centered blocks relative to 3 above */
+    max-width: 866px;
+    /* 2/3 of 1300 approx */
     margin-left: auto;
     margin-right: auto;
 }
@@ -78,6 +83,7 @@ body.brochure-active {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 400px;
 }
 
 .deck-block h2 {
@@ -85,13 +91,15 @@ body.brochure-active {
     margin-bottom: 1.5rem;
     font-weight: 800;
     text-transform: none;
+    line-height: 1.2;
     color: #000;
 }
 
 .deck-block h3 {
-    font-size: 1rem;
+    font-size: 1.05rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    text-transform: none;
 }
 
 .deck-block p {
@@ -108,26 +116,29 @@ body.brochure-active {
 /* Team Section */
 .deck-team {
     max-width: 1000px;
-    margin: 6rem auto;
+    margin: 8rem auto;
     padding: 0 5%;
 }
 
 .team-member {
-    display: flex;
+    display: flex !important;
     gap: 4rem;
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
     align-items: flex-start;
 }
 
 .team-photo-container {
-    flex: 0 0 350px;
+    flex: 0 0 350px !important;
+    width: 350px !important;
 }
 
 .team-photo {
-    width: 100%;
+    width: 100% !important;
+    height: auto !important;
     aspect-ratio: 1;
     object-fit: cover;
     filter: grayscale(100%);
+    display: block !important;
 }
 
 .team-info {
@@ -135,27 +146,30 @@ body.brochure-active {
 }
 
 .team-info h2 {
-    font-size: 1.25rem;
+    font-size: 1.4rem !important;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 800;
+    color: #000;
 }
 
 .team-info p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #333;
     line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
 /* Reels Section */
 .deck-reels {
-    max-width: 1400px;
-    margin: 6rem auto;
+    max-width: 1300px;
+    margin: 8rem auto;
     padding: 0 5%;
 }
 
 .reel-section {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
 
 .reel-title {
@@ -164,6 +178,7 @@ body.brochure-active {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
+    color: #000;
 }
 
 .reel-video-container {
@@ -173,20 +188,35 @@ body.brochure-active {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+    .team-member {
+        gap: 2rem;
+    }
+
+    .team-photo-container {
+        flex: 0 0 250px !important;
+        width: 250px !important;
+    }
+}
+
+@media (max-width: 768px) {
 
     .deck-grid-3,
     .deck-grid-2 {
         grid-template-columns: 1fr;
+        max-width: 100%;
     }
 
     .team-member {
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
+        text-align: center;
     }
 
     .team-photo-container {
-        width: 100%;
-        flex: none;
+        width: 100% !important;
+        flex: none !important;
+        max-width: 400px;
     }
 }
