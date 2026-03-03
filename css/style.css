@@ -803,8 +803,7 @@ a {
 .contact-subtitle {
     color: var(--color-text-muted);
     margin-bottom: 3rem;
-    margin-top: -2.5rem;
-    /* pull up below section header */
+    margin-top: 1.5rem;
 }
 
 .contact-grid {
