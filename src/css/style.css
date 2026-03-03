@@ -921,18 +921,13 @@ a {
     margin-top: 0.4rem;
 }
 
-.footer-institutions-center {
+.footer-institutions {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
-    justify-content: center;
     flex-grow: 1;
-}
-
-.footer-institutions-right {
-    display: flex;
-    align-items: center;
 }
 
 .institution-logo {

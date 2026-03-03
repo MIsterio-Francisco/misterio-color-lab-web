@@ -5,19 +5,37 @@
       "es": "Elevando la<br>Visión Cinematográfica."
     },
     "subtitle": {
-      "en": "Specialists in color grading and finishing for films, documentaries, and commercials worldwide.",
-      "es": "Especialistas en la corrección de color y finalización para películas, documentales y comerciales a nivel mundial."
+      "en": "We’re a team of experienced creatives who love shaping ideas into finished stories. From color grading and sound design to visual effects, we bring the craft and care your project deserves. Let’s create something meaningful together.",
+      "es": "Somos un equipo de creativos con experiencia a los que les apasiona dar forma a las ideas para convertirlas en historias acabadas. Desde la corrección de color y diseño de sonido hasta los efectos visuales, aportamos el oficio y el cuidado que tu proyecto merece. Creemos juntos algo significativo."
     }
   },
   "carousel": [
-    { "image": "img/projects/BARRA_BRAVA.png" },
-    { "image": "img/projects/EL SANTO.png" },
-    { "image": "img/projects/HBO_MUXES.webp" },
-    { "image": "img/projects/LA_BODA.jpg" },
-    { "image": "img/projects/LA_ESPERA.jpg" },
-    { "image": "img/projects/MV5BMmFmM2Y2YTEtNWNlYi00ZmIyLTgzNzktZTNmY2RkODE2MjY0XkEyXkFqcGc@._V1_.jpg" },
-    { "image": "img/projects/LA_ULTIMA.jpg" },
-    { "image": "img/projects/VAST_OF_NIGHT.jpg" },
-    { "image": "img/projects/ANNE_EVERLASTING.jpg" }
+    {
+      "image": "img/projects/BARRA_BRAVA.png"
+    },
+    {
+      "image": "img/projects/EL SANTO.png"
+    },
+    {
+      "image": "img/projects/HBO_MUXES.webp"
+    },
+    {
+      "image": "img/projects/LA_BODA.jpg"
+    },
+    {
+      "image": "img/projects/LA_ESPERA.jpg"
+    },
+    {
+      "image": "img/projects/MV5BMmFmM2Y2YTEtNWNlYi00ZmIyLTgzNzktZTNmY2RkODE2MjY0XkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "image": "img/projects/LA_ULTIMA.jpg"
+    },
+    {
+      "image": "img/projects/VAST_OF_NIGHT.jpg"
+    },
+    {
+      "image": "img/projects/ANNE_EVERLASTING.jpg"
+    }
   ]
 }
