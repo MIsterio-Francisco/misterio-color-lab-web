@@ -129,15 +129,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Modal Logic ---
-    const modal = document.getElementById('videoModal');
-    const iframeContainer = document.getElementById('iframeContainer');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalDirector = document.getElementById('modal-director');
-    const modalSynopsis = document.getElementById('modal-synopsis');
-    const modalStills = document.getElementById('modal-stills-container');
-
     function openProjectModal(project) {
+        console.log("Opening modal for project:", project);
+
+        const modal = document.getElementById('videoModal');
+        const iframeContainer = document.getElementById('iframeContainer');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDirector = document.getElementById('modal-director');
+        const modalSynopsis = document.getElementById('modal-synopsis');
+        const modalStills = document.getElementById('modal-stills-container');
+
+        if (!modal) {
+            console.error("Modal element #videoModal not found in the DOM!");
+            return;
+        }
         const getLocalized = (field) => typeof field === 'string' ? field : (field ? (field[currentLang] || field.en) : '');
         if (modalTitle) modalTitle.innerText = getLocalized(project.title);
         if (modalCategory) modalCategory.innerText = getLocalized(project.category);
@@ -175,13 +181,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModal() {
+        const modal = document.getElementById('videoModal');
+        const iframeContainer = document.getElementById('iframeContainer');
         modal?.classList.remove('open');
         if (iframeContainer) iframeContainer.innerHTML = '';
         document.body.style.overflow = '';
     }
 
-    document.querySelector('.close-modal')?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    // Use event delegation for the close button and background click since modal might be dynamic
+    document.addEventListener('click', (e) => {
+        const modal = document.getElementById('videoModal');
+        if (!modal) return;
+
+        if (e.target === modal || e.target.closest('.close-modal')) {
+            closeModal();
+        }
+    });
 
     // --- Dynamic Settings Render ---
     function renderDynamicSettings() {
