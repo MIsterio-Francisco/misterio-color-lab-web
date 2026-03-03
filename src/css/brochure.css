@@ -1,20 +1,21 @@
-/* Brochure 'Mini-Deck' Style */
+/* Brochure 'Mini-Deck' Style - V3 Refinement */
 
 .brochure-container {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff !important;
+    color: #000000 !important;
     min-height: 100vh;
     padding-bottom: 5rem;
+    font-family: 'Inter', sans-serif !important;
 }
 
-/* Override body for this page */
+/* Force white background on body when brochure is active */
 body.brochure-active {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff !important;
+    color: #000000 !important;
 }
 
 .deck-header {
-    background-color: #000000;
+    background-color: #000000 !important;
     padding: 2.5rem 0;
     text-align: center;
 }
@@ -32,7 +33,7 @@ body.brochure-active {
 
 .deck-contact p {
     font-size: 0.95rem;
-    color: #333;
+    color: #333 !important;
     margin-bottom: 0.2rem;
 }
 
@@ -43,88 +44,80 @@ body.brochure-active {
 .deck-intro {
     text-align: center;
     max-width: 900px;
-    margin: 4rem auto;
+    margin: 5rem auto;
     padding: 0 5%;
 }
 
 .deck-intro p {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 300;
     line-height: 1.6;
-    color: #222;
+    color: #111 !important;
 }
 
-/* Block Grid */
+/* Block Grid - Always 3 columns on desktop, 1 on mobile */
 .deck-grid {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     padding: 0 5%;
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
-.deck-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.deck-grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 1.5rem;
-    max-width: 866px;
-    /* 2/3 of 1300 approx */
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .deck-block {
-    background-color: #f7f7f7;
-    padding: 3rem 2rem;
+    background-color: #f7f7f7 !important;
+    padding: 3.5rem 2.5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 400px;
+    justify-content: flex-start;
+    min-height: 450px;
 }
 
 .deck-block h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem !important;
     margin-bottom: 1.5rem;
-    font-weight: 800;
+    font-weight: 800 !important;
     text-transform: none;
     line-height: 1.2;
-    color: #000;
+    color: #000 !important;
+    font-family: 'Outfit', sans-serif !important;
 }
 
 .deck-block h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.8rem;
+    font-weight: 700 !important;
     text-transform: none;
+    color: #000 !important;
 }
 
 .deck-block p {
-    font-size: 0.9rem;
-    color: #444;
+    font-size: 0.95rem !important;
+    color: #333 !important;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 .deck-block p:last-child {
     margin-bottom: 0;
 }
 
-/* Team Section */
+/* Team Section - Horizontal Layout */
 .deck-team {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 8rem auto;
     padding: 0 5%;
 }
 
 .team-member {
     display: flex !important;
+    flex-direction: row !important;
     gap: 4rem;
-    margin-bottom: 8rem;
-    align-items: flex-start;
+    margin-bottom: 6rem;
+    align-items: center;
+    /* Center name vertically with photo if no bio */
 }
 
 .team-photo-container {
@@ -146,24 +139,18 @@ body.brochure-active {
 }
 
 .team-info h2 {
-    font-size: 1.4rem !important;
-    margin-bottom: 1.5rem;
+    font-size: 2rem !important;
+    margin-bottom: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 800;
-    color: #000;
-}
-
-.team-info p {
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 800 !important;
+    color: #000 !important;
+    font-family: 'Outfit', sans-serif !important;
 }
 
 /* Reels Section */
 .deck-reels {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 8rem auto;
     padding: 0 5%;
 }
@@ -173,12 +160,12 @@ body.brochure-active {
 }
 
 .reel-title {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    color: #000;
+    margin-bottom: 2rem;
+    color: #000 !important;
 }
 
 .reel-video-container {
@@ -188,35 +175,39 @@ body.brochure-active {
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
+    .deck-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .team-member {
-        gap: 2rem;
+        gap: 2.5rem;
     }
 
     .team-photo-container {
         flex: 0 0 250px !important;
         width: 250px !important;
     }
+
+    .team-info h2 {
+        font-size: 1.5rem !important;
+    }
 }
 
 @media (max-width: 768px) {
-
-    .deck-grid-3,
-    .deck-grid-2 {
+    .deck-grid {
         grid-template-columns: 1fr;
-        max-width: 100%;
     }
 
     .team-member {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
+        flex-direction: column !important;
+        gap: 1.5rem;
         text-align: center;
     }
 
     .team-photo-container {
         width: 100% !important;
+        max-width: 350px;
         flex: none !important;
-        max-width: 400px;
     }
 }
