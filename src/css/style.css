@@ -911,25 +911,24 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .footer-desc {
     color: var(--color-text-muted);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
 }
 
 .footer-institutions-center {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 3rem;
     flex-wrap: wrap;
     justify-content: center;
     flex-grow: 1;
-    padding-right: 4rem;
 }
 
 .footer-institutions-right {
@@ -940,21 +939,22 @@ a {
 .institution-logo {
     width: auto;
     object-fit: contain;
-    opacity: 0.8;
+    opacity: 0.7;
     transition: opacity var(--transition-fast);
 }
 
 .gov-logo {
-    height: 95px;
+    height: 70px;
 }
 
 .nextgen-logo {
-    height: 70px;
+    height: 55px;
 }
 
 .institution-logo:hover {
     opacity: 1;
 }
+
 
 .footer-bottom {
     text-align: center;
