@@ -229,45 +229,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.renderDynamicSettings = function () {
-        window.renderDynamicSettings = function () {
-            if (!cmsData.homeData && !cmsData.studioData && !cmsData.teamData && !cmsData.contactData) return;
+        if (!cmsData.homeData && !cmsData.studioData && !cmsData.teamData && !cmsData.contactData) return;
 
-            // 1. Home - Hero
-            if (cmsData.homeData && cmsData.homeData.hero) {
-                const h1 = document.querySelector('.hero-content h1');
-                const sub = document.getElementById('cms-hero_subtitle');
+        // 1. Home - Hero
+        if (cmsData.homeData && cmsData.homeData.hero) {
+            const h1 = document.querySelector('.hero-content h1');
+            const sub = document.getElementById('cms-hero_subtitle');
 
-                if (h1) h1.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.title, currentLang);
-                if (sub) sub.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.subtitle, currentLang);
-            }
+            if (h1) h1.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.title, currentLang);
+            if (sub) sub.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.subtitle, currentLang);
+        }
 
-            // 2. Studio - About & Services
-            if (cmsData.studioData && cmsData.studioData.about) {
-                const p1 = document.getElementById('cms-studio_text_1');
-                const p2 = document.getElementById('cms-studio_text_2');
-                if (p1) p1.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_1, currentLang);
-                if (p2) p2.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_2, currentLang);
-            }
+        // 2. Studio - About & Services
+        if (cmsData.studioData && cmsData.studioData.about) {
+            const p1 = document.getElementById('cms-studio_text_1');
+            const p2 = document.getElementById('cms-studio_text_2');
+            if (p1) p1.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_1, currentLang);
+            if (p2) p2.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_2, currentLang);
+        }
 
-            if (cmsData.studioData && cmsData.studioData.services) {
-                const servicesCont = document.getElementById('cms-services-list');
-                if (servicesCont) {
-                    servicesCont.className = 'services-list';
-                    servicesCont.innerHTML = cmsData.studioData.services.map(s =>
-                        `<div class="service-item">
+        if (cmsData.studioData && cmsData.studioData.services) {
+            const servicesCont = document.getElementById('cms-services-list');
+            if (servicesCont) {
+                servicesCont.className = 'services-list';
+                servicesCont.innerHTML = cmsData.studioData.services.map(s =>
+                    `<div class="service-item">
                         <span class="service-icon">✦</span>
                         <span class="service-name">${window.CMS.getLocalizedText(s.name, currentLang)}</span>
                      </div>`
-                    ).join('');
-                }
+                ).join('');
             }
+        }
 
-            // 3. Team - Grid
-            if (cmsData.teamData && cmsData.teamData.members) {
-                const teamCont = document.getElementById('cms-team-list');
-                if (teamCont) {
-                    teamCont.className = 'team-grid';
-                    teamCont.innerHTML = cmsData.teamData.members.map(m => `
+        // 3. Team - Grid
+        if (cmsData.teamData && cmsData.teamData.members) {
+            const teamCont = document.getElementById('cms-team-list');
+            if (teamCont) {
+                teamCont.className = 'team-grid';
+                teamCont.innerHTML = cmsData.teamData.members.map(m => `
                      <div class="team-member reveal active">
                         <div class="member-photo-wrapper">
                             ${m.photo ? `<img src="${m.photo}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
@@ -277,36 +276,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${m.email ? `<a href="mailto:${m.email}" class="member-email">${m.email}</a>` : ''}
                      </div>
                  `).join('');
-                }
             }
-
-            // 4. Reload Carousel because data is now ready
-            if (cmsData.homeData && cmsData.homeData.carousel) {
-                const track = document.getElementById('poster-track');
-                if (track) {
-                    track.innerHTML = '';
-                    let posters = cmsData.homeData.carousel.map(item => typeof item === 'string' ? item : item.image);
-
-                    const postersHTML = posters.map(img =>
-                        `<div class="poster-slide"><img src="/${img}" alt="Project poster" loading="lazy"></div>`
-                    ).join('');
-
-                    track.innerHTML = postersHTML + postersHTML;
-
-                    const posterWidth = 184;
-                    const totalWidth = posters.length * posterWidth;
-                    const duration = posters.length * 2.5;
-                    track.style.animation = `carouselScroll ${duration}s linear infinite`;
-                    track.style.setProperty('--carousel-total-width', `${totalWidth}px`);
-                }
-            }
-
-            // Ensure Scroll reveals execute on freshly rendered components.
-            setTimeout(() => {
-                const newReveals = document.querySelectorAll('.reveal:not(.active)');
-                newReveals.forEach(r => r.classList.add('active'));  // Simple fallback since observer runs early
-            }, 100);
         }
-    });
 
-setTimeout(window.renderDynamicSettings, 300); // Trigger dynamically loaded properties onto generic objects
+        // 4. Reload Carousel because data is now ready
+        if (cmsData.homeData && cmsData.homeData.carousel) {
+            const track = document.getElementById('poster-track');
+            if (track) {
+                track.innerHTML = '';
+                let posters = cmsData.homeData.carousel.map(item => typeof item === 'string' ? item : item.image);
+
+                const postersHTML = posters.map(img =>
+                    `<div class="poster-slide"><img src="/${img}" alt="Project poster" loading="lazy"></div>`
+                ).join('');
+
+                track.innerHTML = postersHTML + postersHTML;
+
+                const posterWidth = 184;
+                const totalWidth = posters.length * posterWidth;
+                const duration = posters.length * 2.5;
+                track.style.animation = `carouselScroll ${duration}s linear infinite`;
+                track.style.setProperty('--carousel-total-width', `${totalWidth}px`);
+            }
+        }
+
+        // Ensure Scroll reveals execute on freshly rendered components.
+        setTimeout(() => {
+            const newReveals = document.querySelectorAll('.reveal:not(.active)');
+            newReveals.forEach(r => r.classList.add('active'));
+        }, 100);
+    };
+});
+
+setTimeout(window.renderDynamicSettings, 300);
