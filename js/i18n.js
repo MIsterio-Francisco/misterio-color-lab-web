@@ -29,7 +29,10 @@ const i18n = {
         role_senior_colorist: "Senior Colorist",
         role_post_coordinator: "Post Production Coordinator",
         role_producer: "Producer",
-        role_junior_colorist: "Junior Colorist"
+        role_junior_colorist: "Junior Colorist",
+        location_madrid: "Madrid - SPAIN",
+        location_mexico: "Mexico City - MEXICO",
+        location_saopaulo: "Sao Paulo - BRAZIL"
     },
     es: {
         nav_work: "Trabajo",
@@ -61,6 +64,9 @@ const i18n = {
         role_senior_colorist: "Colorista Senior",
         role_post_coordinator: "Coordinador de Postproducción",
         role_producer: "Productor",
-        role_junior_colorist: "Colorista Junior"
+        role_junior_colorist: "Colorista Junior",
+        location_madrid: "Madrid - ESPAÑA",
+        location_mexico: "Ciudad de México - MÉXICO",
+        location_saopaulo: "São Paulo - BRASIL"
     }
 };
