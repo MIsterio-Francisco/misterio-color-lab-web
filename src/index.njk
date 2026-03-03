@@ -2,7 +2,198 @@
 layout: layouts/base.njk
 title: Misterio Color Lab
 ---
----
-layout: layouts/base.njk
-title: Misterio Color Lab
----
+<!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+            <img src="img/logo_white_hq.png" alt="Misterio Color Lab" class="hero-logo">
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Specialists in color grading and finishing for films,
+                documentaries, and commercials worldwide.</p>
+        </div>
+
+        <!-- Poster Carousel -->
+        <div class="poster-carousel">
+            <div class="poster-track" id="poster-track">
+                <!-- Posters injected by JS -->
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Work / Gallery Section -->
+    <section class="work-section" id="work">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="section_work">Featured Projects</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Dynamic Gallery Grid -->
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio / About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <h2 class="section-title" data-i18n="section_studio">The Studio</h2>
+                    <div class="section-line"></div>
+                    <p data-i18n="studio_text_1">Misterio Color Lab is a post-production boutique specializing in color
+                        grading and finishing. We believe in the power of color to tell stories, conveying the exact
+                        emotion in every frame.</p>
+                    <p data-i18n="studio_text_2">Our approach combines cutting-edge technology with a unique artistic
+                        vision, working closely with directors and cinematographers to achieve their ultimate vision.
+                    </p>
+
+                    <div class="services-list">
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_1">Integrated Digital Lab</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_2">Color Grading & HDR</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_3">Mastering & Deliveries</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_4">Sound Design & Mix</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_5">VFX & Compositing</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">✦</span>
+                            <span class="service-name" data-i18n="service_6">Post-production Supervision</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual reveal">
+                    <div class="visual-placeholder">
+                        <span class="visual-text">Instalaciones<br>Misterio Color</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title text-center" data-i18n="section_team">Our Team</h2>
+                <div class="section-line center-line"></div>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member reveal">
+                    <div class="member-photo-wrapper">
+                        <img src="img/team/raul_lavado.jpg" alt="Raúl Lavado Verdú" class="member-photo">
+                    </div>
+                    <h3 class="member-name">Raúl Lavado Verdú</h3>
+                    <p class="member-role" data-i18n="role_head_color">Head of Color</p>
+                </div>
+                <div class="team-member reveal">
+                    <div class="member-photo-wrapper">
+                        <img src="img/team/fady.jpg" alt="Fady Melek" class="member-photo">
+                    </div>
+                    <h3 class="member-name">Fady Melek</h3>
+                    <p class="member-role" data-i18n="role_senior_colorist">Senior Colorist</p>
+                </div>
+                <div class="team-member reveal">
+                    <div class="member-photo-wrapper">
+                        <img src="img/team/raul_espinosa.jpg" alt="Raúl Espinosa" class="member-photo">
+                    </div>
+                    <h3 class="member-name">Raúl Espinosa</h3>
+                    <p class="member-role" data-i18n="role_post_coordinator">Post Production Coordinator</p>
+                    <a href="mailto:rulo@misteriocolorlab.com" class="member-email">rulo@misteriocolorlab.com</a>
+                </div>
+                <div class="team-member reveal">
+                    <div class="member-photo-wrapper">
+                        <img src="img/team/francisco_monje.jpg" alt="Francisco Monje" class="member-photo">
+                    </div>
+                    <h3 class="member-name">Francisco Monje</h3>
+                    <p class="member-role" data-i18n="role_producer">Producer</p>
+                    <a href="mailto:francisco@misteriocolorlab.com"
+                        class="member-email">francisco@misteriocolorlab.com</a>
+                </div>
+                <div class="team-member reveal">
+                    <div class="member-photo-wrapper">
+                        <img src="img/team/marina.jpg" alt="Marina Valleiro" class="member-photo">
+                    </div>
+                    <h3 class="member-name">Marina Valleiro</h3>
+                    <p class="member-role" data-i18n="role_junior_colorist">Junior Colorist</p>
+                    <a href="mailto:marina@misteriocolorlab.com" class="member-email">marina@misteriocolorlab.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box reveal">
+                <h2 class="section-title text-center" data-i18n="contact_title">Contact Us</h2>
+                <div class="section-line center-line"></div>
+                <p class="contact-subtitle" data-i18n="contact_subtitle">Have a project in mind? Let's talk about how we
+                    can give it the final touch it deserves.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-block">
+                            <h4 data-i18n="location_madrid">Madrid - ESPAÑA</h4>
+                            <p>C. de Albasanz, 59<br>San Blas-Canillejas, 28037</p>
+                        </div>
+                        <div class="info-block">
+                            <h4 data-i18n="location_mexico">Mexico City - MEXICO</h4>
+                            <p>Goethe 39, Anzures</p>
+                        </div>
+                        <div class="info-block">
+                            <h4 data-i18n="location_saopaulo">Sao Paulo - BRASIL</h4>
+                            <p>Rua Sebastião Stokler 21</p>
+                        </div>
+                        <div class="info-block contact-details">
+                            <p><a href="tel:+34638862751">+34 638 862751</a></p>
+                            <p><a href="mailto:info@misteriocolorlab.com">info@misteriocolorlab.com</a></p>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" name="contact" method="POST" action="/success.html" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name"
+                                    data-i18n-hold="form_name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email Address"
+                                    data-i18n-hold="form_email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..."
+                                data-i18n-hold="form_message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">Send
+                            Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
