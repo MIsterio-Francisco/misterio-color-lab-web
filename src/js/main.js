@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let currentLang = document.body.getAttribute('data-lang') || 'en';
     let cmsData = { homeData: null, studioData: null, teamData: null, contactData: null };
+    let dynamicProjects = [];
 
     // --- initialization sequence ---
     async function initApp() {
@@ -11,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateLanguage(currentLang);
         loadProjects();
+        // Trigger dynamic settings render once data is fetched
+        renderDynamicSettings();
+        initCarousel();
     }
 
     // --- Poster Carousel ---
@@ -33,32 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Build poster elements (duplicate set for infinite scroll)
         const postersHTML = posters.map(img =>
-            `<div class="poster-slide"><img src="${img}" alt="Project poster" loading="lazy"></div>`
+            `<div class="poster-slide"><img src="/${img}" alt="Project poster" loading="lazy"></div>`
         ).join('');
 
         // Duplicate for seamless infinite scroll
         track.innerHTML = postersHTML + postersHTML;
 
-        // Auto-scroll: each poster is 160px + 24px gap = 184px per poster
         const posterWidth = 184;
         const totalWidth = posters.length * posterWidth;
-        let position = 0;
-
-        function scrollCarousel() {
-            position -= 1;
-            if (Math.abs(position) >= totalWidth) {
-                position = 0;
-            }
-            track.style.transform = `translateX(${position}px)`;
-            requestAnimationFrame(scrollCarousel);
-        }
-
-        // Speed: traverse one poster width (220px) in 2500ms = ~0.088px per frame at 60fps
-        // Using a smoother CSS animation approach instead
         const duration = posters.length * 2.5; // total seconds for one full set
-        track.style.animation = `carouselScroll ${duration}s linear infinite`;
 
-        // Set CSS custom property for the total width
+        track.style.animation = `carouselScroll ${duration}s linear infinite`;
         track.style.setProperty('--carousel-total-width', `${totalWidth}px`);
     }
 
@@ -69,15 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (i18n[lang][key]) {
-                el.innerHTML = i18n[lang][key];
+            if (window.i18n && window.i18n[lang] && window.i18n[lang][key]) {
+                el.innerHTML = window.i18n[lang][key];
             }
         });
 
         document.querySelectorAll('[data-i18n-hold]').forEach(el => {
             const key = el.getAttribute('data-i18n-hold');
-            if (i18n[lang][key]) {
-                el.placeholder = i18n[lang][key];
+            if (window.i18n && window.i18n[lang] && window.i18n[lang][key]) {
+                el.placeholder = window.i18n[lang][key];
             }
         });
 
@@ -88,14 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
         renderGallery();
     }
 
-    document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
-    document.getElementById('lang-es').addEventListener('click', () => updateLanguage('es'));
+    window.updateLanguage = updateLanguage; // Export for buttons
 
-    // --- Featured Projects (only selected projects with synopsis/trailer) ---
-    const featuredIds = ['papeles', 'la-boda', 'la-ultima', 'vast-of-night', 'la-espera', 'muxes', 'anne-everlasting', 'wandering-saint'];
+    document.getElementById('lang-en')?.addEventListener('click', () => updateLanguage('en'));
+    document.getElementById('lang-es')?.addEventListener('click', () => updateLanguage('es'));
+
+    // --- Featured Projects ---
     const galleryGrid = document.getElementById('gallery-grid');
-
-    let dynamicProjects = [];
 
     async function loadProjects() {
         try {
@@ -103,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dynamicProjects = await res.json();
             renderGallery();
         } catch (e) {
-            console.error("Error loading projects for Decap CMS:", e);
+            console.error("Error loading projects:", e);
         }
     }
 
@@ -111,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!galleryGrid) return;
         galleryGrid.innerHTML = '';
 
-        // Filter only projects that have the featured flag set to true (from the CMS)
         const featuredProjects = dynamicProjects.filter(p => p.featured);
 
         featuredProjects.forEach(project => {
@@ -123,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `<img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">`
                 : `<div class="img-placeholder">${project.title}</div>`;
 
-            // Adjust fallback for fields that were localized but might not be in the simple simple CMS setup
             const title = typeof project.title === 'string' ? project.title : (project.title[currentLang] || project.title.en);
             const category = typeof project.category === 'string' ? project.category : (project.category[currentLang] || project.category.en);
 
@@ -142,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Enhanced Modal Logic ---
+    // --- Modal Logic ---
     const modal = document.getElementById('videoModal');
     const iframeContainer = document.getElementById('iframeContainer');
     const modalTitle = document.getElementById('modal-title');
@@ -152,95 +138,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalStills = document.getElementById('modal-stills-container');
 
     function openProjectModal(project) {
-        // Handle both simple strings (from CMS) and objects with currentLang (legacy hardcoded)
         const getLocalized = (field) => typeof field === 'string' ? field : (field ? (field[currentLang] || field.en) : '');
+        if (modalTitle) modalTitle.innerText = getLocalized(project.title);
+        if (modalCategory) modalCategory.innerText = getLocalized(project.category);
+        if (modalDirector) modalDirector.innerText = project.director || '';
+        if (modalSynopsis) modalSynopsis.innerText = getLocalized(project.synopsis);
 
-        modalTitle.innerText = getLocalized(project.title);
-        modalCategory.innerText = getLocalized(project.category);
-        modalDirector.innerText = project.director || '';
-        modalSynopsis.innerText = getLocalized(project.synopsis);
-
-        if (project.video) {
+        if (project.video || project.trailer) {
+            const videoUrl = project.video || project.trailer;
             const iframe = document.createElement('iframe');
-            iframe.src = `${project.video}?autoplay=1&rel=0`;
+            iframe.src = `${videoUrl}?autoplay=1&rel=0`;
             iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
             iframe.allowFullscreen = true;
-            iframeContainer.innerHTML = '';
-            iframeContainer.appendChild(iframe);
-        } else if (project.trailer) {
-            // Fallback to old property name just in case
-            const iframe = document.createElement('iframe');
-            iframe.src = `${project.trailer}?autoplay=1&rel=0`;
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            iframeContainer.innerHTML = '';
-            iframeContainer.appendChild(iframe);
-        } else {
+            if (iframeContainer) {
+                iframeContainer.innerHTML = '';
+                iframeContainer.appendChild(iframe);
+            }
+        } else if (iframeContainer) {
             iframeContainer.innerHTML = '<div class="no-video" data-i18n="trailer_coming_soon">Trailer coming soon...</div>';
         }
 
-        modalStills.innerHTML = '';
-        if (project.stills && project.stills.length > 0) {
-            project.stills.forEach(still => {
-                const img = document.createElement('img');
-                img.src = typeof still === 'string' ? still : (still.still || ''); // Handle CMS list structure
-                img.alt = getLocalized(project.title);
-                modalStills.appendChild(img);
-            });
+        if (modalStills) {
+            modalStills.innerHTML = '';
+            if (project.stills && project.stills.length > 0) {
+                project.stills.forEach(still => {
+                    const img = document.createElement('img');
+                    img.src = typeof still === 'string' ? still : (still.still || '');
+                    img.alt = getLocalized(project.title);
+                    modalStills.appendChild(img);
+                });
+            }
         }
 
-        modal.classList.add('open');
+        modal?.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-        modal.classList.remove('open');
-        iframeContainer.innerHTML = '';
+        modal?.classList.remove('open');
+        if (iframeContainer) iframeContainer.innerHTML = '';
         document.body.style.overflow = '';
     }
 
-    document.querySelector('.close-modal').addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.querySelector('.close-modal')?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    // --- Generic Setup ---
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // Initial render
-    loadProjects(); // This replaces the synchronous renderGallery()
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.renderDynamicSettings = function () {
+    // --- Dynamic Settings Render ---
+    function renderDynamicSettings() {
         if (!cmsData.homeData && !cmsData.studioData && !cmsData.teamData && !cmsData.contactData) return;
 
         // 1. Home - Hero
         if (cmsData.homeData && cmsData.homeData.hero) {
-            const h1 = document.querySelector('.hero-content h1');
+            const h1 = document.getElementById('cms-hero_title');
             const sub = document.getElementById('cms-hero_subtitle');
-
             if (h1) h1.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.title, currentLang);
             if (sub) sub.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.subtitle, currentLang);
         }
 
-        // 2. Studio - About & Services
+        // 2. Studio
         if (cmsData.studioData && cmsData.studioData.about) {
             const p1 = document.getElementById('cms-studio_text_1');
             const p2 = document.getElementById('cms-studio_text_2');
@@ -251,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cmsData.studioData && cmsData.studioData.services) {
             const servicesCont = document.getElementById('cms-services-list');
             if (servicesCont) {
-                servicesCont.className = 'services-list';
                 servicesCont.innerHTML = cmsData.studioData.services.map(s =>
                     `<div class="service-item">
                         <span class="service-icon">✦</span>
@@ -261,11 +215,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 3. Team - Grid
+        // 3. Team
         if (cmsData.teamData && cmsData.teamData.members) {
             const teamCont = document.getElementById('cms-team-list');
             if (teamCont) {
-                teamCont.className = 'team-grid';
                 teamCont.innerHTML = cmsData.teamData.members.map(m => `
                      <div class="team-member reveal active">
                         <div class="member-photo-wrapper">
@@ -279,32 +232,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 4. Reload Carousel because data is now ready
-        if (cmsData.homeData && cmsData.homeData.carousel) {
-            const track = document.getElementById('poster-track');
-            if (track) {
-                track.innerHTML = '';
-                let posters = cmsData.homeData.carousel.map(item => typeof item === 'string' ? item : item.image);
-
-                const postersHTML = posters.map(img =>
-                    `<div class="poster-slide"><img src="/${img}" alt="Project poster" loading="lazy"></div>`
-                ).join('');
-
-                track.innerHTML = postersHTML + postersHTML;
-
-                const posterWidth = 184;
-                const totalWidth = posters.length * posterWidth;
-                const duration = posters.length * 2.5;
-                track.style.animation = `carouselScroll ${duration}s linear infinite`;
-                track.style.setProperty('--carousel-total-width', `${totalWidth}px`);
-            }
-        }
-
-        // Ensure Scroll reveals execute on freshly rendered components.
+        // Trigger Reveal Observer check
         setTimeout(() => {
-            const newReveals = document.querySelectorAll('.reveal:not(.active)');
-            newReveals.forEach(r => r.classList.add('active'));
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+                revealObserver.observe(el);
+            });
         }, 100);
-    };
-    setTimeout(window.renderDynamicSettings, 300);
+    }
+
+    window.renderDynamicSettings = renderDynamicSettings;
+
+    // --- Generic Setup ---
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger?.addEventListener('click', () => {
+        navLinks?.classList.toggle('active');
+        hamburger?.classList.toggle('active');
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Start everything
+    initApp();
 });
