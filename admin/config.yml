@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
@@ -35,3 +36,105 @@ collections:
       - {label: "Video URL", name: "video", widget: "string", required: false, hint: "Vimeo or YouTube link"}
       - {label: "Featured", name: "featured", widget: "boolean", default: true, hint: "Show on the main gallery"}
       - {label: "Gallery Stills", name: "stills", widget: "list", field: {label: "Still", name: "still", widget: "image"}, required: false}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "data/settings/home.json"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - name: "hero"
+            label: "Hero Section"
+            widget: "object"
+            fields:
+              - name: "title"
+                label: "Title"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "string", default: "Elevating the<br>Cinematic Vision."}
+                  - {label: "Spanish", name: "es", widget: "string", default: "Elevando la<br>Visión Cinematográfica."}
+              - name: "subtitle"
+                label: "Subtitle"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "string", default: "Specialists in color grading and finishing for films, documentaries, and commercials worldwide."}
+                  - {label: "Spanish", name: "es", widget: "string", default: "Especialistas en la corrección de color y finalización para películas, documentales y comerciales a nivel mundial."}
+          - name: "carousel"
+            label: "Poster Carousel"
+            widget: "list"
+            fields:
+              - {label: "Poster Image", name: "image", widget: "image"}
+
+      - file: "data/settings/studio.json"
+        label: "Studio Page"
+        name: "studio"
+        fields:
+          - name: "about"
+            label: "About Text"
+            widget: "object"
+            fields:
+              - name: "paragraph_1"
+                label: "Paragraph 1"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "text", default: "Misterio Color Lab is a post-production boutique specializing in color grading and finishing. We believe in the power of color to tell stories, conveying the exact emotion in every frame."}
+                  - {label: "Spanish", name: "es", widget: "text", default: "Misterio Color Lab es una boutique de post-producción especializada en etalonaje y finalización. Creemos en el poder del color para contar historias, transmitiendo la emoción exacta en cada fotograma."}
+              - name: "paragraph_2"
+                label: "Paragraph 2"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "text", default: "Our approach combines cutting-edge technology with a unique artistic vision, working closely with directors and cinematographers to achieve their ultimate vision."}
+                  - {label: "Spanish", name: "es", widget: "text", default: "Nuestro enfoque combina tecnología de vanguardia con una visión artística única, colaborando estrechamente con directores y directores de fotografía para alcanzar su máxima visión."}
+          - name: "services"
+            label: "Services List"
+            widget: "list"
+            fields:
+              - name: "name"
+                label: "Service Name"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "string"}
+                  - {label: "Spanish", name: "es", widget: "string"}
+
+      - file: "data/settings/team.json"
+        label: "Team Members"
+        name: "team"
+        fields:
+          - name: "members"
+            label: "Team Members"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - name: "role"
+                label: "Role"
+                widget: "object"
+                fields:
+                  - {label: "English", name: "en", widget: "string"}
+                  - {label: "Spanish", name: "es", widget: "string"}
+              - {label: "Photo", name: "photo", widget: "image", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+
+      - file: "data/settings/contact.json"
+        label: "Contact & Footer"
+        name: "contact"
+        fields:
+          - name: "locations"
+            label: "Locations"
+            widget: "list"
+            fields:
+              - {label: "City Name", name: "city", widget: "string"}
+              - {label: "Address Line 1", name: "address1", widget: "string"}
+              - {label: "Address Line 2 (Optional)", name: "address2", widget: "string", required: false}
+          - name: "details"
+            label: "Contact Details"
+            widget: "object"
+            fields:
+              - {label: "Phone", name: "phone", widget: "string", default: "+34 638 862751"}
+              - {label: "Email", name: "email", widget: "string", default: "info@misteriocolorlab.com"}
+          - name: "footer"
+            label: "Footer Description"
+            widget: "object"
+            fields:
+              - {label: "English", name: "en", widget: "string", default: "Crafting the visual soul of your story."}
+              - {label: "Spanish", name: "es", widget: "string", default: "Creando el alma visual de tu historia."}

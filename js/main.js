@@ -1,45 +1,39 @@
 // Misterio Color Lab - Advanced Logic & i18n
 document.addEventListener('DOMContentLoaded', () => {
     let currentLang = document.body.getAttribute('data-lang') || 'en';
+    let cmsData = { homeData: null, studioData: null, teamData: null, contactData: null };
 
-    // --- All poster filenames for the carousel ---
-    const allPosters = [
-        "BARRA_BRAVA.png",
-        "EL SANTO.png",
-        "HBO_MUXES.webp",
-        "LA_BODA.jpg",
-        "LA_ESPERA.jpg",
-        "MV5BMmFmM2Y2YTEtNWNlYi00ZmIyLTgzNzktZTNmY2RkODE2MjY0XkEyXkFqcGc@._V1_.jpg",
-        "MV5BMzE5OTA2NjEtODY3NC00MDYzLTg0YTktMmQxNjY1NjJiMWZjXkEyXkFqcGc@._V1_.jpg",
-        "MV5BMzYwMDkwYTctZTM2Zi00ZjNlLWI4MmItYzNlNmNmOGJkYThjXkEyXkFqcGc@._V1_.jpg",
-        "MV5BNDAwYmE3Y2EtMDU4MS00NWE1LWI4NzEtM2EyNTEzM2FjY2Q3XkEyXkFqcGc@._V1_.jpg",
-        "MV5BNDIwYmFjM2ItYTYwZi00ODk5LWE1MDQtMjM3MmRmYmEyNDhjXkEyXkFqcGc@._V1_.jpg",
-        "MV5BNGI1OGQ0Y2YtY2RmNi00MmJmLThhYzktNWU2NWRkMGNkNzRiXkEyXkFqcGc@._V1_.jpg",
-        "MV5BNTA4MjU4YTQtZTRjZC00OWI0LTk1YmUtMDdhMWY1Y2FlZDQyXkEyXkFqcGc@._V1_.jpg",
-        "MV5BNmIyMDcyNjQtM2IyZS00ZTVjLThkM2ItOWJkOTUwODBjNDNjXkEyXkFqcGc@._V1_.jpg",
-        "MV5BOWM2MWNiZDctMTY4OS00NzVjLTg4NzQtMmVhMGNlODYzMzM0XkEyXkFqcGc@._V1_.jpg",
-        "MV5BYTk2NjYxZWEtOGE4ZS00OTg4LWI4MTMtNDM3NzcyM2IyZDQ2XkEyXkFqcGc@._V1_.jpg",
-        "MV5BYjI3MmU5MTctYWRmYi00ZDQ0LWEzMDktMTQxZmVjZWYzYmY1XkEyXkFqcGc@._V1_.jpg",
-        "MV5BYmZlMDc2ZDctZWM3Yi00OTA3LWI3MmItYzM5YTc0N2JhZTYyXkEyXkFqcGc@._V1_.jpg",
-        "MV5BZTgzMTZkMGQtN2JkZC00MTdmLWJiMzYtM2M2ZmQwZTA3ZGM2XkEyXkFqcGc@._V1_.jpg",
-        "MV5BZjkxNzEyYzAtMDU5MS00MmZjLWE5OWYtNTA4YTQxZDYzMmJmXkEyXkFqcGc@._V1_.jpg",
-        "MV5BZjkzMDMwODEtOTRhZi00ODU2LWIwYjItNzY5MmRhNjhhNDc0XkEyXkFqcGc@._V1_.jpg",
-        "MV5BZmIwMDViYzgtMDA2ZS00ZWJlLWI4MWYtNDg2YjgzOTBmNjBhXkEyXkFqcGc@._V1_.jpg",
-        "PAPELES.png",
-        "UNA_NOCHE_CON_ADELA.jpg",
-        "LA_ULTIMA.jpg",
-        "VAST_OF_NIGHT.jpg",
-        "ANNE_EVERLASTING.jpg"
-    ];
+    // --- initialization sequence ---
+    async function initApp() {
+        if (window.CMS && window.CMS.loadSettings) {
+            cmsData = await window.CMS.loadSettings();
+        }
+
+        initCarousel();
+        updateLanguage(currentLang);
+        loadProjects();
+    }
 
     // --- Poster Carousel ---
     function initCarousel() {
         const track = document.getElementById('poster-track');
         if (!track) return;
 
+        let posters = [];
+        if (cmsData.homeData && cmsData.homeData.carousel) {
+            posters = cmsData.homeData.carousel.map(item => item.image);
+        } else {
+            // Fallback just in case
+            posters = [
+                "img/projects/BARRA_BRAVA.png",
+                "img/projects/EL SANTO.png",
+                "img/projects/HBO_MUXES.webp"
+            ];
+        }
+
         // Build poster elements (duplicate set for infinite scroll)
-        const postersHTML = allPosters.map(file =>
-            `<div class="poster-slide"><img src="img/projects/${encodeURIComponent(file)}" alt="Project poster" loading="lazy"></div>`
+        const postersHTML = posters.map(img =>
+            `<div class="poster-slide"><img src="${img}" alt="Project poster" loading="lazy"></div>`
         ).join('');
 
         // Duplicate for seamless infinite scroll
@@ -47,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Auto-scroll: each poster is 160px + 24px gap = 184px per poster
         const posterWidth = 184;
-        const totalWidth = allPosters.length * posterWidth;
+        const totalWidth = posters.length * posterWidth;
         let position = 0;
 
         function scrollCarousel() {
@@ -61,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Speed: traverse one poster width (220px) in 2500ms = ~0.088px per frame at 60fps
         // Using a smoother CSS animation approach instead
-        const duration = allPosters.length * 2.5; // total seconds for one full set
+        const duration = posters.length * 2.5; // total seconds for one full set
         track.style.animation = `carouselScroll ${duration}s linear infinite`;
 
         // Set CSS custom property for the total width
@@ -233,3 +227,65 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousel();
     loadProjects(); // This replaces the synchronous renderGallery()
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.renderDynamicSettings = function() {
+        if (!cmsData.homeData && !cmsData.studioData && !cmsData.teamData && !cmsData.contactData) return;
+        
+        // 1. Home - Hero
+        if (cmsData.homeData && cmsData.homeData.hero) {
+            const h1 = document.querySelector('.hero-content h1');
+            const sub = document.getElementById('cms-hero_subtitle');
+            
+            if(h1) h1.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.title, currentLang);
+            if(sub) sub.innerHTML = window.CMS.getLocalizedText(cmsData.homeData.hero.subtitle, currentLang);
+        }
+
+        // 2. Studio - About & Services
+        if (cmsData.studioData && cmsData.studioData.about) {
+            const p1 = document.getElementById('cms-studio_text_1');
+            const p2 = document.getElementById('cms-studio_text_2');
+            if(p1) p1.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_1, currentLang);
+            if(p2) p2.innerHTML = window.CMS.getLocalizedText(cmsData.studioData.about.paragraph_2, currentLang);
+        }
+        
+        if (cmsData.studioData && cmsData.studioData.services) {
+            const servicesCont = document.getElementById('cms-services-list');
+            if(servicesCont) {
+                servicesCont.className = 'services-list';
+                servicesCont.innerHTML = cmsData.studioData.services.map(s => 
+                     `<div class="service-item">
+                        <span class="service-icon">✦</span>
+                        <span class="service-name">${window.CMS.getLocalizedText(s.name, currentLang)}</span>
+                     </div>`
+                ).join('');
+            }
+        }
+
+        // 3. Team - Grid
+        if (cmsData.teamData && cmsData.teamData.members) {
+             const teamCont = document.getElementById('cms-team-list');
+             if(teamCont) {
+                 teamCont.className = 'team-grid';
+                 teamCont.innerHTML = cmsData.teamData.members.map(m => `
+                     <div class="team-member reveal active">
+                        <div class="member-photo-wrapper">
+                            ${m.photo ? `<img src="${m.photo}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
+                        </div>
+                        <h3 class="member-name">${m.name}</h3>
+                        <p class="member-role">${window.CMS.getLocalizedText(m.role, currentLang)}</p>
+                        ${m.email ? `<a href="mailto:${m.email}" class="member-email">${m.email}</a>` : ''}
+                     </div>
+                 `).join('');
+             }
+        }
+
+         // Ensure Scroll reveals execute on freshly rendered components.
+         setTimeout(() => {
+             const newReveals = document.querySelectorAll('.reveal:not(.active)');
+             newReveals.forEach(r => r.classList.add('active'));  // Simple fallback since observer runs early
+         }, 100);
+    }
+});
+
+setTimeout(window.renderDynamicSettings, 300); // Trigger dynamically loaded properties onto generic objects
