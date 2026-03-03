@@ -218,27 +218,23 @@
                         </div>
                     </div>
 
-                    <form class="contact-form">
+                    <form class="contact-form" name="contact" method="POST" data-netlify="true">
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="text" id="name" placeholder="Your Name" data-i18n-hold="form_name"
-                                    required>
+                                <input type="text" id="name" name="name" placeholder="Your Name"
+                                    data-i18n-hold="form_name" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" placeholder="Email Address" data-i18n-hold="form_email"
-                                    required>
+                                <input type="email" id="email" name="email" placeholder="Email Address"
+                                    data-i18n-hold="form_email" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Tell us about your project..."
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..."
                                 data-i18n-hold="form_message" required></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary btn-submit" data-i18n="form_submit">Send
+                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">Send
                             Message</button>
-                        <p class="form-status-msg"
-                            style="display:none; margin-top:1rem; color:var(--color-accent); font-size:0.9rem;">Mensaje
-                            de
-                            prueba. La funcionalidad backend se conectará en Wix.</p>
                     </form>
                 </div>
             </div>
