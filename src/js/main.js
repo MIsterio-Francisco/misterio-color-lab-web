@@ -104,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         featuredProjects.forEach(project => {
             const card = document.createElement('article');
             card.className = 'project-card reveal';
-            card.onclick = () => openProjectModal(project);
 
             const imgContent = project.image
                 ? `<img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">`
@@ -123,8 +122,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="project-director">${project.director}</p>
                 </div>
             `;
+            // Store the project data on the element for delegated click
+            card.dataset.projectId = project.id || title;
             galleryGrid.appendChild(card);
             revealObserver.observe(card);
+        });
+    }
+
+    // Use event delegation for clicking cards (fixes dynamically injected content losing events)
+    if (galleryGrid) {
+        galleryGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card');
+            if (!card) return;
+
+            const projectId = card.dataset.projectId;
+            const project = dynamicProjects.find(p => (p.id || (typeof p.title === 'string' ? p.title : (p.title[currentLang] || p.title.en))) === projectId);
+
+            if (project) {
+                openProjectModal(project);
+            }
         });
     }
 
