@@ -3,10 +3,10 @@
 async function loadCMSSettings() {
     try {
         const responses = await Promise.allSettled([
-            fetch('data/settings/home.json').then(res => res.json()),
-            fetch('data/settings/studio.json').then(res => res.json()),
-            fetch('data/settings/team.json').then(res => res.json()),
-            fetch('data/settings/contact.json').then(res => res.json()),
+            fetch('/data/settings/home.json').then(res => res.json()),
+            fetch('/data/settings/studio.json').then(res => res.json()),
+            fetch('/data/settings/team.json').then(res => res.json()),
+            fetch('/data/settings/contact.json').then(res => res.json()),
         ]);
 
         const homeData = responses[0].status === 'fulfilled' ? responses[0].value : null;

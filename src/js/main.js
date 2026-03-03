@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadProjects() {
         try {
-            const res = await fetch('data/projects_index.json');
+            const res = await fetch('/data/projects_index.json');
             dynamicProjects = await res.json();
             renderGallery();
         } catch (e) {
