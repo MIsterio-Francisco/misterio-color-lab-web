@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "The Wait",
+    "es": "La Espera"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "F. Javier Gutiérrez",
+  "synopsis": {
+    "en": "Set in 1970s rural Andalusia, Eladio works as a gamekeeper on an isolated estate, his family's fate bound to the land for generations. When he accepts a bribe from a hunter, what seems like easy money spirals into a macabre descent into hell — a genre-bending rural thriller fusing horror and the fantastic under the suffocating Andalusian heat.",
+    "es": "Ambientada en la Andalucía rural de los años 70, Eladio trabaja como guarda de una finca aislada, con el destino de su familia ligado a la tierra desde hace generaciones. Cuando acepta un soborno de un cazador, lo que parece dinero fácil se convierte en un macabro descenso a los infiernos — un thriller rural que fusiona el terror y lo fantástico bajo el asfixiante calor andaluz."
+  },
+  "image": "img/projects/LA_ESPERA.jpg",
+  "video": "https://www.youtube.com/embed/VAQoQEr8t9s",
+  "featured": true,
+  "stills": []
+}

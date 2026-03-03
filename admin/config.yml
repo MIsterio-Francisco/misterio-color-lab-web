@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "img/projects" # Media files will be stored in the repo under img/projects
+public_folder: "img/projects" # The src attribute for uploaded media will begin with img/projects
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "data/collections/projects" # We use a folder here, but Decap can build JSON files
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - name: "title"
+        label: "Title"
+        widget: "object"
+        fields:
+          - {label: "English", name: "en", widget: "string"}
+          - {label: "Spanish", name: "es", widget: "string"}
+      - name: "category"
+        label: "Category"
+        widget: "object"
+        fields:
+          - {label: "English", name: "en", widget: "string"}
+          - {label: "Spanish", name: "es", widget: "string"}
+      - {label: "Director", name: "director", widget: "string"}
+      - name: "synopsis"
+        label: "Synopsis"
+        widget: "object"
+        fields:
+          - {label: "English", name: "en", widget: "text"}
+          - {label: "Spanish", name: "es", widget: "text"}
+      - {label: "Main Image", name: "image", widget: "image"}
+      - {label: "Video URL", name: "video", widget: "string", required: false, hint: "Vimeo or YouTube link"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: true, hint: "Show on the main gallery"}
+      - {label: "Gallery Stills", name: "stills", widget: "list", field: {label: "Still", name: "still", widget: "image"}, required: false}

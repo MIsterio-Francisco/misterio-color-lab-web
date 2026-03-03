@@ -1,0 +1,21 @@
+{
+  "title": {
+    "en": "Chronicles Of A Wandering Saint",
+    "es": "Crónicas de una Santa Errante"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Tomás Gómez Bustillo",
+  "synopsis": {
+    "en": "A pious woman in a small town believes orchestrating a miracle is her path to sainthood, leading to a magical realist journey.",
+    "es": "Una mujer piadosa en un pequeño pueblo cree que orquestar un milagro es su camino a la santidad, lo que lleva a un viaje de realismo mágico."
+  },
+  "image": "img/projects/wandering_saint.jpg",
+  "video": "https://www.youtube.com/embed/vo30jxA0JSk",
+  "featured": true,
+  "stills": [
+    "img/stills/saint_1.png"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "La Boda",
+    "es": "La Boda"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Pedro Cenjor",
+  "synopsis": {
+    "en": "Felisa is a free-spirited woman in a rural town. Dependent on her mother and burdened by debts, she accepts a marriage of convenience with Sebastián—each planning to keep their guests' wedding gifts and then divorce. But life has other plans, and what starts as a scheme will change them forever.",
+    "es": "Felisa es una mujer de espíritu libre en un entorno rural. Dependiente de su madre y cargada de deudas, acepta un matrimonio de conveniencia con Sebastián: cada uno se quedará el dinero de sus invitados y después se divorciarán. Pero la vida tiene otros planes, y lo que empieza como un plan les cambiará para siempre."
+  },
+  "image": "img/projects/LA_BODA.jpg",
+  "video": "https://www.youtube.com/embed/qhnRnPUwYWg",
+  "featured": true,
+  "stills": []
+}

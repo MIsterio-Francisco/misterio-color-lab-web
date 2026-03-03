@@ -1,0 +1,110 @@
+/*
+  MISTERIO COLOR LAB — Custom CSS for Wix Studio
+  ================================================
+  Añadir en: Dashboard → Settings → Custom Code → <head>
+  O en Wix Studio: Design → Global CSS
+*/
+
+/* ===== Fuentes ===== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap');
+
+/* ===== Variables globales ===== */
+:root {
+    --color-bg-base: #070709;
+    --color-bg-surface: #121216;
+    --color-bg-glass: rgba(7, 7, 9, 0.75);
+    --color-text-main: #ffffff;
+    --color-text-muted: #9ba0a6;
+    --color-accent: #ff4500;
+    --color-accent-hover: #ff6a33;
+    --color-accent-glow: rgba(255, 69, 0, 0.4);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ===== Estilos globales para overrides en Wix ===== */
+
+/* Aplicar fuente body a todo el sitio */
+body,
+p,
+span,
+div {
+    font-family: var(--font-body) !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Links con hover accent */
+a:hover {
+    color: var(--color-accent) !important;
+}
+
+/* ===== Botón primario ===== */
+.btn-primary {
+    background-color: var(--color-accent) !important;
+    color: #fff !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-hover) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 69, 0, 0.5) !important;
+}
+
+/* ===== Animación reveal (scroll) ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Service items (About section) ===== */
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.service-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+/* ===== Scroll indicator ===== */
+@keyframes scrollWheel {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+}
