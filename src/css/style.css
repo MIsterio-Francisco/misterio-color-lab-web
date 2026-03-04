@@ -959,6 +959,12 @@ a {
 }
 
 /* Logo Images */
+.brand-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .brand-logo-img {
     height: 80px;
     width: auto;
@@ -966,8 +972,20 @@ a {
     transition: opacity var(--transition-fast);
 }
 
+.dolores-logo-img {
+    height: 55px;
+    /* Slightly smaller than main logo for visual hierarchy */
+}
+
 .brand-logo-img:hover {
     opacity: 0.85;
+}
+
+.footer-brand-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .footer-logo-img {
@@ -975,6 +993,11 @@ a {
     width: auto;
     display: block;
     margin-bottom: 0.5rem;
+}
+
+.dolores-logo-footer {
+    height: 70px;
+    /* Scaled proportionately for the footer */
 }
 
 /* Project Card Images */
