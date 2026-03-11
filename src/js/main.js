@@ -248,9 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Team
         if (cmsData.teamData && cmsData.teamData.members) {
-            const teamCont = document.getElementById('cms-team-list');
-            if (teamCont) {
-                teamCont.innerHTML = cmsData.teamData.members.map(m => `
+            const rowTop = document.getElementById('cms-team-row-top');
+            const rowBottom = document.getElementById('cms-team-row-bottom');
+
+            if (rowTop && rowBottom) {
+                const members = cmsData.teamData.members;
+                const topMembers = members.filter(m => !m.email);
+                const bottomMembers = members.filter(m => m.email);
+
+                const renderMember = (m) => `
                      <div class="team-member reveal active">
                         <div class="member-photo-wrapper">
                             ${m.photo ? `<img src="${m.photo}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
@@ -259,7 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="member-role">${window.CMS.getLocalizedText(m.role, currentLang)}</p>
                         ${m.email ? `<a href="mailto:${m.email}" class="member-email">${m.email}</a>` : ''}
                      </div>
-                 `).join('');
+                 `;
+
+                rowTop.innerHTML = topMembers.map(renderMember).join('');
+                rowBottom.innerHTML = bottomMembers.map(renderMember).join('');
             }
         }
 

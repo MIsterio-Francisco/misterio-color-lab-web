@@ -705,11 +705,18 @@ a {
     background-color: var(--color-bg-base);
 }
 
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
+.team-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
     margin-top: 4rem;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
 }
 
 .team-member {
