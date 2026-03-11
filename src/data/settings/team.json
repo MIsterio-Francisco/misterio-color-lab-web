@@ -42,6 +42,14 @@
       },
       "photo": "img/team/marina.jpg",
       "email": "marina@misteriocolorlab.com"
+    },
+    {
+      "name": "Cem Ozkilicci",
+      "photo": "img/projects/cem_040.jpg",
+      "role": {
+        "en": "Senior Colorist",
+        "es": "Colorista Senior"
+      }
     }
   ]
 }
