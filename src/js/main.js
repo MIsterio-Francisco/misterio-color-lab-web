@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         renderGallery();
+        renderDynamicSettings();
     }
 
     window.updateLanguage = updateLanguage; // Export for buttons
