@@ -295,7 +295,7 @@ eleventyExcludeFromCollections: true
           </div>
           <div>
             <label for="days">Número de días (Laborables)</label>
-            <input id="days" name="days" type="number" min="0" step="0.5" readonly />
+            <input id="days" name="days" type="number" min="0" step="0.5" />
           </div>
           <div>
             <label for="statusField">Estado</label>
@@ -380,13 +380,20 @@ eleventyExcludeFromCollections: true
     ];
 
     function calculateBusinessDays() {
-      const start = new Date(startDate.value);
-      const end = new Date(endDate.value);
+      const startStr = startDate.value;
+      const endStr = endDate.value;
 
-      if (!startDate.value || !endDate.value || isNaN(start) || isNaN(end)) {
+      if (!startStr || !endStr) {
         daysInput.value = 0;
         return;
       }
+
+      const startParts = startStr.split('-');
+      const endParts = endStr.split('-');
+      
+      // Use local construction to avoid TZ shifts
+      let start = new Date(startParts[0], startParts[1] - 1, startParts[2]);
+      let end = new Date(endParts[0], endParts[1] - 1, endParts[2]);
 
       if (end < start) {
         daysInput.value = 0;
@@ -398,9 +405,13 @@ eleventyExcludeFromCollections: true
       
       while (current <= end) {
         const dayOfWeek = current.getDay();
-        const dateString = current.toISOString().split('T')[0];
         
-        // Check if it's NOT a weekend (0=Sun, 6=Sat) AND NOT a holiday
+        // Manual string building for local YYYY-MM-DD
+        const y = current.getFullYear();
+        const m = String(current.getMonth() + 1).padStart(2, '0');
+        const d = String(current.getDate()).padStart(2, '0');
+        const dateString = `${y}-${m}-${d}`;
+        
         if (dayOfWeek !== 0 && dayOfWeek !== 6 && !madridHolidays2026.includes(dateString)) {
           count++;
         }
