@@ -286,6 +286,7 @@ eleventyExcludeFromCollections: true
 
         <div class="actions">
           <button type="button" class="primary" id="finalizeBtn">Enviar Solicitud (Abrir Correo)</button>
+          <button type="button" class="secondary" id="copyBtn">Copiar Datos (Manual)</button>
           <button type="button" class="secondary" id="downloadBtn">Descargar Copia (.txt)</button>
           <button type="reset" class="secondary">Limpiar Campos</button>
         </div>
@@ -375,15 +376,25 @@ eleventyExcludeFromCollections: true
       
       const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      // Intentar abrir de forma mas robusta
-      const link = document.createElement('a');
-      link.href = mailtoLink;
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      setTimeout(() => document.body.removeChild(link), 100);
+      // Intentar abrir el correo
+      window.location.href = mailtoLink;
       
-      showStatus('ok', 'Se ha intentado abrir tu correo. Por favor, revisa si tienes una ventana nueva de mensaje. Si no aparece, asegurate de tener un programa de correo (como Mail o Outlook) configurado en tu equipo.');
+      showStatus('ok', 'Intentando abrir tu programa de correo... Si no ocurre nada, pulsa el boton "Copiar Datos" para pegarlos manualmente en un email a administracion@misteriocolorlab.com');
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      if (!form.reportValidity()) {
+         showStatus('err', 'Por favor, rellena los campos obligatorios.');
+         return;
+      }
+      const d = formDataObject();
+      const body = buildEmailBody(d);
+      
+      navigator.clipboard.writeText(body).then(() => {
+        showStatus('ok', '¡Contenido copiado al portapapeles! Ahora puedes pegarlo directamente en un email nuevo para administracion@misteriocolorlab.com');
+      }).catch(err => {
+        showStatus('err', 'No se pudo copiar automaticamente. Por favor, descarga el .txt y copia el contenido.');
+      });
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
