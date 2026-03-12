@@ -215,7 +215,7 @@ eleventyExcludeFromCollections: true
         </div>
       </div>
 
-      <form id="absenceForm" name="solicitud-ausencia" method="POST" data-netlify="true">
+      <form id="absenceForm">
         <h2 class="section-title">Datos de la solicitud</h2>
         <div class="grid">
           <div>
@@ -285,10 +285,9 @@ eleventyExcludeFromCollections: true
         </div>
 
         <div class="actions">
-          <button type="submit" class="primary">Enviar Solicitud (Netlify)</button>
-          <button type="button" class="secondary" id="sendEmailBtn">Preparar Email</button>
-          <button type="button" class="secondary" id="downloadBtn">Descargar .txt</button>
-          <button type="reset" class="secondary">Limpiar</button>
+          <button type="button" class="primary" id="finalizeBtn">Enviar Solicitud (Abrir Correo)</button>
+          <button type="button" class="secondary" id="downloadBtn">Descargar Copia (.txt)</button>
+          <button type="reset" class="secondary">Limpiar Campos</button>
         </div>
 
         <div id="statusBox" class="status"></div>
@@ -316,50 +315,69 @@ eleventyExcludeFromCollections: true
     function setDefaults() {
       requestId.value = generateRequestId();
       requestDate.value = new Date().toISOString().slice(0,10);
+      statusBox.className = 'status';
+      statusBox.textContent = '';
     }
 
     function formDataObject() {
       const data = new FormData(form);
       const obj = {};
       for (const [k, v] of data.entries()) {
-        if (k !== 'absenceType' || (k === 'absenceType' && v)) {
-           obj[k] = v;
-        }
+          obj[k] = v;
       }
       return obj;
     }
 
+    function showStatus(type, msg) {
+      statusBox.className = 'status ' + type;
+      statusBox.textContent = msg;
+    }
+
     function buildEmailBody(d) {
       return [
-        'Nueva solicitud de ausencia',
+        '--- SOLICITUD DE AUSENCIA MISTERIO COLOR LAB ---',
         '',
-        'Número de solicitud: ' + (d.requestId || ''),
-        'Fecha de solicitud: ' + (d.requestDate || ''),
-        'Empleado: ' + (d.employeeName || ''),
-        'Departamento: ' + (d.department || ''),
-        'Puesto: ' + (d.position || ''),
-        'Responsable directo: ' + (d.manager || ''),
-        'Tipo de ausencia: ' + (d.absenceType || ''),
-        'Fecha inicio: ' + (d.startDate || ''),
-        'Fecha fin: ' + (d.endDate || ''),
-        'Número de días: ' + (d.days || ''),
-        'Estado: ' + (d.statusField || 'Pendiente'),
+        'NÚMERO DE SOLICITUD: ' + (d.requestId || ''),
+        'FECHA DE SOLICITUD: ' + (d.requestDate || ''),
+        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+        'EMPLEADO: ' + (d.employeeName || ''),
+        'DEPARTAMENTO: ' + (d.department || ''),
+        'PUESTO: ' + (d.position || ''),
+        'RESPONSABLE: ' + (d.manager || ''),
         '',
-        'Motivo:',
-        d.reason || '',
+        'DETALLES DE LA AUSENCIA:',
+        'TIPO: ' + (d.absenceType || 'No especificado'),
+        'INICIO: ' + (d.startDate || ''),
+        'FIN: ' + (d.endDate || ''),
+        'DÍAS TOTALES: ' + (d.days || ''),
+        'ESTADO: ' + (d.statusField || 'Pendiente'),
         '',
-        'Comentarios RRHH:',
-        d.hrComments || ''
+        'MOTIVO:',
+        (d.reason || ''),
+        '',
+        'COMENTARIOS RRHH:',
+        (d.hrComments || 'Sin comentarios'),
+        '',
+        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
       ].join('\n');
     }
 
-    document.getElementById('sendEmailBtn').addEventListener('click', () => {
-      if (!form.reportValidity()) return;
+    document.getElementById('finalizeBtn').addEventListener('click', () => {
+      if (!form.reportValidity()) {
+         showStatus('err', 'Por favor, rellena todos los campos obligatorios antes de continuar.');
+         return;
+      }
+      
       const d = formDataObject();
-      const subject = encodeURIComponent(`Solicitud de ausencia ${d.requestId} - ${d.employeeName}`);
-      const body = encodeURIComponent(buildEmailBody(d));
+      const subject = `Solicitud ${d.requestId} - ${d.employeeName}`;
+      const body = buildEmailBody(d);
       const adminEmail = 'administracion@misteriocolorlab.com';
-      window.location.href = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+      
+      const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      window.location.href = mailtoLink;
+      
+      showStatus('ok', 'Se ha preparado el correo electrónico. Por favor, pulsa "Enviar" en tu aplicación de correo para finalizar el proceso.');
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
@@ -370,6 +388,11 @@ eleventyExcludeFromCollections: true
       a.href = URL.createObjectURL(blob);
       a.download = `${d.requestId || 'solicitud'}.txt`;
       a.click();
+      showStatus('ok', 'Copia descargada correctamente.');
+    });
+
+    form.addEventListener('reset', () => {
+      setTimeout(setDefaults, 0);
     });
 
     setDefaults();
