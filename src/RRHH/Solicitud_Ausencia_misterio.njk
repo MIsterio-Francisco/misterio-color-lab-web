@@ -333,11 +333,12 @@ eleventyExcludeFromCollections: true
         </div>
 
         <div class="actions">
-          <a href="#" id="mailAppBtn" class="btn primary">Enviar Solicitud (App de Correo)</a>
-          <a href="#" id="gmailWebBtn" id="gmailWebBtn" class="btn secondary" target="_blank">Enviar vía Gmail (Web)</a>
-          <button type="button" class="secondary" id="copyBtn">Copiar Datos (Portapapeles)</button>
+          <a href="#" id="mailAppBtn" class="btn primary" title="Usa tu App de escritorio como Outlook o Mail">1. Enviar vía App (Outlook/Mail)</a>
+          <a href="#" id="outlookWebBtn" class="btn secondary" target="_blank" title="Si usas Outlook en el navegador">2. Enviar vía Outlook (Web)</a>
+          <a href="#" id="gmailWebBtn" class="btn secondary" target="_blank" title="Si usas Gmail en el navegador">3. Enviar vía Gmail (Web)</a>
+          <button type="button" class="secondary" id="copyBtn">4. Copiar al Portapapeles (Manual)</button>
           <button type="button" class="secondary" id="downloadBtn">Descargar .txt</button>
-          <button type="reset" class="secondary">Limpiar</button>
+          <button type="reset" class="secondary" style="margin-left: auto;">Limpiar</button>
         </div>
 
         <div id="statusBox" class="status"></div>
@@ -449,6 +450,7 @@ eleventyExcludeFromCollections: true
 
     const mailAppBtn = document.getElementById('mailAppBtn');
     const gmailWebBtn = document.getElementById('gmailWebBtn');
+    const outlookWebBtn = document.getElementById('outlookWebBtn');
 
     function updateMailLinks() {
       const d = formDataObject();
@@ -456,17 +458,22 @@ eleventyExcludeFromCollections: true
       const body = buildEmailBody(d);
       const adminEmail = 'administracion@misteriocolorlab.com';
       
-      // Standard mailto
-      const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      mailAppBtn.href = mailtoLink;
+      const encSubject = encodeURIComponent(subject);
+      const encBody = encodeURIComponent(body);
       
-      // Gmail Web Link
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      gmailWebBtn.href = gmailLink;
+      // 1. Standard mailto
+      mailAppBtn.href = `mailto:${adminEmail}?subject=${encSubject}&body=${encBody}`;
+      
+      // 2. Outlook Web (Office 365)
+      outlookWebBtn.href = `https://outlook.office.com/mail/deeplink/compose?to=${adminEmail}&subject=${encSubject}&body=${encBody}`;
+      
+      // 3. Gmail Web
+      gmailWebBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encSubject}&body=${encBody}`;
     }
 
     // Update links whenever anything changes
     form.addEventListener('input', updateMailLinks);
+    form.addEventListener('change', updateMailLinks);
 
     function setDefaults() {
       requestId.value = generateRequestId();
@@ -504,14 +511,14 @@ eleventyExcludeFromCollections: true
       ].join('\r\n');
     }
 
-    // Optional validation check on click
-    [mailAppBtn, gmailWebBtn].forEach(btn => {
+    // Validation check on click for all buttons
+    [mailAppBtn, gmailWebBtn, outlookWebBtn, document.getElementById('copyBtn')].forEach(btn => {
       btn.addEventListener('click', (e) => {
         if (!form.reportValidity()) {
           e.preventDefault();
           showStatus('err', 'Por favor, rellena los campos obligatorios antes de enviar.');
         } else {
-          showStatus('ok', 'Abriendo correo... Asegúrate de pulsar "Enviar" en la ventana que aparezca.');
+          showStatus('ok', 'Preparando envío... Asegúrate de pulsar "Enviar" en la ventana que se abra.');
         }
       });
     });
