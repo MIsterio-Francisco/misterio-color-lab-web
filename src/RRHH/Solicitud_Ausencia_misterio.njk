@@ -178,21 +178,25 @@ eleventyExcludeFromCollections: true
       gap: 12px;
       margin-top: 8px;
     }
-    button {
+    button, .btn {
+      display: inline-block;
+      text-decoration: none;
       border: 0;
       border-radius: 12px;
       padding: 13px 18px;
       font-size: 15px;
       font-weight: bold;
       cursor: pointer;
+      line-height: 1;
+      text-align: center;
     }
     .primary {
       background: var(--accent);
-      color: white;
+      color: white !important;
     }
     .secondary {
       background: #242a36;
-      color: white;
+      color: white !important;
       border: 1px solid var(--line);
     }
     .status {
@@ -328,10 +332,11 @@ eleventyExcludeFromCollections: true
         </div>
 
         <div class="actions">
-          <button type="button" class="primary" id="finalizeBtn">Enviar Solicitud (Abrir Correo)</button>
-          <button type="button" class="secondary" id="copyBtn">Copiar Datos (Manual)</button>
-          <button type="button" class="secondary" id="downloadBtn">Descargar Copia (.txt)</button>
-          <button type="reset" class="secondary">Limpiar Campos</button>
+          <a href="#" id="mailAppBtn" class="btn primary">Enviar Solicitud (App de Correo)</a>
+          <a href="#" id="gmailWebBtn" id="gmailWebBtn" class="btn secondary" target="_blank">Enviar vía Gmail (Web)</a>
+          <button type="button" class="secondary" id="copyBtn">Copiar Datos (Portapapeles)</button>
+          <button type="button" class="secondary" id="downloadBtn">Descargar .txt</button>
+          <button type="reset" class="secondary">Limpiar</button>
         </div>
 
         <div id="statusBox" class="status"></div>
@@ -436,12 +441,34 @@ eleventyExcludeFromCollections: true
       return `SA-${y}${m}${d}-${hh}${mm}${ss}`;
     }
 
+    const mailAppBtn = document.getElementById('mailAppBtn');
+    const gmailWebBtn = document.getElementById('gmailWebBtn');
+
+    function updateMailLinks() {
+      const d = formDataObject();
+      const subject = `Solicitud Ausencia: ${d.employeeName || ''} (${d.requestId})`;
+      const body = buildEmailBody(d);
+      const adminEmail = 'administracion@misteriocolorlab.com';
+      
+      // Standard mailto
+      const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      mailAppBtn.href = mailtoLink;
+      
+      // Gmail Web Link
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      gmailWebBtn.href = gmailLink;
+    }
+
+    // Update links whenever anything changes
+    form.addEventListener('input', updateMailLinks);
+
     function setDefaults() {
       requestId.value = generateRequestId();
       requestDate.value = new Date().toISOString().slice(0,10);
       statusBox.className = 'status';
       statusBox.textContent = '';
       calculateBusinessDays();
+      updateMailLinks();
     }
 
     function formDataObject() {
@@ -460,76 +487,44 @@ eleventyExcludeFromCollections: true
 
     function buildEmailBody(d) {
       return [
-        '--- SOLICITUD DE AUSENCIA MISTERIO COLOR LAB ---',
-        '',
         'ID SOLICITUD: ' + (d.requestId || ''),
-        'FECHA: ' + (d.requestDate || ''),
-        '------------------------------------------------',
         'EMPLEADO: ' + (d.employeeName || ''),
         'DEPARTAMENTO: ' + (d.department || ''),
-        'PUESTO: ' + (d.position || ''),
-        'RESPONSABLE: ' + (d.manager || ''),
-        '',
-        'DETALLES:',
-        'TIPO: ' + (d.absenceType || 'No especificado'),
-        'INICIO: ' + (d.startDate || ''),
-        'FIN: ' + (d.endDate || ''),
-        'DIAS LABORABLES: ' + (d.days || ''),
-        'ESTADO: ' + (d.statusField || 'Pendiente'),
-        '',
-        'MOTIVO:',
-        (d.reason || ''),
-        '',
-        'COMENTARIOS RRHH:',
-        (d.hrComments || 'Sin comentarios'),
-        '',
-        '------------------------------------------------'
+        'TIPO: ' + (d.absenceType || ''),
+        'FECHAS: Del ' + (d.startDate || '') + ' al ' + (d.endDate || ''),
+        'DIAS LABORATORABLES: ' + (d.days || ''),
+        'MOTIVO: ' + (d.reason || ''),
+        'COMENTARIOS RRHH: ' + (d.hrComments || '')
       ].join('\r\n');
     }
 
-    document.getElementById('finalizeBtn').addEventListener('click', () => {
-      if (!form.reportValidity()) {
-         showStatus('err', 'Por favor, rellena los campos obligatorios.');
-         return;
-      }
-      
-      const d = formDataObject();
-      const subject = `Solicitud Ausencia: ${d.employeeName} (${d.requestId})`;
-      const body = buildEmailBody(d);
-      const adminEmail = 'administracion@misteriocolorlab.com';
-      
-      const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // Intentar abrir el correo
-      window.location.href = mailtoLink;
-      
-      showStatus('ok', 'Intentando abrir tu programa de correo... Si no ocurre nada, pulsa el boton "Copiar Datos" para pegarlos manualmente en un email a administracion@misteriocolorlab.com');
+    // Optional validation check on click
+    [mailAppBtn, gmailWebBtn].forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!form.reportValidity()) {
+          e.preventDefault();
+          showStatus('err', 'Por favor, rellena los campos obligatorios antes de enviar.');
+        } else {
+          showStatus('ok', 'Abriendo correo... Asegúrate de pulsar "Enviar" en la ventana que aparezca.');
+        }
+      });
     });
 
     document.getElementById('copyBtn').addEventListener('click', () => {
-      if (!form.reportValidity()) {
-         showStatus('err', 'Por favor, rellena los campos obligatorios.');
-         return;
-      }
       const d = formDataObject();
       const body = buildEmailBody(d);
-      
       navigator.clipboard.writeText(body).then(() => {
-        showStatus('ok', '¡Contenido copiado al portapapeles! Ahora puedes pegarlo directamente en un email nuevo para administracion@misteriocolorlab.com');
-      }).catch(err => {
-        showStatus('err', 'No se pudo copiar automaticamente. Por favor, descarga el .txt y copia el contenido.');
+        showStatus('ok', '¡Datos copiados! Pegalos en tu correo.');
       });
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
-      if (!form.reportValidity()) return;
       const d = formDataObject();
       const blob = new Blob([buildEmailBody(d)], { type: 'text/plain;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `${d.requestId || 'solicitud'}.txt`;
       a.click();
-      showStatus('ok', 'Copia descargada correctamente.');
     });
 
     form.addEventListener('reset', () => {
