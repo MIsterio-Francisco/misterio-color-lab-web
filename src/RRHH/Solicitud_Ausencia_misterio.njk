@@ -28,9 +28,13 @@ eleventyExcludeFromCollections: true
       color: var(--text);
     }
     .wrap {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 32px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
     }
     .card {
       background: rgba(23, 26, 33, 0.96);
@@ -39,6 +43,37 @@ eleventyExcludeFromCollections: true
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0,0,0,.28);
     }
+    .sidebar {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      position: sticky;
+      top: 32px;
+    }
+    .sidebar h3 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .holiday-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .holiday-item {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+    }
+    .holiday-item:last-child { border-bottom: 0; }
+    .holiday-item span { color: var(--text); font-weight: bold; }
+    .holiday-item.local { color: #f9d976; }
     .header {
       display: grid;
       grid-template-columns: 180px 1fr;
@@ -116,6 +151,7 @@ eleventyExcludeFromCollections: true
     input[readonly] {
       background: #0c0f14;
       color: #c9d0dc;
+      cursor: not-allowed;
     }
     .checks {
       display: grid;
@@ -185,6 +221,15 @@ eleventyExcludeFromCollections: true
       margin-top: 18px;
       line-height: 1.6;
     }
+    @media (max-width: 1024px) {
+      .wrap {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+        order: 2;
+      }
+    }
     @media (max-width: 760px) {
       .header {
         grid-template-columns: 1fr;
@@ -203,7 +248,7 @@ eleventyExcludeFromCollections: true
         <div>
           <h1>Solicitud de Ausencia</h1>
           <div class="sub">
-            Formulario interno para la gestión de ausencias. Genera un número de solicitud único para RRHH.
+            Formulario interno para la gestión de ausencias. El número de días se calcula automáticamente excluyendo festivos y fines de semana.
           </div>
           <div class="meta">
             <div class="pill">Empresa: Misterio Color Lab</div>
@@ -249,8 +294,8 @@ eleventyExcludeFromCollections: true
             <input id="endDate" name="endDate" type="date" required />
           </div>
           <div>
-            <label for="days">Número de días</label>
-            <input id="days" name="days" type="number" min="0" step="0.5" />
+            <label for="days">Número de días (Laborables)</label>
+            <input id="days" name="days" type="number" min="0" step="0.5" readonly />
           </div>
           <div>
             <label for="statusField">Estado</label>
@@ -292,13 +337,82 @@ eleventyExcludeFromCollections: true
         <div id="statusBox" class="status"></div>
       </form>
     </div>
+
+    <div class="sidebar">
+      <h3>Festivos Madrid 2026</h3>
+      <ul class="holiday-list">
+        <li class="holiday-item">Año Nuevo <span>1 Ene</span></li>
+        <li class="holiday-item">Epifanía del Señor <span>6 Ene</span></li>
+        <li class="holiday-item">Jueves Santo <span>2 Abr</span></li>
+        <li class="holiday-item">Viernes Santo <span>3 Abr</span></li>
+        <li class="holiday-item">Día del Trabajador <span>1 May</span></li>
+        <li class="holiday-item">Comunidad de Madrid <span>2 May</span></li>
+        <li class="holiday-item local">San Isidro (Madrid) <span>15 May</span></li>
+        <li class="holiday-item">Asunción de la Virgen <span>15 Ago</span></li>
+        <li class="holiday-item">Fiesta Nacional <span>12 Oct</span></li>
+        <li class="holiday-item">Todos los Santos (tr.) <span>2 Nov</span></li>
+        <li class="holiday-item local">La Almudena (Madrid) <span>9 Nov</span></li>
+        <li class="holiday-item">Constitución (tr.) <span>7 Dic</span></li>
+        <li class="holiday-item">Inmaculada <span>8 Dic</span></li>
+        <li class="holiday-item">Navidad <span>25 Dic</span></li>
+      </ul>
+      <p style="font-size: 11px; margin-top: 15px; color: var(--muted);">
+        * Los festivos locales corresponden al municipio de Madrid (San Isidro y Almudena).
+      </p>
+    </div>
   </div>
 
   <script>
     const form = document.getElementById('absenceForm');
     const requestId = document.getElementById('requestId');
     const requestDate = document.getElementById('requestDate');
+    const startDate = document.getElementById('startDate');
+    const endDate = document.getElementById('endDate');
+    const daysInput = document.getElementById('days');
     const statusBox = document.getElementById('statusBox');
+
+    // Madrid 2026 Holidays (YYYY-MM-DD)
+    const madridHolidays2026 = [
+      '2026-01-01', '2026-01-06', '2026-04-02', '2026-04-03',
+      '2026-05-01', '2026-05-02', '2026-05-15', '2026-08-15',
+      '2026-10-12', '2026-11-02', '2026-11-09', '2026-12-07',
+      '2026-12-08', '2026-12-25'
+    ];
+
+    function calculateBusinessDays() {
+      const start = new Date(startDate.value);
+      const end = new Date(endDate.value);
+
+      if (!startDate.value || !endDate.value || isNaN(start) || isNaN(end)) {
+        daysInput.value = 0;
+        return;
+      }
+
+      if (end < start) {
+        daysInput.value = 0;
+        return;
+      }
+
+      let count = 0;
+      let current = new Date(start);
+      
+      while (current <= end) {
+        const dayOfWeek = current.getDay();
+        const dateString = current.toISOString().split('T')[0];
+        
+        // Check if it's NOT a weekend (0=Sun, 6=Sat) AND NOT a holiday
+        if (dayOfWeek !== 0 && dayOfWeek !== 6 && !madridHolidays2026.includes(dateString)) {
+          count++;
+        }
+        
+        current.setDate(current.getDate() + 1);
+      }
+      
+      daysInput.value = count;
+    }
+
+    startDate.addEventListener('change', calculateBusinessDays);
+    endDate.addEventListener('change', calculateBusinessDays);
 
     function generateRequestId() {
       const now = new Date();
@@ -316,6 +430,7 @@ eleventyExcludeFromCollections: true
       requestDate.value = new Date().toISOString().slice(0,10);
       statusBox.className = 'status';
       statusBox.textContent = '';
+      calculateBusinessDays();
     }
 
     function formDataObject() {
@@ -348,7 +463,7 @@ eleventyExcludeFromCollections: true
         'TIPO: ' + (d.absenceType || 'No especificado'),
         'INICIO: ' + (d.startDate || ''),
         'FIN: ' + (d.endDate || ''),
-        'DIAS: ' + (d.days || ''),
+        'DIAS LABORABLES: ' + (d.days || ''),
         'ESTADO: ' + (d.statusField || 'Pendiente'),
         '',
         'MOTIVO:',
