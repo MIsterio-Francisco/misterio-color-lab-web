@@ -300,6 +300,7 @@ eleventyExcludeFromCollections: true
           <div>
             <label for="days">Número de días (Laborables)</label>
             <input id="days" name="days" type="number" min="0" step="0.5" />
+            <div id="daysHint" style="font-size: 11px; color: var(--muted); margin-top: 4px;"></div>
           </div>
           <div>
             <label for="statusField">Estado</label>
@@ -374,6 +375,7 @@ eleventyExcludeFromCollections: true
     const startDate = document.getElementById('startDate');
     const endDate = document.getElementById('endDate');
     const daysInput = document.getElementById('days');
+    const daysHint = document.getElementById('daysHint');
     const statusBox = document.getElementById('statusBox');
 
     // Madrid 2026 Holidays (YYYY-MM-DD)
@@ -390,45 +392,49 @@ eleventyExcludeFromCollections: true
 
       if (!startStr || !endStr) {
         daysInput.value = 0;
+        daysHint.textContent = '';
         return;
       }
 
       const startParts = startStr.split('-');
       const endParts = endStr.split('-');
       
-      // Use local construction to avoid TZ shifts
       let start = new Date(startParts[0], startParts[1] - 1, startParts[2]);
       let end = new Date(endParts[0], endParts[1] - 1, endParts[2]);
 
       if (end < start) {
         daysInput.value = 0;
+        daysHint.textContent = 'La fecha de fin es anterior al inicio.';
         return;
       }
 
       let count = 0;
+      let daysDetails = [];
       let current = new Date(start);
       
       while (current <= end) {
         const dayOfWeek = current.getDay();
-        
-        // Manual string building for local YYYY-MM-DD
         const y = current.getFullYear();
         const m = String(current.getMonth() + 1).padStart(2, '0');
         const d = String(current.getDate()).padStart(2, '0');
         const dateString = `${y}-${m}-${d}`;
+        const dayName = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'][dayOfWeek];
         
         if (dayOfWeek !== 0 && dayOfWeek !== 6 && !madridHolidays2026.includes(dateString)) {
           count++;
+          daysDetails.push(`${dayName} ${d}/${m}`);
         }
         
         current.setDate(current.getDate() + 1);
       }
       
       daysInput.value = count;
+      daysHint.textContent = count > 0 ? `Días computados: ${daysDetails.join(', ')}` : 'Sin días laborables en el rango.';
+      updateMailLinks();
     }
 
-    startDate.addEventListener('change', calculateBusinessDays);
-    endDate.addEventListener('change', calculateBusinessDays);
+    startDate.addEventListener('input', calculateBusinessDays);
+    endDate.addEventListener('input', calculateBusinessDays);
 
     function generateRequestId() {
       const now = new Date();
