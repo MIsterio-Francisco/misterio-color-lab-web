@@ -337,19 +337,19 @@ eleventyExcludeFromCollections: true
       return [
         '--- SOLICITUD DE AUSENCIA MISTERIO COLOR LAB ---',
         '',
-        'NÚMERO DE SOLICITUD: ' + (d.requestId || ''),
-        'FECHA DE SOLICITUD: ' + (d.requestDate || ''),
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+        'ID SOLICITUD: ' + (d.requestId || ''),
+        'FECHA: ' + (d.requestDate || ''),
+        '------------------------------------------------',
         'EMPLEADO: ' + (d.employeeName || ''),
         'DEPARTAMENTO: ' + (d.department || ''),
         'PUESTO: ' + (d.position || ''),
         'RESPONSABLE: ' + (d.manager || ''),
         '',
-        'DETALLES DE LA AUSENCIA:',
+        'DETALLES:',
         'TIPO: ' + (d.absenceType || 'No especificado'),
         'INICIO: ' + (d.startDate || ''),
         'FIN: ' + (d.endDate || ''),
-        'DÍAS TOTALES: ' + (d.days || ''),
+        'DIAS: ' + (d.days || ''),
         'ESTADO: ' + (d.statusField || 'Pendiente'),
         '',
         'MOTIVO:',
@@ -358,26 +358,32 @@ eleventyExcludeFromCollections: true
         'COMENTARIOS RRHH:',
         (d.hrComments || 'Sin comentarios'),
         '',
-        '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-      ].join('\n');
+        '------------------------------------------------'
+      ].join('\r\n');
     }
 
     document.getElementById('finalizeBtn').addEventListener('click', () => {
       if (!form.reportValidity()) {
-         showStatus('err', 'Por favor, rellena todos los campos obligatorios antes de continuar.');
+         showStatus('err', 'Por favor, rellena los campos obligatorios.');
          return;
       }
       
       const d = formDataObject();
-      const subject = `Solicitud ${d.requestId} - ${d.employeeName}`;
+      const subject = `Solicitud Ausencia: ${d.employeeName} (${d.requestId})`;
       const body = buildEmailBody(d);
       const adminEmail = 'administracion@misteriocolorlab.com';
       
       const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      window.location.href = mailtoLink;
+      // Intentar abrir de forma mas robusta
+      const link = document.createElement('a');
+      link.href = mailtoLink;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => document.body.removeChild(link), 100);
       
-      showStatus('ok', 'Se ha preparado el correo electrónico. Por favor, pulsa "Enviar" en tu aplicación de correo para finalizar el proceso.');
+      showStatus('ok', 'Se ha intentado abrir tu correo. Por favor, revisa si tienes una ventana nueva de mensaje. Si no aparece, asegurate de tener un programa de correo (como Mail o Outlook) configurado en tu equipo.');
     });
 
     document.getElementById('downloadBtn').addEventListener('click', () => {
