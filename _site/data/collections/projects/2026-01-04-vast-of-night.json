@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "The Vast of Night",
+    "es": "The Vast of Night"
+  },
+  "category": {
+    "en": "Amazon Prime Film",
+    "es": "Película Amazon Prime"
+  },
+  "director": "Andrew Patterson",
+  "synopsis": {
+    "en": "In 1950s New Mexico, a young switchboard operator and a radio DJ discover a mysterious audio frequency that interrupts phone lines and airwaves. As their small town focuses on a basketball game, the duo investigates the strange signal, uncovering unexplained military cover-ups and chilling stories that point to something beyond this world.",
+    "es": "En el Nuevo México de los años 50, una joven operadora de central telefónica y un DJ de radio descubren una misteriosa frecuencia de audio que interrumpe las líneas telefónicas. Mientras el pueblo se concentra en un partido de baloncesto, el dúo investiga la extraña señal, destapando encubrimientos militares e historias escalofriantes que apuntan a algo más allá de este mundo."
+  },
+  "image": "img/projects/VAST_OF_NIGHT.jpg",
+  "video": "https://www.youtube.com/embed/ZEiwpCJqMM0",
+  "featured": true,
+  "stills": []
+}

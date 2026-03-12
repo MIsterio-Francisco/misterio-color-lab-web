@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "El Santo",
+    "es": "El Santo"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Agustín Carbonere",
+  "synopsis": {
+    "en": "The rise and fall of Rubén, a neighborhood healer who becomes a popular icon and saint in the eyes of his community.",
+    "es": "El ascenso y la caída de Rubén, un curandero de barrio que se convierte en un icono popular y santo a los ojos de su comunidad."
+  },
+  "image": "img/projects/EL SANTO.png",
+  "video": "",
+  "featured": false,
+  "stills": []
+}

@@ -1,0 +1,283 @@
+[
+  {
+    "title": {
+      "en": "Papeles",
+      "es": "Papeles"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Arturo Montenegro",
+    "synopsis": {
+      "en": "A legal director's life unravels after the leak of millions of documents from a top offshore firm, forcing her to flee into the jungle while being pursued by Interpol.",
+      "es": "La vida de una directora legal se desmorona tras la filtración de millones de documentos de una importante firma offshore, obligándola a huir a la selva mientras es perseguida por Interpol."
+    },
+    "image": "img/projects/PAPELES.png",
+    "video": "https://www.youtube.com/embed/pbYTzvo7ipE",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "La Boda",
+      "es": "La Boda"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Pedro Cenjor",
+    "synopsis": {
+      "en": "Felisa is a free-spirited woman in a rural town. Dependent on her mother and burdened by debts, she accepts a marriage of convenience with Sebastián—each planning to keep their guests' wedding gifts and then divorce. But life has other plans, and what starts as a scheme will change them forever.",
+      "es": "Felisa es una mujer de espíritu libre en un entorno rural. Dependiente de su madre y cargada de deudas, acepta un matrimonio de conveniencia con Sebastián: cada uno se quedará el dinero de sus invitados y después se divorciarán. Pero la vida tiene otros planes, y lo que empieza como un plan les cambiará para siempre."
+    },
+    "image": "img/projects/LA_BODA.jpg",
+    "video": "https://www.youtube.com/embed/qhnRnPUwYWg",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "La Última",
+      "es": "La Última"
+    },
+    "category": {
+      "en": "Disney+ Original Series",
+      "es": "Serie Original Disney+"
+    },
+    "director": "Eduard Cortés",
+    "synopsis": {
+      "en": "Candela and Diego pursue their dreams in music and boxing, navigating love and challenges in Disney+'s first Spanish original series.",
+      "es": "Candela y Diego persiguen sus sueños en la música y el boxeo, navegando el amor y los desafíos en la primera serie original española de Disney+."
+    },
+    "image": "img/projects/LA_ULTIMA.jpg",
+    "video": "https://www.youtube.com/embed/Vkerray6aJM",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "The Vast of Night",
+      "es": "The Vast of Night"
+    },
+    "category": {
+      "en": "Amazon Prime Film",
+      "es": "Película Amazon Prime"
+    },
+    "director": "Andrew Patterson",
+    "synopsis": {
+      "en": "In 1950s New Mexico, a young switchboard operator and a radio DJ discover a mysterious audio frequency that interrupts phone lines and airwaves. As their small town focuses on a basketball game, the duo investigates the strange signal, uncovering unexplained military cover-ups and chilling stories that point to something beyond this world.",
+      "es": "En el Nuevo México de los años 50, una joven operadora de central telefónica y un DJ de radio descubren una misteriosa frecuencia de audio que interrumpe las líneas telefónicas. Mientras el pueblo se concentra en un partido de baloncesto, el dúo investiga la extraña señal, destapando encubrimientos militares e historias escalofriantes que apuntan a algo más allá de este mundo."
+    },
+    "image": "img/projects/VAST_OF_NIGHT.jpg",
+    "video": "https://www.youtube.com/embed/ZEiwpCJqMM0",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "The Wait",
+      "es": "La Espera"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "F. Javier Gutiérrez",
+    "synopsis": {
+      "en": "Set in 1970s rural Andalusia, Eladio works as a gamekeeper on an isolated estate, his family's fate bound to the land for generations. When he accepts a bribe from a hunter, what seems like easy money spirals into a macabre descent into hell — a genre-bending rural thriller fusing horror and the fantastic under the suffocating Andalusian heat.",
+      "es": "Ambientada en la Andalucía rural de los años 70, Eladio trabaja como guarda de una finca aislada, con el destino de su familia ligado a la tierra desde hace generaciones. Cuando acepta un soborno de un cazador, lo que parece dinero fácil se convierte en un macabro descenso a los infiernos — un thriller rural que fusiona el terror y lo fantástico bajo el asfixiante calor andaluz."
+    },
+    "image": "img/projects/LA_ESPERA.jpg",
+    "video": "https://www.youtube.com/embed/VAQoQEr8t9s",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Muxes",
+      "es": "Muxes"
+    },
+    "category": {
+      "en": "HBO Original Documentary",
+      "es": "Documental Original HBO"
+    },
+    "director": "Alejandra Islas",
+    "synopsis": {
+      "en": "This intimate documentary chronicles the lives of five muxes — a widely recognized third gender in the Zapotec culture of Oaxaca, Mexico. Through their desires, joys, struggles and fight for recognition, the film explores what it means to be muxe in a world that often fails to understand them.",
+      "es": "Este íntimo documental narra las vidas de cinco muxes — un tercer género ampliamente reconocido en la cultura zapoteca de Oaxaca, México. A través de sus deseos, alegrías, luchas y búsqueda de reconocimiento, la película explora lo que significa ser muxe en un mundo que a menudo no logra comprenderlos."
+    },
+    "image": "img/projects/HBO_MUXES.webp",
+    "video": "https://www.youtube.com/embed/rFC9P9Sk0eM",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Anne Everlasting",
+      "es": "Anne Everlasting"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "",
+    "synopsis": {
+      "en": "Synopsis coming soon...",
+      "es": "Sinopsis próximamente..."
+    },
+    "image": "img/projects/ANNE_EVERLASTING.jpg",
+    "video": "",
+    "featured": true,
+    "stills": []
+  },
+  {
+    "id": "2022-10-01-wandering-saint",
+    "title": "Chronicles of a Wandering Saint",
+    "category": "Color Grading",
+    "director": "Tomás Gómez Bustillo",
+    "synopsis": "A pious woman from a tiny Argentine town discovers that her life's work was not in vain when she receives an unexpected visit from above.",
+    "image": "img/projects/saint.jpeg",
+    "video": "https://vimeo.com/791833583",
+    "stills": [
+      "img/stills/saint_1.png"
+    ]
+  },
+  {
+    "title": {
+      "en": "Chronicles Of A Wandering Saint",
+      "es": "Crónicas de una Santa Errante"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Tomás Gómez Bustillo",
+    "synopsis": {
+      "en": "A pious woman in a small town believes orchestrating a miracle is her path to sainthood, leading to a magical realist journey.",
+      "es": "Una mujer piadosa en un pequeño pueblo cree que orquestar un milagro es su camino a la santidad, lo que lleva a un viaje de realismo mágico."
+    },
+    "image": "img/projects/wandering_saint.jpg",
+    "video": "https://www.youtube.com/embed/vo30jxA0JSk",
+    "featured": true,
+    "stills": [
+      "img/stills/saint_1.png"
+    ]
+  },
+  {
+    "id": "2023-05-01-hit-season-3",
+    "title": "HIT - Season 3",
+    "category": "Color Grading - Series",
+    "director": "Joaquín Oristrell",
+    "synopsis": "Hugo Ibarra Toledo is an educator who uses unconventional methods to resolve problems at an educational center. In this season, HIT travels to La Palma to help young people recovering from an addiction.",
+    "image": "img/projects/hit.jpg",
+    "video": "",
+    "stills": []
+  },
+  {
+    "id": "2024-03-01-matusalen",
+    "title": "Matusalén",
+    "category": "Color Grading",
+    "director": "David Galán Galindo",
+    "synopsis": "El Alber, a 44-year-old rapper who enrolled in college by a bet with his father, discovers that university life consists of much more than just passing exams.",
+    "image": "img/projects/matusalen.jpg",
+    "video": "",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "El Santo",
+      "es": "El Santo"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Agustín Carbonere",
+    "synopsis": {
+      "en": "The rise and fall of Rubén, a neighborhood healer who becomes a popular icon and saint in the eyes of his community.",
+      "es": "El ascenso y la caída de Rubén, un curandero de barrio que se convierte en un icono popular y santo a los ojos de su comunidad."
+    },
+    "image": "img/projects/EL SANTO.png",
+    "video": "",
+    "featured": false,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Missing",
+      "es": "Se Busca"
+    },
+    "category": {
+      "en": "Short Series",
+      "es": "Serie Corta"
+    },
+    "director": "Mariano Pozzi",
+    "synopsis": {
+      "en": "An anthology series inspired by real cases of children illegally appropriated during the Argentinian dictatorship.",
+      "es": "Una serie antológica inspirada en casos reales de niños apropiados ilegalmente durante la dictadura argentina."
+    },
+    "image": "",
+    "video": "",
+    "featured": false,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "One Night With Adela",
+      "es": "Una Noche con Adela"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Hugo Ruiz",
+    "synopsis": {
+      "en": "A disturbed street sweeper embarks on a meticulous plan for brutal revenge in this intense character study.",
+      "es": "Una barrendera de calle perturbada emprende un plan meticuloso de venganza brutal en este intenso estudio de personaje."
+    },
+    "image": "img/projects/UNA_NOCHE_CON_ADELA.jpg",
+    "video": "",
+    "featured": false,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Cuéntame cómo pasó",
+      "es": "Cuéntame cómo pasó"
+    },
+    "category": {
+      "en": "TV Series",
+      "es": "Serie de TV"
+    },
+    "director": "RTVE",
+    "synopsis": {
+      "en": "The legendary Spanish series follows the Alcántara family through the history of Spain, with seasons 22 and 23 covering the 90s to 2001.",
+      "es": "La legendaria serie española sigue a la familia Alcántara a través de la historia de España, con las temporadas 22 y 23 cubriendo de los 90 a 2001."
+    },
+    "image": "",
+    "video": "",
+    "featured": false,
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "HIT",
+      "es": "HIT"
+    },
+    "category": {
+      "en": "TV Series",
+      "es": "Serie de TV"
+    },
+    "director": "Joaquín Oristrell",
+    "synopsis": {
+      "en": "A complex teacher uses unorthodox methods to help students face real-world challenges and trauma.",
+      "es": "Un profesor complejo utiliza métodos poco ortodoxos para ayudar a sus alumnos a enfrentar desafíos y traumas del mundo real."
+    },
+    "image": "",
+    "video": "",
+    "featured": false,
+    "stills": []
+  }
+]

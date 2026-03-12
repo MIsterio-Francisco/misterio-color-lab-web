@@ -1,0 +1,26 @@
+{
+  "location": {
+    "city": "Madrid",
+    "address_line1": "Calle de los Artistas 43",
+    "address_line2": "28020, Madrid, España",
+    "map_link": "https://maps.google.com/?q=..."
+  },
+  "contact": {
+    "subtitle": "Get in touch or drop by our studio.",
+    "phone": "+34 910 000 000",
+    "email": "hola@misteriocolorlab.com",
+    "social": [
+      {
+        "platform": "Instagram",
+        "url": "https://instagram.com/misteriocolorlab"
+      },
+      {
+        "platform": "Vimeo",
+        "url": "https://vimeo.com/misteriocolorlab"
+      }
+    ]
+  },
+  "footer": {
+    "description": "Boutique Color Grading Studio based in Madrid."
+  }
+}

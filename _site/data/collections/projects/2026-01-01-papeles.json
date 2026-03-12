@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "Papeles",
+    "es": "Papeles"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Arturo Montenegro",
+  "synopsis": {
+    "en": "A legal director's life unravels after the leak of millions of documents from a top offshore firm, forcing her to flee into the jungle while being pursued by Interpol.",
+    "es": "La vida de una directora legal se desmorona tras la filtración de millones de documentos de una importante firma offshore, obligándola a huir a la selva mientras es perseguida por Interpol."
+  },
+  "image": "img/projects/PAPELES.png",
+  "video": "https://www.youtube.com/embed/pbYTzvo7ipE",
+  "featured": true,
+  "stills": []
+}

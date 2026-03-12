@@ -1,0 +1,19 @@
+{
+  "title": {
+    "en": "Muxes",
+    "es": "Muxes"
+  },
+  "category": {
+    "en": "HBO Original Documentary",
+    "es": "Documental Original HBO"
+  },
+  "director": "Alejandra Islas",
+  "synopsis": {
+    "en": "This intimate documentary chronicles the lives of five muxes — a widely recognized third gender in the Zapotec culture of Oaxaca, Mexico. Through their desires, joys, struggles and fight for recognition, the film explores what it means to be muxe in a world that often fails to understand them.",
+    "es": "Este íntimo documental narra las vidas de cinco muxes — un tercer género ampliamente reconocido en la cultura zapoteca de Oaxaca, México. A través de sus deseos, alegrías, luchas y búsqueda de reconocimiento, la película explora lo que significa ser muxe en un mundo que a menudo no logra comprenderlos."
+  },
+  "image": "img/projects/HBO_MUXES.webp",
+  "video": "https://www.youtube.com/embed/rFC9P9Sk0eM",
+  "featured": true,
+  "stills": []
+}

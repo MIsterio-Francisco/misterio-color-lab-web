@@ -1,0 +1,32 @@
+{
+  "members": [
+    {
+      "name": "Raúl Lavado Verdú",
+      "role": { "en": "Head of Color", "es": "Director de Color" },
+      "photo": "img/team/raul_lavado.jpg"
+    },
+    {
+      "name": "Fady Melek",
+      "role": { "en": "Senior Colorist", "es": "Colorista Senior" },
+      "photo": "img/team/fady.jpg"
+    },
+    {
+      "name": "Raúl Espinosa",
+      "role": { "en": "Post Production Coordinator", "es": "Coordinador de Postproducción" },
+      "photo": "img/team/raul_espinosa.jpg",
+      "email": "rulo@misteriocolorlab.com"
+    },
+    {
+      "name": "Francisco Monje",
+      "role": { "en": "Producer", "es": "Productor" },
+      "photo": "img/team/francisco_monje.jpg",
+      "email": "francisco@misteriocolorlab.com"
+    },
+    {
+      "name": "Marina Valleiro",
+      "role": { "en": "Junior Colorist", "es": "Colorista Junior" },
+      "photo": "img/team/marina.jpg",
+      "email": "marina@misteriocolorlab.com"
+    }
+  ]
+}
