@@ -1041,46 +1041,55 @@ a {
 
 .footer-brand-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 2.5rem;
+    width: 100%;
 }
 
 .footer-brand {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
 }
 
-.footer-partner-logos {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: flex-end; /* Align to the skull */
+.footer-logo-main {
+    height: 90px;
+    width: auto;
+    display: block;
 }
 
 .partner-logo {
-    height: 30px;
+    height: 35px;
     width: auto;
     opacity: 0.8;
     transition: opacity var(--transition-fast);
+}
+
+.filmlight-logo {
+    height: 45px; /* Boost for thin text */
+}
+
+.christie-logo {
+    height: 30px; /* Slightly smaller as it's chunkier */
+}
+
+.dolores-logo-footer {
+    height: 55px; /* Slightly larger as it's a sub-brand */
 }
 
 .partner-logo:hover {
     opacity: 1;
 }
 
-.footer-logo-img {
-    height: 100px;
-    width: auto;
-    display: block;
+.footer-desc {
+    max-width: 400px;
+    text-align: center;
+    margin: 0;
 }
 
-
-.dolores-logo-footer {
-    height: 70px;
-    /* Scaled proportionately for the footer */
-}
 
 /* Project Card Images */
 .project-img {
