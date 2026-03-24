@@ -1058,10 +1058,11 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 4rem; /* Increased separation */
     width: 100%;
     flex-wrap: wrap;
 }
+
 
 .footer-logo-main {
     height: 120px;
@@ -1098,8 +1099,9 @@ a {
 }
 
 .nextgen-logo {
-    height: 75px;
+    height: 90px; /* Increased for better prominence */
 }
+
 
 
 
