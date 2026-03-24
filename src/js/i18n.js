@@ -33,8 +33,10 @@ const i18n = {
         role_junior_colorist: "Junior Colorist",
         location_madrid: "Madrid - SPAIN",
         location_mexico: "Mexico City - MEXICO",
-        location_saopaulo: "Sao Paulo - BRAZIL"
+        location_saopaulo: "Sao Paulo - BRAZIL",
+        location_oslo: "Oslo - NORWAY"
     },
+
     es: {
         nav_work: "Trabajo",
         nav_studio: "Estudio",
@@ -69,6 +71,8 @@ const i18n = {
         role_junior_colorist: "Colorista Junior",
         location_madrid: "Madrid - ESPAÑA",
         location_mexico: "Ciudad de México - MÉXICO",
-        location_saopaulo: "São Paulo - BRASIL"
+        location_saopaulo: "São Paulo - BRASIL",
+        location_oslo: "Oslo - NORUEGA"
     }
+
 };
