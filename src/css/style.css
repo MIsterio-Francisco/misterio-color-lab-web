@@ -1000,7 +1000,8 @@ a {
 }
 
 .institution-logo {
-    height: 65px;
+    height: 75px;
+
 
 
 
@@ -1074,7 +1075,8 @@ a {
 
 
 /* --- FOOTER LOGOS SIZE ADJUSTMENTS --- 
-   Modify the 'height' values below to tweak the visual size of each logo.
+   Modify the 'height' values below to tweak the visual scale. 
+   Set for maximum readability of institutional text.
 */
 
 .footer-logo-main {
@@ -1084,27 +1086,27 @@ a {
 }
 
 .christie-logo {
-    height: 32px; /* Chunky logo needs less height */
+    height: 45px; /* Chunky logo */
 }
 
 .filmlight-logo {
-    height: 55px; /* Thin logo needs more height */
+    height: 75px; /* Thin logo needs height to be readable */
 }
 
 .dolores-logo-footer {
-    height: 65px; /* Triangle logo next to skull */
+    height: 75px; /* Triangle logo next to skull */
 }
 
 .gov-logo {
-    height: 48px; /* Madrid logo */
+    height: 75px; /* Madrid logo readability boost */
 }
 
 .resiliencia-logo {
-    height: 60px; /* Detailed logo needs extra height */
+    height: 95px; /* Maximum boost for complex ministerial text */
 }
 
 .nextgen-logo {
-    height: 55px; /* Wide logo */
+    height: 80px; /* Large for prominence */
 }
 
 .partner-logo, .institution-logo {
@@ -1112,6 +1114,7 @@ a {
     opacity: 0.8;
     transition: opacity var(--transition-smooth);
 }
+
 
 
 
