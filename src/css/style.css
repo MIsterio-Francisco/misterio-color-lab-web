@@ -1046,12 +1046,36 @@ a {
     flex-wrap: wrap;
 }
 
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-partner-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-end; /* Align to the skull */
+}
+
+.partner-logo {
+    height: 30px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity var(--transition-fast);
+}
+
+.partner-logo:hover {
+    opacity: 1;
+}
+
 .footer-logo-img {
     height: 100px;
     width: auto;
     display: block;
-    margin-bottom: 0.5rem;
 }
+
 
 .dolores-logo-footer {
     height: 70px;
