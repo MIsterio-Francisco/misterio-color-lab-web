@@ -1057,50 +1057,62 @@ a {
 .footer-brand {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 4rem; /* Increased separation */
+    justify-content: space-around; /* Spread them proportionally */
+    gap: 1.5rem;
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevent wrapping on desktop */
+}
+
+@media (max-width: 992px) {
+    .footer-brand {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
 }
 
 
+
+/* --- FOOTER LOGOS SIZE ADJUSTMENTS --- 
+   Modify the 'height' values below to tweak the visual size of each logo.
+*/
+
 .footer-logo-main {
-    height: 120px;
+    height: 100px; /* Misterio Skull (the anchor) */
     width: auto;
     display: block;
 }
 
+.christie-logo {
+    height: 32px; /* Chunky logo needs less height */
+}
+
+.filmlight-logo {
+    height: 55px; /* Thin logo needs more height */
+}
+
+.dolores-logo-footer {
+    height: 65px; /* Triangle logo next to skull */
+}
+
+.gov-logo {
+    height: 48px; /* Madrid logo */
+}
+
+.resiliencia-logo {
+    height: 60px; /* Detailed logo needs extra height */
+}
+
+.nextgen-logo {
+    height: 55px; /* Wide logo */
+}
 
 .partner-logo, .institution-logo {
-    height: 55px;
     width: auto;
     opacity: 0.8;
     transition: opacity var(--transition-smooth);
 }
 
-.filmlight-logo {
-    height: 75px;
-}
-
-.christie-logo {
-    height: 45px;
-}
-
-.dolores-logo-footer {
-    height: 85px;
-}
-
-.gov-logo {
-    height: 65px;
-}
-
-.resiliencia-logo {
-    height: 80px; /* Special boost for complex detail */
-}
-
-.nextgen-logo {
-    height: 90px; /* Increased for better prominence */
-}
 
 
 
