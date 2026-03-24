@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         renderGallery();
+        renderDynamicSettings();
     }
 
     window.updateLanguage = updateLanguage; // Export for buttons
@@ -104,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         featuredProjects.forEach(project => {
             const card = document.createElement('article');
             card.className = 'project-card reveal';
-            card.onclick = () => openProjectModal(project);
 
             const imgContent = project.image
                 ? `<img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">`
@@ -123,21 +123,44 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="project-director">${project.director}</p>
                 </div>
             `;
+            // Store the project data on the element for delegated click
+            card.dataset.projectId = project.id || title;
             galleryGrid.appendChild(card);
             revealObserver.observe(card);
         });
     }
 
-    // --- Modal Logic ---
-    const modal = document.getElementById('videoModal');
-    const iframeContainer = document.getElementById('iframeContainer');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalDirector = document.getElementById('modal-director');
-    const modalSynopsis = document.getElementById('modal-synopsis');
-    const modalStills = document.getElementById('modal-stills-container');
+    // Use event delegation for clicking cards (fixes dynamically injected content losing events)
+    if (galleryGrid) {
+        galleryGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.project-card');
+            if (!card) return;
 
+            const projectId = card.dataset.projectId;
+            const project = dynamicProjects.find(p => (p.id || (typeof p.title === 'string' ? p.title : (p.title[currentLang] || p.title.en))) === projectId);
+
+            if (project) {
+                openProjectModal(project);
+            }
+        });
+    }
+
+    // --- Modal Logic ---
     function openProjectModal(project) {
+        console.log("Opening modal for project:", project);
+
+        const modal = document.getElementById('videoModal');
+        const iframeContainer = document.getElementById('iframeContainer');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDirector = document.getElementById('modal-director');
+        const modalSynopsis = document.getElementById('modal-synopsis');
+        const modalStills = document.getElementById('modal-stills-container');
+
+        if (!modal) {
+            console.error("Modal element #videoModal not found in the DOM!");
+            return;
+        }
         const getLocalized = (field) => typeof field === 'string' ? field : (field ? (field[currentLang] || field.en) : '');
         if (modalTitle) modalTitle.innerText = getLocalized(project.title);
         if (modalCategory) modalCategory.innerText = getLocalized(project.category);
@@ -175,13 +198,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModal() {
+        const modal = document.getElementById('videoModal');
+        const iframeContainer = document.getElementById('iframeContainer');
         modal?.classList.remove('open');
         if (iframeContainer) iframeContainer.innerHTML = '';
         document.body.style.overflow = '';
     }
 
-    document.querySelector('.close-modal')?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    // Use event delegation for the close button and background click since modal might be dynamic
+    document.addEventListener('click', (e) => {
+        const modal = document.getElementById('videoModal');
+        if (!modal) return;
+
+        if (e.target === modal || e.target.closest('.close-modal')) {
+            closeModal();
+        }
+    });
 
     // --- Dynamic Settings Render ---
     function renderDynamicSettings() {
@@ -217,9 +249,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Team
         if (cmsData.teamData && cmsData.teamData.members) {
-            const teamCont = document.getElementById('cms-team-list');
-            if (teamCont) {
-                teamCont.innerHTML = cmsData.teamData.members.map(m => `
+            const rowTop = document.getElementById('cms-team-row-top');
+            const rowBottom = document.getElementById('cms-team-row-bottom');
+
+            if (rowTop && rowBottom) {
+                const members = cmsData.teamData.members;
+                const topMembers = members.filter(m => !m.email);
+                const bottomMembers = members.filter(m => m.email);
+
+                const renderMember = (m) => `
                      <div class="team-member reveal active">
                         <div class="member-photo-wrapper">
                             ${m.photo ? `<img src="${m.photo}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
@@ -228,7 +266,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="member-role">${window.CMS.getLocalizedText(m.role, currentLang)}</p>
                         ${m.email ? `<a href="mailto:${m.email}" class="member-email">${m.email}</a>` : ''}
                      </div>
-                 `).join('');
+                 `;
+
+                rowTop.innerHTML = topMembers.map(renderMember).join('');
+                rowBottom.innerHTML = bottomMembers.map(renderMember).join('');
             }
         }
 

@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 
-media_folder: "img/projects" # Media files will be stored in the repo under img/projects
+media_folder: "src/img/projects" # Media files will be stored in the repo under src/img/projects
 public_folder: "img/projects" # The src attribute for uploaded media will begin with img/projects
 
 collections:
   - name: "projects"
     label: "Projects"
-    folder: "data/collections/projects" # We use a folder here, but Decap can build JSON files
+    folder: "src/data/collections/projects" # We use a folder here, but Decap can build JSON files
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -39,7 +39,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "data/settings/home.json"
+      - file: "src/data/settings/home.json"
         label: "Home Page"
         name: "home"
         fields:
@@ -65,7 +65,7 @@ collections:
             fields:
               - {label: "Poster Image", name: "image", widget: "image"}
 
-      - file: "data/settings/studio.json"
+      - file: "src/data/settings/studio.json"
         label: "Studio Page"
         name: "studio"
         fields:
@@ -96,7 +96,7 @@ collections:
                   - {label: "English", name: "en", widget: "string"}
                   - {label: "Spanish", name: "es", widget: "string"}
 
-      - file: "data/settings/team.json"
+      - file: "src/data/settings/team.json"
         label: "Team Members"
         name: "team"
         fields:
@@ -114,7 +114,7 @@ collections:
               - {label: "Photo", name: "photo", widget: "image", required: false}
               - {label: "Email", name: "email", widget: "string", required: false}
 
-      - file: "data/settings/contact.json"
+      - file: "src/data/settings/contact.json"
         label: "Contact & Footer"
         name: "contact"
         fields:
