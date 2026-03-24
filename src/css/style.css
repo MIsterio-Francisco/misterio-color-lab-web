@@ -1000,7 +1000,8 @@ a {
 }
 
 .institution-logo {
-    height: 40px;
+    height: 46px;
+
     width: auto;
     opacity: 0.8;
     transition: opacity var(--transition-fast);
@@ -1061,37 +1062,38 @@ a {
 }
 
 .footer-logo-main {
-    height: 90px;
+    height: 104px;
     width: auto;
     display: block;
 }
 
 .partner-logo, .institution-logo {
-    height: 35px;
+    height: 40px;
     width: auto;
     opacity: 0.8;
     transition: opacity var(--transition-smooth);
 }
 
 .filmlight-logo {
-    height: 45px;
-}
-
-.christie-logo {
-    height: 28px;
-}
-
-.dolores-logo-footer {
     height: 52px;
 }
 
+.christie-logo {
+    height: 32px;
+}
+
+.dolores-logo-footer {
+    height: 60px;
+}
+
 .gov-logo {
-    height: 40px;
+    height: 46px;
 }
 
 .nextgen-logo {
-    height: 45px;
+    height: 52px;
 }
+
 
 .partner-logo:hover, .institution-logo:hover {
     opacity: 1;
