@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Orca",
+    "es": "Orca"
+  },
+  "category": {
+    "en": "Drama / Biography",
+    "es": "Drama / Biografía"
+  },
+  "director": "Sahar Mossayebi",
+  "synopsis": {
+    "en": "The true story of Elham Asghari, an Iranian swimmer who, after suffering personal tragedy, finds redemption and strength in the water, challenging the limits imposed on women in her country.",
+    "es": "La historia real de Elham Asghari, una nadadora iraní que, tras sufrir una tragedia personal, encuentra redención y fuerza en el agua, desafiando los límites impuestos a las mujeres en su país."
+  },
+  "image": "img/projects/ORCA.jpg",
+  "video": "https://www.youtube.com/embed/B7-8cijUhW4",
+  "featured": true,
+  "digitalColor": "Fady Melek",
+  "stills": []
+}

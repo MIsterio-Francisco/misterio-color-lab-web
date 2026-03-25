@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "The Pact",
+    "es": "The Pact"
+  },
+  "category": {
+    "en": "Horror / Thriller",
+    "es": "Terror / Thriller"
+  },
+  "director": "Nicholas McCarthy",
+  "synopsis": {
+    "en": "As a woman struggles to come to terms with her past in the aftermath of her mother's death, an unsettling presence in her childhood home reveals a disturbing family secret.",
+    "es": "Mientras una mujer lucha por reconciliarse con su pasado tras la muerte de su madre, una presencia inquietante en la casa de su infancia revela un perturbador secreto familiar."
+  },
+  "image": "img/projects/THE_PACT.jpg",
+  "video": "https://www.youtube.com/embed/OaV9_4MqAP4",
+  "featured": true,
+  "digitalColor": "Fady Melek",
+  "stills": []
+}
