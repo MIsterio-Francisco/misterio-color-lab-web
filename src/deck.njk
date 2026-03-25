@@ -48,15 +48,17 @@ permalink: /deck/
                 <h2>Raúl Lavado Verdú</h2>
                 <h3 class="role-tag">Senior Colorist & Co-founder</h3>
                 <div class="bio-placeholder">
-                    <p>[BIO INFO PENDING: Raúl's professional background, specialized genres, and artistic philosophy will go here.]</p>
+                    <p>Senior Colorist and co-founder at MISTERIO, with over 17 years of experience across cinema, television, and advertising. A specialist in Baselight and HDR workflows, his work includes acclaimed projects such as <em>La Espera</em>, <em>La Última</em>, <em>Papeles</em>, and <em>Cuéntame</em>.</p>
+                    <p>In 2024, he became the only Spanish colorist to receive a <strong>FilmLight Color Award</strong>, recognized for his work on <em>La Espera</em>. He is also a color grading instructor at ECAM.</p>
                 </div>
                 <div class="key-works">
                     <h4>Key Works</h4>
                     <ul id="raul-works">
-                        <!-- Will be populated by JS or hardcoded if preferred -->
+                        <li>La Espera (FilmLight Award)</li>
+                        <li>La Última</li>
+                        <li>Papeles</li>
+                        <li>Cuéntame</li>
                         <li>The Pact</li>
-                        <li>Stargate</li>
-                        <li>Possession</li>
                     </ul>
                 </div>
             </div>
@@ -73,11 +75,14 @@ permalink: /deck/
                 <h2>Fady Melek</h2>
                 <h3 class="role-tag">Senior Colorist</h3>
                 <div class="bio-placeholder">
-                    <p>[BIO INFO PENDING: Fady's international experience and unique visual style will be detailed here.]</p>
+                    <p>With over 20 years of experience and a background in art and chemistry, Fady began his career in film laboratories and worked at <strong>Technicolor</strong>, contributing to major films such as <em>Taken</em> and <em>Transporter</em>.</p>
+                    <p>Winner of 4 Telly Awards and the 2024 Global Recognition Award, Fady leads Misterio Color Lab operations in Brazil.</p>
                 </div>
                 <div class="key-works">
                     <h4>Key Works</h4>
                     <ul>
+                        <li>Taken</li>
+                        <li>Transporter</li>
                         <li>The Pact</li>
                         <li>Orca</li>
                     </ul>
@@ -121,6 +126,9 @@ permalink: /deck/
 </div>
 
 <script>
+    // Add specific class for the deck to hide main site UI if needed
+    document.body.classList.add('deck-active');
+
     // Reveal animation on scroll for the deck
     const deckSections = document.querySelectorAll('.deck-section');
     const observer = new IntersectionObserver((entries) => {
