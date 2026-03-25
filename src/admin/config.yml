@@ -13,28 +13,30 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - name: "title"
-        label: "Title"
+        label: "Project Title"
         widget: "object"
         fields:
           - {label: "English", name: "en", widget: "string"}
           - {label: "Spanish", name: "es", widget: "string"}
       - name: "category"
-        label: "Category"
+        label: "Project Category (e.g. Feature Film, Documentary)"
         widget: "object"
         fields:
           - {label: "English", name: "en", widget: "string"}
           - {label: "Spanish", name: "es", widget: "string"}
       - {label: "Director", name: "director", widget: "string"}
+      - {label: "Digital Color (Colorist Name)", name: "digitalColor", widget: "string", required: false, hint: "E.g. Cem Ozkilicci or Fady Melek"}
       - name: "synopsis"
-        label: "Synopsis"
+        label: "Synopsis / Description"
         widget: "object"
         fields:
           - {label: "English", name: "en", widget: "text"}
           - {label: "Spanish", name: "es", widget: "text"}
-      - {label: "Main Image", name: "image", widget: "image"}
-      - {label: "Video URL", name: "video", widget: "string", required: false, hint: "Vimeo or YouTube link"}
-      - {label: "Featured", name: "featured", widget: "boolean", default: true, hint: "Show on the main gallery"}
-      - {label: "Gallery Stills", name: "stills", widget: "list", field: {label: "Still", name: "still", widget: "image"}, required: false}
+      - {label: "Poster Image", name: "image", widget: "image", hint: "Upload the main project poster here"}
+      - {label: "Video Link (Vimeo or YouTube)", name: "video", widget: "string", required: false, hint: "Paste the full URL here"}
+      - {label: "Featured in Gallery", name: "featured", widget: "boolean", default: true, hint: "Switch on to show in the main gallery list"}
+      - {label: "Gallery Stills (Optional)", name: "stills", widget: "list", field: {label: "Still", name: "still", widget: "image"}, required: false, hint: "Add extra frames/stills for the project modal"}
+
 
   - name: "pages"
     label: "Pages"
