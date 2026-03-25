@@ -34,7 +34,10 @@ const i18n = {
         location_madrid: "Madrid - SPAIN",
         location_mexico: "Mexico City - MEXICO",
         location_saopaulo: "Sao Paulo - BRAZIL",
-        location_oslo: "Oslo - NORWAY"
+        location_oslo: "Oslo - NORWAY",
+        success_title: "Thank You!",
+        success_message: "Your message has been sent successfully. We will get back to you soon.",
+        back_home: "Back to Home"
     },
 
     es: {
@@ -72,7 +75,10 @@ const i18n = {
         location_madrid: "Madrid - ESPAÑA",
         location_mexico: "Ciudad de México - MÉXICO",
         location_saopaulo: "São Paulo - BRASIL",
-        location_oslo: "Oslo - NORUEGA"
+        location_oslo: "Oslo - NORUEGA",
+        success_title: "¡Gracias!",
+        success_message: "Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto pronto.",
+        back_home: "Volver al Inicio"
     }
 
 };
