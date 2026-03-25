@@ -1,20 +1,20 @@
 {
-  "title": {
-    "en": "Stargate",
-    "es": "Stargate"
-  },
-  "category": {
-    "en": "Drama",
-    "es": "Drama"
-  },
+  "digitalColor": "Cem Ozkilicci",
+  "stills": [],
   "director": "Ida Sagmo Tvedte",
+  "featured": true,
   "synopsis": {
     "en": "A heartwarming pre-Christmas tale about friendship, resilience, and the magic of Christmas, following young Ronja and her family in Oslo.",
     "es": "Un conmovedor cuento prenavideño sobre la amistad, la resiliencia y la magia de la Navidad, siguiendo a la joven Ronja y su familia en Oslo."
   },
-  "image": "img/projects/STARGATE.jpg",
+  "title": {
+    "en": "Stargate",
+    "es": "Stargate"
+  },
   "video": "https://vimeo.com/1044766250",
-  "featured": true,
-  "digitalColor": "Cem Ozkilicci",
-  "stills": []
+  "image": "img/projects/stargate.jpg",
+  "category": {
+    "en": "Drama",
+    "es": "Drama"
+  }
 }
