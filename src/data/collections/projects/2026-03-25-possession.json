@@ -1,20 +1,20 @@
 {
-  "title": {
-    "en": "Possession",
-    "es": "Posesión"
-  },
-  "category": {
-    "en": "Horror Film",
-    "es": "Película de Terror"
-  },
+  "digitalColor": "Cem Ozkilicci",
+  "stills": [],
   "director": "Henrik Martin Dahlsbakken",
+  "featured": true,
   "synopsis": {
     "en": "A priest is called to a remote farm to investigate a strange phenomena that points to something darker than expected.",
     "es": "Un sacerdote es llamado a una granja remota para investigar fenómenos extraños que apuntan a algo más oscuro de lo esperado."
   },
+  "title": {
+    "en": "Possession",
+    "es": "Posesión"
+  },
+  "video": "https://vimeo.com/653597561?fl=tl&fe=ec",
   "image": "img/projects/POSSESSION.jpg",
-  "video": "",
-  "featured": true,
-  "digitalColor": "Cem Ozkilicci",
-  "stills": []
+  "category": {
+    "en": "Horror Film",
+    "es": "Película de Terror"
+  }
 }
