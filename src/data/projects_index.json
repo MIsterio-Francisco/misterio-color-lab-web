@@ -1,6 +1,126 @@
 [
   {
     "title": {
+      "en": "Requiem for Selina",
+      "es": "Réquiem por Selina"
+    },
+    "category": {
+      "en": "Drama Series",
+      "es": "Serie Dramática"
+    },
+    "director": "Henrik Martin Dahlsbakken",
+    "synopsis": {
+      "en": "Follows 17-year-old Selina in early 2000s Norway as she starts a beauty blog. As her influence grows, she transforms from a bullied teenager into Norway's top blogger and a controversial icon.",
+      "es": "Sigue a Selina, de 17 años, en la Noruega de principios de la década de 2000, mientras comienza un blog de belleza. A medida que aumenta su influencia, se transforma de una adolescente acosada en la bloguera más importante de Noruega e icono de la controversia."
+    },
+    "image": "img/projects/REQUIEM_FOR_SELINA.jpg",
+    "video": "https://vimeo.com/1065454058",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Gold Run",
+      "es": "Gulltransporten"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Hallvard Bræin",
+    "synopsis": {
+      "en": "Based on true events during the German invasion of Norway in 1940. A team smuggles 40 tons of gold bullion across the country to reach an Allied shipping convoy.",
+      "es": "Basada en hechos reales durante la invasión alemana de Noruega en 1940. Un equipo contrabandea 40 toneladas de lingotes de oro a través del país para llegar a un convoy de envío aliado."
+    },
+    "image": "img/projects/GOLD_RUN.jpg",
+    "video": "https://vimeo.com/825369516",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "The Arctic Convoy",
+      "es": "Konvoi"
+    },
+    "category": {
+      "en": "War Drama",
+      "es": "Drama Bélico"
+    },
+    "director": "Henrik Martin Dahlsbakken",
+    "synopsis": {
+      "en": "In 1941, Allied cargo ships filled with war materials embark on perilous journeys to Murmansk. A Norwegian merchant ship decides to continue its mission despite extreme danger.",
+      "es": "En 1941, barcos de carga aliados llenos de materiales de guerra se embarcan en peligrosos viajes a Múrmansk. Un barco mercante noruego decide continuar su misión a pesar del peligro extremo."
+    },
+    "image": "img/projects/KONVOI.jpg",
+    "video": "https://vimeo.com/890042605",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Songs of Earth",
+      "es": "Fedrelandet"
+    },
+    "category": {
+      "en": "Documentary",
+      "es": "Documental"
+    },
+    "director": "Margreth Olin",
+    "synopsis": {
+      "en": "A poetic meditation on life, death, nature, and being present in the world. Margreth Olin's father guides us through Norway's scenic Oldedalen valley.",
+      "es": "Una meditación poética sobre la vida, la muerte, la naturaleza y estar presente en el mundo. El padre de Margreth Olin nos guía a través del escénico valle de Oldedalen en Noruega."
+    },
+    "image": "img/projects/SONGS_OF_EARTH.jpg",
+    "video": "https://vimeo.com/860208879",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Stargate",
+      "es": "Stargate"
+    },
+    "category": {
+      "en": "Drama",
+      "es": "Drama"
+    },
+    "director": "Ida Sagmo Tvedte",
+    "synopsis": {
+      "en": "A heartwarming pre-Christmas tale about friendship, resilience, and the magic of Christmas, following young Ronja and her family in Oslo.",
+      "es": "Un conmovedor cuento prenavideño sobre la amistad, la resiliencia y la magia de la Navidad, siguiendo a la joven Ronja y su familia en Oslo."
+    },
+    "image": "img/projects/KONVOI.jpg",
+    "video": "https://vimeo.com/1044766250",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
+      "en": "Possession",
+      "es": "Posesión"
+    },
+    "category": {
+      "en": "Horror Film",
+      "es": "Película de Terror"
+    },
+    "director": "Henrik Martin Dahlsbakken",
+    "synopsis": {
+      "en": "A priest is called to a remote farm to investigate a strange phenomena that points to something darker than expected.",
+      "es": "Un sacerdote es llamado a una granja remota para investigar fenómenos extraños que apuntan a algo más oscuro de lo esperado."
+    },
+    "image": "img/projects/POSSESSION.jpg",
+    "video": "",
+    "featured": true,
+    "digitalColor": "cocolors.com",
+    "stills": []
+  },
+  {
+    "title": {
       "en": "Papeles",
       "es": "Papeles"
     },

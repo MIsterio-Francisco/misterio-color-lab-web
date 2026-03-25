@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Songs of Earth",
+    "es": "Fedrelandet"
+  },
+  "category": {
+    "en": "Documentary",
+    "es": "Documental"
+  },
+  "director": "Margreth Olin",
+  "synopsis": {
+    "en": "A poetic meditation on life, death, nature, and being present in the world. Margreth Olin's father guides us through Norway's scenic Oldedalen valley.",
+    "es": "Una meditación poética sobre la vida, la muerte, la naturaleza y estar presente en el mundo. El padre de Margreth Olin nos guía a través del escénico valle de Oldedalen en Noruega."
+  },
+  "image": "img/projects/SONGS_OF_EARTH.jpg",
+  "video": "https://vimeo.com/860208879",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}

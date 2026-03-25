@@ -167,6 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalDirector) modalDirector.innerText = project.director || '';
         if (modalSynopsis) modalSynopsis.innerText = getLocalized(project.synopsis);
 
+        const modalAttribution = document.getElementById('modal-attribution');
+        if (modalAttribution) {
+            if (project.digitalColor) {
+                modalAttribution.innerHTML = `<span class="attribution-label">Digital Color:</span> <a href="https://${project.digitalColor}" target="_blank" class="attribution-link">${project.digitalColor}</a>`;
+                modalAttribution.classList.add('active');
+            } else {
+                modalAttribution.innerHTML = '';
+                modalAttribution.classList.remove('active');
+            }
+        }
+
         if (project.video || project.trailer) {
             const videoUrl = project.video || project.trailer;
             const iframe = document.createElement('iframe');

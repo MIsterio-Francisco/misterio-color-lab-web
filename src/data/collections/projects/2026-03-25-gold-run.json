@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Gold Run",
+    "es": "Gulltransporten"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Hallvard Bræin",
+  "synopsis": {
+    "en": "Based on true events during the German invasion of Norway in 1940. A team smuggles 40 tons of gold bullion across the country to reach an Allied shipping convoy.",
+    "es": "Basada en hechos reales durante la invasión alemana de Noruega en 1940. Un equipo contrabandea 40 toneladas de lingotes de oro a través del país para llegar a un convoy de envío aliado."
+  },
+  "image": "img/projects/GOLD_RUN.jpg",
+  "video": "https://vimeo.com/825369516",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}

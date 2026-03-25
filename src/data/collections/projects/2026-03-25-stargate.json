@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Stargate",
+    "es": "Stargate"
+  },
+  "category": {
+    "en": "Drama",
+    "es": "Drama"
+  },
+  "director": "Ida Sagmo Tvedte",
+  "synopsis": {
+    "en": "A heartwarming pre-Christmas tale about friendship, resilience, and the magic of Christmas, following young Ronja and her family in Oslo.",
+    "es": "Un conmovedor cuento prenavideño sobre la amistad, la resiliencia y la magia de la Navidad, siguiendo a la joven Ronja y su familia en Oslo."
+  },
+  "image": "img/projects/STARGATE.jpg",
+  "video": "https://vimeo.com/1044766250",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}

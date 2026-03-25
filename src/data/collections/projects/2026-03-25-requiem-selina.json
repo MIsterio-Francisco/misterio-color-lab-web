@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Requiem for Selina",
+    "es": "Réquiem por Selina"
+  },
+  "category": {
+    "en": "Drama Series",
+    "es": "Serie Dramática"
+  },
+  "director": "Henrik Martin Dahlsbakken",
+  "synopsis": {
+    "en": "Follows 17-year-old Selina in early 2000s Norway as she starts a beauty blog. As her influence grows, she transforms from a bullied teenager into Norway's top blogger and a controversial icon.",
+    "es": "Sigue a Selina, de 17 años, en la Noruega de principios de la década de 2000, mientras comienza un blog de belleza. A medida que aumenta su influencia, se transforma de una adolescente acosada en la bloguera más importante de Noruega e icono de la controversia."
+  },
+  "image": "img/projects/REQUIEM_FOR_SELINA.jpg",
+  "video": "https://vimeo.com/1065454058",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}
