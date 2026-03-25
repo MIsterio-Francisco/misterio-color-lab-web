@@ -1,16 +1,13 @@
 ---
 layout: layouts/base.njk
 title: Sales Deck | Misterio Color Lab
-permalink: /deck/
 ---
 
 <link rel="stylesheet" href="/css/deck.css">
-<!-- GSAP for High-end Animations -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <div class="deck-container">
-    <!-- Film Grain Overlay for Texture -->
     <div class="film-grain"></div>
 
     <!-- Section 1: Hero -->
@@ -46,7 +43,7 @@ permalink: /deck/
         </div>
     </section>
 
-    <!-- Talent Slides (Will be rendered dynamically to avoid empty sections) -->
+    <!-- Talent Slides -->
     <div id="deck-talents-wrapper"></div>
 
     <!-- Section 6: Closing -->
@@ -85,8 +82,6 @@ permalink: /deck/
                 if (!res.ok) throw new Error("Manual fetch failed with status " + res.status);
                 deck = await res.json();
                 console.log("3b. Manual Deck Data Fetched:", deck);
-            } else {
-                console.log("3. deckData found");
             }
 
             if (deck) {
@@ -97,14 +92,12 @@ permalink: /deck/
             }
         } catch (err) {
             console.error("FATAL: Deck initialization failed:", err);
-            // Emergency fallback for "Our Expertise" if data fails
-            document.getElementById('deck-services-grid').innerHTML = '<p style="color:red; font-size: 2rem;">Error loading content. Please try refreshing the page.</p>';
+            document.getElementById('deck-services-grid').innerHTML = '<p style="color:red; font-size: 1.5rem; text-align: center; width: 100%;">Error loading content. Please refresh.</p>';
         }
         console.groupEnd();
     }
 
     function renderDeck(deck) {
-        // ... (existing render logic)
         // 1. Hero
         try {
             document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
@@ -166,7 +159,7 @@ permalink: /deck/
             }).join('');
         } catch(e) { console.warn("Talents render fail:", e); }
 
-        initAnimations();
+        setTimeout(initAnimations, 100);
     }
 
     function initAnimations() {
@@ -180,9 +173,9 @@ permalink: /deck/
         document.querySelectorAll('.deck-section').forEach(section => {
             const reveals = section.querySelectorAll('.reveal-gsap');
             if (reveals.length > 0) {
-                // Ensure they are not invisible if GSAP fails to trigger
+                // Pre-set visibility to ensure they don't remain hidden
                 gsap.set(reveals, { opacity: 1, y: 0 }); 
-                // Then animate
+                
                 gsap.from(reveals, {
                     scrollTrigger: {
                         trigger: section,
@@ -208,3 +201,4 @@ permalink: /deck/
     }
 
     document.addEventListener('DOMContentLoaded', initDeck);
+</script>
