@@ -1,0 +1,135 @@
+---
+layout: layouts/base.njk
+title: Sales Deck | Misterio Color Lab
+permalink: /deck/
+---
+
+<link rel="stylesheet" href="/css/deck.css">
+
+<div class="deck-container">
+    <!-- Section 1: Hero -->
+    <section class="deck-section hero-slide">
+        <div class="overlay"></div>
+        <div class="deck-content">
+            <img src="/img/logo_white_hq.png" alt="Misterio Color Lab" class="reveal">
+            <h1 class="reveal">Cinematic Excellence</h1>
+            <p class="reveal">The Post-Production Boutique for the Discerning Visionary.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Services -->
+    <section class="deck-section services-slide">
+        <div class="container">
+            <h2 class="reveal">Our Services</h2>
+            <div class="services-wrapper">
+                <div class="service-slide-item reveal">
+                    <h3>Color Grading & HDR</h3>
+                    <p>Dolby Vision Certified / 4K DCI Projection / Cinematic Mastering.</p>
+                </div>
+                <div class="service-slide-item reveal">
+                    <h3>Digital Lab</h3>
+                    <p>Dailies / Transcoding / LTO Archiving / Technical Deliveries.</p>
+                </div>
+                <div class="service-slide-item reveal">
+                    <h3>VFX & Sound</h3>
+                    <p>Integrated Compositing / Atmospheric Sound Design & Mix.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Raúl Lavado -->
+    <section class="deck-section talent-slide raul-slide">
+        <div class="talent-flex container">
+            <div class="talent-photo reveal">
+                <img src="/img/team/raul_lavado.jpg" alt="Raúl Lavado Verdú">
+            </div>
+            <div class="talent-info reveal">
+                <h2>Raúl Lavado Verdú</h2>
+                <h3 class="role-tag">Senior Colorist & Co-founder</h3>
+                <div class="bio-placeholder">
+                    <p>[BIO INFO PENDING: Raúl's professional background, specialized genres, and artistic philosophy will go here.]</p>
+                </div>
+                <div class="key-works">
+                    <h4>Key Works</h4>
+                    <ul id="raul-works">
+                        <!-- Will be populated by JS or hardcoded if preferred -->
+                        <li>The Pact</li>
+                        <li>Stargate</li>
+                        <li>Possession</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Fady Melek -->
+    <section class="deck-section talent-slide fady-slide">
+        <div class="talent-flex container">
+            <div class="talent-photo reveal">
+                <img src="/img/team/fady.jpg" alt="Fady Melek">
+            </div>
+            <div class="talent-info reveal">
+                <h2>Fady Melek</h2>
+                <h3 class="role-tag">Senior Colorist</h3>
+                <div class="bio-placeholder">
+                    <p>[BIO INFO PENDING: Fady's international experience and unique visual style will be detailed here.]</p>
+                </div>
+                <div class="key-works">
+                    <h4>Key Works</h4>
+                    <ul>
+                        <li>The Pact</li>
+                        <li>Orca</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Cem Ozkilicci -->
+    <section class="deck-section talent-slide cem-slide">
+        <div class="talent-flex container">
+            <div class="talent-photo reveal">
+                <img src="/img/projects/cem_040.jpg" alt="Cem Ozkilicci">
+            </div>
+            <div class="talent-info reveal">
+                <h2>Cem Ozkilicci</h2>
+                <h3 class="role-tag">Senior Colorist</h3>
+                <div class="bio-placeholder">
+                    <p>[BIO INFO PENDING: Cem's extensive portfolio and technical expertise in high-end projects.]</p>
+                </div>
+                <div class="key-works">
+                    <h4>Key Works</h4>
+                    <ul>
+                        <li>Konvoi</li>
+                        <li>Songs of Earth</li>
+                        <li>Gold Run</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Closing -->
+    <section class="deck-section closing-slide">
+        <div class="deck-content container reveal">
+            <h2>Let's shape your next story.</h2>
+            <p>Ready to elevate your project with the Misterio touch?</p>
+            <a href="/#contact" class="deck-btn">Talk to us</a>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Reveal animation on scroll for the deck
+    const deckSections = document.querySelectorAll('.deck-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+            }
+        });
+    }, { threshold: 0.5 });
+
+    deckSections.forEach(section => observer.observe(section));
+</script>
