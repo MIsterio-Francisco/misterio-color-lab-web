@@ -70,14 +70,28 @@ permalink: /deck/
     gsap.registerPlugin(ScrollTrigger);
 
     async function initDeck() {
+        console.log("Deck Init Started...");
         const data = await window.CMS.loadSettings();
         const deck = data.deckData;
         
         if (!deck) {
-            console.warn("Deck data missing");
+            console.error("CRITICAL: Deck data missing from CMS fetch.");
+            // Manual fetch fallback with cache buster
+            try {
+                const res = await fetch('/data/settings/deck.json?v=' + Date.now());
+                const rawDeck = await res.json();
+                renderDeck(rawDeck);
+            } catch (e) {
+                console.error("Final fallback failed:", e);
+            }
             return;
         }
 
+        renderDeck(deck);
+    }
+
+    function renderDeck(deck) {
+        console.log("Rendering Deck Content...");
         // 1. Hero
         document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
         document.getElementById('deck-hero-title').innerHTML = deck.hero.title;
@@ -99,10 +113,11 @@ permalink: /deck/
         const talentsWrapper = document.getElementById('deck-talents-wrapper');
         const talentKeys = ['raul', 'fady', 'cem'];
         talentsWrapper.innerHTML = talentKeys.map((key, index) => {
+            if (!deck.sections[key]) return '';
             const t = deck.sections[key];
-            const isFlipped = index % 2 !== 0; // Flip every other talent
+            const isFlipped = index % 2 !== 0;
             return `
-                <section class="deck-section talent-slide ${key}-slide">
+                <section class="deck-section talent-slide ${key}-slide" style="z-index: ${10 + index}">
                     <div class="slide-bg-wrapper">
                          <div class="slide-bg" style="background-image: url('${t.project_image}');"></div>
                     </div>
@@ -132,8 +147,7 @@ permalink: /deck/
             `;
         }).join('');
 
-        // Trigger GSAP after rendering
-        setTimeout(initAnimations, 100);
+        initAnimations();
     }
 
     function initAnimations() {
