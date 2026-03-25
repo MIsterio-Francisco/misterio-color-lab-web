@@ -30,20 +30,19 @@ body.deck-active .navbar {
 /* Scroll Container */
 .deck-container {
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    overflow-y: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
 .deck-section {
-    height: 100vh;
+    min-height: 80vh;
     width: 100%;
-    scroll-snap-align: start;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 6rem 0;
     overflow: hidden;
 }
 

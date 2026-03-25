@@ -14,18 +14,18 @@ permalink: /deck/
     <div class="film-grain"></div>
 
     <!-- Section 1: Hero -->
-    <section class="deck-section hero-slide" data-bg="{{ deck.hero.image }}">
+    <section class="deck-section hero-slide" id="deck-hero-bg">
         <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('{{ deck.hero.image }}');"></div>
+             <div class="slide-bg" id="hero-bg-img"></div>
         </div>
         <div class="overlay-vignette"></div>
         <div class="deck-content section-inner">
             <div class="hero-logo-wrapper reveal-gsap">
                 <img src="/img/logo_white_hq.png" alt="Misterio Color Lab">
             </div>
-            <h1 class="reveal-gsap">{{ deck.hero.title | safe }}</h1>
+            <h1 class="reveal-gsap" id="deck-hero-title"></h1>
             <div class="hero-divider reveal-gsap"></div>
-            <p class="reveal-gsap">{{ deck.hero.subtitle }}</p>
+            <p class="reveal-gsap" id="deck-hero-subtitle"></p>
             <div class="scroll-indicator reveal-gsap">
                 <span>SCROLL TO EXPLORE</span>
                 <div class="mouse"></div>
@@ -36,189 +36,137 @@ permalink: /deck/
     <!-- Section 2: Services -->
     <section class="deck-section services-slide">
         <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('/img/projects/GOLD_RUN.jpg'); opacity: 0.2;"></div>
+             <div class="slide-bg" style="background-image: url('/img/projects/GOLD_RUN.jpg'); opacity: 0.15;"></div>
         </div>
         <div class="container section-inner">
             <h2 class="section-title reveal-gsap">Our Expertise</h2>
-            <div class="services-wrapper detailed-grid">
-                {% for service in deck.services %}
-                <div class="service-slide-item reveal-gsap">
-                    <div class="service-icon-box">
-                        <span class="service-number">0{{ loop.index }}</span>
-                    </div>
-                    <div class="service-text">
-                        <h3>{{ service.title }}</h3>
-                        <p>{{ service.description }}</p>
-                    </div>
-                </div>
-                {% endfor %}
+            <div class="services-wrapper detailed-grid" id="deck-services-grid">
+                <!-- Injected via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Raúl Lavado -->
-    <section class="deck-section talent-slide raul-slide">
-        <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('{{ deck.sections.raul.project_image }}');"></div>
-        </div>
-        <div class="overlay-grad"></div>
-        <div class="talent-flex container section-inner">
-            <div class="talent-photo reveal-gsap">
-                <div class="photo-frame">
-                    <img src="/img/team/raul_lavado.jpg" alt="{{ deck.sections.raul.name }}">
-                </div>
-            </div>
-            <div class="talent-info reveal-gsap">
-                <span class="talent-label">KEY TALENT</span>
-                <h2>{{ deck.sections.raul.name }}</h2>
-                <h3 class="role-tag">{{ deck.sections.raul.role }}</h3>
-                <div class="bio-box">
-                    <p>{{ deck.sections.raul.bio }}</p>
-                </div>
-                <div class="key-works">
-                    <h4>SELECTED FILMOGRAPHY</h4>
-                    <div class="works-tags">
-                        {% for work in deck.sections.raul.works %}
-                        <span class="work-tag">{{ work }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Fady Melek -->
-    <section class="deck-section talent-slide fady-slide">
-        <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('{{ deck.sections.fady.project_image }}');"></div>
-        </div>
-        <div class="overlay-grad inverse"></div>
-        <div class="talent-flex container section-inner flipped">
-            <div class="talent-info reveal-gsap">
-                <span class="talent-label">KEY TALENT</span>
-                <h2>{{ deck.sections.fady.name }}</h2>
-                <h3 class="role-tag">{{ deck.sections.fady.role }}</h3>
-                <div class="bio-box">
-                    <p>{{ deck.sections.fady.bio }}</p>
-                </div>
-                <div class="key-works">
-                    <h4>SELECTED FILMOGRAPHY</h4>
-                    <div class="works-tags">
-                        {% for work in deck.sections.fady.works %}
-                        <span class="work-tag">{{ work }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="talent-photo reveal-gsap">
-                <div class="photo-frame">
-                    <img src="/img/team/fady.jpg" alt="{{ deck.sections.fady.name }}">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Cem Ozkilicci -->
-    <section class="deck-section talent-slide cem-slide">
-        <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('{{ deck.sections.cem.project_image }}');"></div>
-        </div>
-        <div class="overlay-grad"></div>
-        <div class="talent-flex container section-inner">
-            <div class="talent-photo reveal-gsap">
-                <div class="photo-frame">
-                    <img src="/img/projects/cem_040.jpg" alt="{{ deck.sections.cem.name }}">
-                </div>
-            </div>
-            <div class="talent-info reveal-gsap">
-                <span class="talent-label">KEY TALENT</span>
-                <h2>{{ deck.sections.cem.name }}</h2>
-                <h3 class="role-tag">{{ deck.sections.cem.role }}</h3>
-                <div class="bio-box">
-                    <p>{{ deck.sections.cem.bio }}</p>
-                </div>
-                <div class="key-works">
-                    <h4>SELECTED FILMOGRAPHY</h4>
-                    <div class="works-tags">
-                        {% for work in deck.sections.cem.works %}
-                        <span class="work-tag">{{ work }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Talent Slides (Will be rendered dynamically to avoid empty sections) -->
+    <div id="deck-talents-wrapper"></div>
 
     <!-- Section 6: Closing -->
     <section class="deck-section closing-slide">
         <div class="slide-bg-wrapper">
-             <div class="slide-bg" style="background-image: url('/img/projects/KONVOI.jpg'); opacity: 0.3;"></div>
+             <div class="slide-bg" style="background-image: url('/img/projects/KONVOI.jpg'); opacity: 0.25;"></div>
         </div>
         <div class="deck-content section-inner reveal-gsap">
             <h2 class="closing-title">LET'S COLOR YOUR VISION</h2>
             <p>A boutique experience for world-class projects.</p>
             <div class="cta-group">
-                <a href="/#contact" class="deck-btn-premium">GET IN TOUCH</a>
+                <a href="/#contact-form" class="deck-btn-premium">GET IN TOUCH</a>
             </div>
         </div>
     </section>
 </div>
 
+<script src="/js/cms-settings.js"></script>
 <script>
     document.body.classList.add('deck-active');
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial load animation
-    gsap.from(".hero-slide .reveal-gsap", {
-        opacity: 0,
-        y: 50,
-        duration: 2,
-        stagger: 0.3,
-        ease: "power4.out"
-    });
-
-    // Scroll Trigger animations for each section
-    const sections = document.querySelectorAll('.deck-section');
-    sections.forEach(section => {
-        const reveals = section.querySelectorAll('.reveal-gsap');
-        if (reveals.length > 0) {
-            gsap.from(reveals, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 60%",
-                    scroller: ".deck-container"
-                },
-                opacity: 0,
-                y: 40,
-                duration: 1.5,
-                stagger: 0.2,
-                ease: "expo.out"
-            });
+    async function initDeck() {
+        const data = await window.CMS.loadSettings();
+        const deck = data.deckData;
+        
+        if (!deck) {
+            console.warn("Deck data missing");
+            return;
         }
 
-        // Parallax effect for bg
-        const bg = section.querySelector('.slide-bg');
-        if (bg) {
-            gsap.to(bg, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true,
-                    scroller: ".deck-container"
-                },
-                y: "20%",
-                ease: "none"
-            });
-        }
-    });
+        // 1. Hero
+        document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
+        document.getElementById('deck-hero-title').innerHTML = deck.hero.title;
+        document.getElementById('deck-hero-subtitle').innerText = deck.hero.subtitle;
 
-    // Mouse reveal indicator pulses
-    gsap.to(".mouse", {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-        duration: 1,
-        ease: "power2.inOut"
-    });
-</script>
+        // 2. Services
+        const servicesGrid = document.getElementById('deck-services-grid');
+        servicesGrid.innerHTML = deck.services.map((s, i) => `
+            <div class="service-slide-item reveal-gsap">
+                <div class="service-icon-box"><span class="service-number">0${i+1}</span></div>
+                <div class="service-text">
+                    <h3>${s.title}</h3>
+                    <p>${s.description}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // 3. Talents
+        const talentsWrapper = document.getElementById('deck-talents-wrapper');
+        const talentKeys = ['raul', 'fady', 'cem'];
+        talentsWrapper.innerHTML = talentKeys.map((key, index) => {
+            const t = deck.sections[key];
+            const isFlipped = index % 2 !== 0; // Flip every other talent
+            return `
+                <section class="deck-section talent-slide ${key}-slide">
+                    <div class="slide-bg-wrapper">
+                         <div class="slide-bg" style="background-image: url('${t.project_image}');"></div>
+                    </div>
+                    <div class="overlay-grad ${isFlipped ? 'inverse' : ''}"></div>
+                    <div class="talent-flex container section-inner ${isFlipped ? 'flipped' : ''}">
+                        <div class="talent-photo reveal-gsap">
+                            <div class="photo-frame">
+                                <img src="/img/team/${key === 'raul' ? 'raul_lavado' : (key === 'cem' ? 'cem_040' : key)}.jpg" alt="${t.name}">
+                            </div>
+                        </div>
+                        <div class="talent-info reveal-gsap">
+                            <span class="talent-label">KEY TALENT</span>
+                            <h2>${t.name}</h2>
+                            <h3 class="role-tag">${t.role}</h3>
+                            <div class="bio-box">
+                                <p>${t.bio}</p>
+                            </div>
+                            <div class="key-works">
+                                <h4>SELECTED FILMOGRAPHY</h4>
+                                <div class="works-tags">
+                                    ${t.works.map(w => `<span class="work-tag">${w}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }).join('');
+
+        // Trigger GSAP after rendering
+        setTimeout(initAnimations, 100);
+    }
+
+    function initAnimations() {
+        // Initial load animation
+        gsap.from(".hero-slide .reveal-gsap", {
+            opacity: 0, y: 30, duration: 1.5, stagger: 0.2, ease: "power3.out"
+        });
+
+        // Scroll Trigger animations
+        document.querySelectorAll('.deck-section').forEach(section => {
+            const reveals = section.querySelectorAll('.reveal-gsap');
+            if (reveals.length > 0) {
+                gsap.from(reveals, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 75%",
+                        scroller: ".deck-container"
+                    },
+                    opacity: 0, y: 30, duration: 1, stagger: 0.15, ease: "power2.out"
+                });
+            }
+
+            const bg = section.querySelector('.slide-bg');
+            if (bg) {
+                gsap.to(bg, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom", end: "bottom top", scrub: true, scroller: ".deck-container"
+                    },
+                    y: "15%", ease: "none"
+                });
+            }
+        });
+    }
+
+    initDeck();
