@@ -5,7 +5,11 @@ module.exports = function (eleventyConfig) {
     "src/js": "js",
     "src/img": "img",
     "src/admin": "admin",
-    "src/data": "data"
+    "src/data/settings": "data/settings"
+  });
+
+  eleventyConfig.addCollection("projects", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/data/collections/projects/*.json");
   });
 
   return {

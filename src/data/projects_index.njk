@@ -1,0 +1,18 @@
+---
+permalink: /data/projects_index.json
+---
+[
+  {%- for project in collections.projects -%}
+  {
+    "title": {{ project.data.title | dump | safe }},
+    "category": {{ project.data.category | dump | safe }},
+    "director": {{ project.data.director | dump | safe }},
+    "synopsis": {{ project.data.synopsis | dump | safe }},
+    "image": {{ project.data.image | dump | safe }},
+    "video": {{ project.data.video | dump | safe }},
+    "featured": {{ project.data.featured | dump | safe }},
+    "digitalColor": {{ project.data.digitalColor | dump | safe }},
+    "stills": {{ project.data.stills | dump | safe }}
+  }{% if not loop.last %},{% endif %}
+  {%- endfor -%}
+]
