@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": {
+      "en": "Elevating the<br>Cinematic Vision.",
+      "es": "Elevando la<br>Visión Cinematográfica."
+    },
+    "subtitle": {
+      "en": "We collaborate with filmmakers, producers, and studios to bring stories to their final cinematic expression. Through color grading, sound design, and visual effects, our team combines artistic vision with technical excellence to shape every frame with intention and precision. Working closely with creative teams, we ensure every detail honors the director’s vision and enhances the emotional impact of the story. The result is a refined, immersive experience that truly lives on screen",
+      "es": "Colaboramos con cineastas, productores y estudios para llevar las historias a su forma cinematográfica final. Desde la corrección de color y el diseño de sonido hasta los efectos visuales, nuestro equipo combina visión artística con precisión técnica para elevar cada plano. Entendemos las exigencias del cine y de las series, y trabajamos estrechamente con los equipos creativos para asegurar que cada detalle sirva a la visión del director. El resultado es una experiencia refinada e inmersiva que conecta con el público en pantalla."
+    }
+  },
+  "carousel": [
+    {
+      "image": "img/projects/BARRA_BRAVA.png"
+    },
+    {
+      "image": "img/projects/EL SANTO.png"
+    },
+    {
+      "image": "img/projects/HBO_MUXES.webp"
+    },
+    {
+      "image": "img/projects/LA_BODA.jpg"
+    },
+    {
+      "image": "img/projects/konvoi.jpg"
+    },
+    {
+      "image": "img/projects/LA_ESPERA.jpg"
+    },
+    {
+      "image": "img/projects/requiemforselina.jpg"
+    },
+    {
+      "image": "img/projects/LA_ULTIMA.jpg"
+    },
+    {
+      "image": "img/projects/MV5BMmFmM2Y2YTEtNWNlYi00ZmIyLTgzNzktZTNmY2RkODE2MjY0XkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+      "image": "img/projects/songsofearth.jpg"
+    },
+    {
+      "image": "img/projects/ANNE_EVERLASTING.jpg"
+    },
+    {
+      "image": "img/projects/possession.jpg"
+    },
+    {
+      "image": "img/projects/VAST_OF_NIGHT.jpg"
+    },
+    {
+      "image": "img/projects/cuentame-como-paso.jpg"
+    },
+    {
+      "image": "img/projects/goldrun.jpg"
+    }
+  ],
+  "featured_projects": [
+    { "project": "Gold Run" },
+    { "project": "Requiem for Selina" },
+    { "project": "The Arctic Convoy" },
+    { "project": "Songs of Earth" },
+    { "project": "Stargate" },
+    { "project": "Possession" },
+    { "project": "Papeles" },
+    { "project": "La Boda" },
+    { "project": "La Última" },
+    { "project": "The Vast of Night" },
+    { "project": "The Wait" },
+    { "project": "Muxes" },
+    { "project": "Anne Everlasting" }
+  ]
+}
+
+
+

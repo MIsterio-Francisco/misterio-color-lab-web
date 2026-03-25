@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Possession",
+    "es": "Posesión"
+  },
+  "category": {
+    "en": "Horror Film",
+    "es": "Película de Terror"
+  },
+  "director": "Henrik Martin Dahlsbakken",
+  "synopsis": {
+    "en": "A priest is called to a remote farm to investigate a strange phenomena that points to something darker than expected.",
+    "es": "Un sacerdote es llamado a una granja remota para investigar fenómenos extraños que apuntan a algo más oscuro de lo esperado."
+  },
+  "image": "img/projects/POSSESSION.jpg",
+  "video": "",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}

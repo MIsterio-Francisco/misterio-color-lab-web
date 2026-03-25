@@ -3,3 +3,4 @@ node_modules/
 _site/
 .eleventy.js.cache
 package-lock.json
+_site/

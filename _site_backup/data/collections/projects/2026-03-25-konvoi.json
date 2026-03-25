@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "The Arctic Convoy",
+    "es": "Konvoi"
+  },
+  "category": {
+    "en": "War Drama",
+    "es": "Drama Bélico"
+  },
+  "director": "Henrik Martin Dahlsbakken",
+  "synopsis": {
+    "en": "In 1941, Allied cargo ships filled with war materials embark on perilous journeys to Murmansk. A Norwegian merchant ship decides to continue its mission despite extreme danger.",
+    "es": "En 1941, barcos de carga aliados llenos de materiales de guerra se embarcan en peligrosos viajes a Múrmansk. Un barco mercante noruego decide continuar su misión a pesar del peligro extremo."
+  },
+  "image": "img/projects/KONVOI.jpg",
+  "video": "https://vimeo.com/890042605",
+  "featured": true,
+  "digitalColor": "cocolors.com",
+  "stills": []
+}
