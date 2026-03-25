@@ -57,21 +57,44 @@
     }
   ],
   "featured_projects": [
-    { "project": "Gold Run" },
-    { "project": "Requiem for Selina" },
-    { "project": "The Arctic Convoy" },
-    { "project": "Songs of Earth" },
-    { "project": "Stargate" },
-    { "project": "Possession" },
-    { "project": "Papeles" },
-    { "project": "La Boda" },
-    { "project": "La Última" },
-    { "project": "The Vast of Night" },
-    { "project": "The Wait" },
-    { "project": "Muxes" },
-    { "project": "Anne Everlasting" }
+    {
+      "project": "Anne Everlasting"
+    },
+    {
+      "project": "The Arctic Convoy"
+    },
+    {
+      "project": "Papeles"
+    },
+    {
+      "project": "Songs of Earth"
+    },
+    {
+      "project": "The Wait"
+    },
+    {
+      "project": "Stargate"
+    },
+    {
+      "project": "La Boda"
+    },
+    {
+      "project": "La Última"
+    },
+    {
+      "project": "Possession"
+    },
+    {
+      "project": "Gold Run"
+    },
+    {
+      "project": "Requiem for Selina"
+    },
+    {
+      "project": "The Vast of Night"
+    },
+    {
+      "project": "Muxes"
+    }
   ]
 }
-
-
-
