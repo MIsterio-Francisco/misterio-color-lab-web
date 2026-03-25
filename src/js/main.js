@@ -12,9 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateLanguage(currentLang);
         loadProjects();
-        // Trigger dynamic settings render once data is fetched
         renderDynamicSettings();
         initCarousel();
+
+        // Handle URL hash on load (e.g. from /deck/#contact-form)
+        if (window.location.hash) {
+            setTimeout(() => {
+                const el = document.querySelector(window.location.hash);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        }
     }
 
     // --- Poster Carousel ---
