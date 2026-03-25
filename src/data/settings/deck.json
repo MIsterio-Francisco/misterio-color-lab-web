@@ -36,21 +36,24 @@
       "role": "Senior Colorist & Co-founder",
       "bio": "Senior Colorist and co-founder at MISTERIO, with over 17 years of experience across cinema, television, and advertising. A specialist in Baselight and HDR workflows, his work includes acclaimed projects such as La Espera, La Última, Papeles, and Cuéntame. In 2024, he became the only Spanish colorist to receive a FilmLight Color Award, recognized for his work on La Espera. He is also a color grading instructor at ECAM.",
       "works": ["La Espera (FilmLight Award)", "La Última", "Papeles", "Cuéntame", "The Pact"],
-      "project_image": "/img/projects/LA_ESPERA.jpg"
+      "project_image": "/img/projects/LA_ESPERA.jpg",
+      "photo": "/img/team/raul_lavado.jpg"
     },
     "fady": {
       "name": "Fady Melek",
       "role": "Senior Colorist",
       "bio": "With over 20 years of experience and a background in art and chemistry, Fady began his career in film laboratories and worked at Technicolor, contributing to major films such as Taken and Transporter. Winner of 4 Telly Awards and the 2024 Global Recognition Award, Fady leads Misterio Color Lab operations in Brazil.",
       "works": ["Taken", "Transporter", "The Pact", "Orca"],
-      "project_image": "/img/projects/ORCA.jpg"
+      "project_image": "/img/projects/ORCA.jpg",
+      "photo": "/img/team/fady.jpg"
     },
     "cem": {
       "name": "Cem Ozkilicci",
       "role": "Senior Colorist",
       "bio": "Proud recipient of the FilmLight Colour Award at Camerimage 2023. Bringing over 20 years of international experience spanning Canada, the United States, Scandinavia, and Asia, Cem specializes in color grading for commercials, features, and episodics using Baselight. From HDR/Dolby Vision grading to bespoke look development and tailored workflows, COCOLORS ensures a seamless, cohesive creative process.",
       "works": ["Songs of Earth (FilmLight Award)", "Konvoi", "Gold Run", "Stargate", "Possession"],
-      "project_image": "/img/projects/SONGS_OF_EARTH.jpg"
+      "project_image": "/img/projects/SONGS_OF_EARTH.jpg",
+      "photo": "/img/projects/cem_040.jpg"
     }
   }
 }
