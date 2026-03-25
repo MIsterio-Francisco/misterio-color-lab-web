@@ -68,9 +68,10 @@ collections:
           - name: "featured_projects"
             label: "Featured Projects Order"
             widget: "list"
-            summary: "{{fields.project}}"
+            summary: "{{project}}"
             field:
               label: "Project"
+              name: "project"
               widget: "relation"
               collection: "projects"
               search_fields: ["title.en", "title.es"]

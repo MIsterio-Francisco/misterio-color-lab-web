@@ -57,19 +57,20 @@
     }
   ],
   "featured_projects": [
-    "Gold Run",
-    "Requiem for Selina",
-    "The Arctic Convoy",
-    "Songs of Earth",
-    "Stargate",
-    "Possession",
-    "Papeles",
-    "La Boda",
-    "La Última",
-    "The Vast of Night",
-    "The Wait",
-    "Muxes",
-    "El Santo",
-    "Cuéntame"
+    { "project": "Gold Run" },
+    { "project": "Requiem for Selina" },
+    { "project": "The Arctic Convoy" },
+    { "project": "Songs of Earth" },
+    { "project": "Stargate" },
+    { "project": "Possession" },
+    { "project": "Papeles" },
+    { "project": "La Boda" },
+    { "project": "La Última" },
+    { "project": "The Vast of Night" },
+    { "project": "The Wait" },
+    { "project": "Muxes" },
+    { "project": "El Santo" },
+    { "project": "Cuéntame" }
   ]
 }
+
