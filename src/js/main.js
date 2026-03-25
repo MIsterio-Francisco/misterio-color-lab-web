@@ -187,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalDirector) modalDirector.innerText = project.director || '';
         if (modalSynopsis) modalSynopsis.innerText = getLocalized(project.synopsis);
 
-        const modalAttribution = document.getElementById('modal-attribution');
         if (modalAttribution) {
             if (project.digitalColor) {
                 let colorLink = 'https://cocolors.com';
@@ -202,10 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (project.video || project.trailer) {
-            const videoUrl = project.video || project.trailer;
+        const videoUrl = project.video || project.trailer;
+        if (videoUrl) {
+            const embedUrl = getEmbedUrl(videoUrl);
             const iframe = document.createElement('iframe');
-            iframe.src = `${videoUrl}?autoplay=1&rel=0`;
+            iframe.src = `${embedUrl}?autoplay=1&rel=0`;
             iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
             iframe.allowFullscreen = true;
             if (iframeContainer) {
