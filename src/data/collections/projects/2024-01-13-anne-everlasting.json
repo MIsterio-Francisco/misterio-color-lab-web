@@ -1,19 +1,20 @@
 {
+  "digitalColor": "Raúl Lavado Verdú",
+  "stills": [],
+  "director": "Zaina Salameh",
+  "featured": true,
+  "synopsis": {
+    "en": "Anne Everlasting is a documentary that chronicles the inspiring true story of Anne Lorimor, who at 89 years old became the oldest person to summit Mount Kilimanjaro in 2019. The film documents her challenging nine-day ascent of the 19,340-foot mountain, a feat she accomplished without artificial oxygen.",
+    "es": "Sinopsis Anne Everlasting es un documental que narra la inspiradora historia real de Anne Lorimor, quien a los 89 años se convirtió en la persona de mayor edad en alcanzar la cima del monte Kilimanjaro en 2019. La película documenta su exigente ascenso de nueve días a la montaña de 19.340 pies de altura, una hazaña que logró sin oxígeno artificial.próximamente..."
+  },
   "title": {
     "en": "Anne Everlasting",
     "es": "Anne Everlasting"
   },
+  "video": "https://www.youtube.com/embed/W2kqeVJbILM",
+  "image": "img/projects/ANNE_EVERLASTING.jpg",
   "category": {
     "en": "Documentary Film",
     "es": "Largometraje Documental"
-  },
-  "director": "",
-  "synopsis": {
-    "en": "Synopsis coming soon...",
-    "es": "Sinopsis próximamente..."
-  },
-  "image": "img/projects/ANNE_EVERLASTING.jpg",
-  "video": "https://www.youtube.com/embed/W2kqeVJbILM",
-  "featured": true,
-  "stills": []
+  }
 }
