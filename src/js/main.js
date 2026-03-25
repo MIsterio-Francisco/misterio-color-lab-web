@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalAttribution = document.getElementById('modal-attribution');
         if (modalAttribution) {
             if (project.digitalColor) {
-                modalAttribution.innerHTML = `<span class="attribution-label">Digital Color:</span> <a href="https://${project.digitalColor}" target="_blank" class="attribution-link">${project.digitalColor}</a>`;
+                modalAttribution.innerHTML = `<span class="attribution-label">DIGITAL COLOR:</span> <a href="https://cocolors.com" target="_blank" class="attribution-link">${project.digitalColor}</a>`;
                 modalAttribution.classList.add('active');
             } else {
                 modalAttribution.innerHTML = '';
