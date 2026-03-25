@@ -7,14 +7,16 @@ async function loadCMSSettings() {
             fetch('/data/settings/studio.json').then(res => res.json()),
             fetch('/data/settings/team.json').then(res => res.json()),
             fetch('/data/settings/contact.json').then(res => res.json()),
+            fetch('/data/settings/deck.json').then(res => res.json()),
         ]);
 
         const homeData = responses[0].status === 'fulfilled' ? responses[0].value : null;
         const studioData = responses[1].status === 'fulfilled' ? responses[1].value : null;
         const teamData = responses[2].status === 'fulfilled' ? responses[2].value : null;
         const contactData = responses[3].status === 'fulfilled' ? responses[3].value : null;
+        const deckData = responses[4].status === 'fulfilled' ? responses[4].value : null;
 
-        return { homeData, studioData, teamData, contactData };
+        return { homeData, studioData, teamData, contactData, deckData };
     } catch (err) {
         console.warn("CMS settings fetch failed:", err);
         return { homeData: null, studioData: null, teamData: null, contactData: null };
