@@ -70,87 +70,107 @@ permalink: /deck/
     gsap.registerPlugin(ScrollTrigger);
 
     async function initDeck() {
-        console.log("Deck Init Started...");
-        const data = await window.CMS.loadSettings();
-        const deck = data.deckData;
+        console.group("Sales Deck Debugger");
+        console.log("1. Init Started");
         
-        if (!deck) {
-            console.error("CRITICAL: Deck data missing from CMS fetch.");
-            // Manual fetch fallback with cache buster
-            try {
-                const res = await fetch('/data/settings/deck.json?v=' + Date.now());
-                const rawDeck = await res.json();
-                renderDeck(rawDeck);
-            } catch (e) {
-                console.error("Final fallback failed:", e);
+        try {
+            const data = await window.CMS.loadSettings();
+            console.log("2. CMS Data Fetched:", data);
+            
+            let deck = data.deckData;
+            
+            if (!deck) {
+                console.warn("3. deckData missing from loadSettings, trying manual fetch...");
+                const res = await fetch('/data/settings/deck.json?cb=' + Date.now());
+                if (!res.ok) throw new Error("Manual fetch failed with status " + res.status);
+                deck = await res.json();
+                console.log("3b. Manual Deck Data Fetched:", deck);
+            } else {
+                console.log("3. deckData found");
             }
-            return;
-        }
 
-        renderDeck(deck);
+            if (deck) {
+                renderDeck(deck);
+                console.log("4. Render success");
+            } else {
+                throw new Error("No deck data available from any source");
+            }
+        } catch (err) {
+            console.error("FATAL: Deck initialization failed:", err);
+            // Emergency fallback for "Our Expertise" if data fails
+            document.getElementById('deck-services-grid').innerHTML = '<p style="color:red; font-size: 2rem;">Error loading content. Please try refreshing the page.</p>';
+        }
+        console.groupEnd();
     }
 
     function renderDeck(deck) {
-        console.log("Rendering Deck Content...");
+        // ... (existing render logic)
         // 1. Hero
-        document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
-        document.getElementById('deck-hero-title').innerHTML = deck.hero.title;
-        document.getElementById('deck-hero-subtitle').innerText = deck.hero.subtitle;
+        try {
+            document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
+            document.getElementById('deck-hero-title').innerHTML = deck.hero.title;
+            document.getElementById('deck-hero-subtitle').innerText = deck.hero.subtitle;
+        } catch(e) { console.warn("Hero render fail:", e); }
 
         // 2. Services
-        const servicesGrid = document.getElementById('deck-services-grid');
-        servicesGrid.innerHTML = deck.services.map((s, i) => `
-            <div class="service-slide-item reveal-gsap">
-                <div class="service-icon-box"><span class="service-number">0${i+1}</span></div>
-                <div class="service-text">
-                    <h3>${s.title}</h3>
-                    <p>${s.description}</p>
+        try {
+            const servicesGrid = document.getElementById('deck-services-grid');
+            servicesGrid.innerHTML = deck.services.map((s, i) => `
+                <div class="service-slide-item reveal-gsap">
+                    <div class="service-icon-box"><span class="service-number">0${i+1}</span></div>
+                    <div class="service-text">
+                        <h3>${s.title}</h3>
+                        <p>${s.description}</p>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
+        } catch(e) { console.warn("Services render fail:", e); }
 
         // 3. Talents
-        const talentsWrapper = document.getElementById('deck-talents-wrapper');
-        const talentKeys = ['raul', 'fady', 'cem'];
-        talentsWrapper.innerHTML = talentKeys.map((key, index) => {
-            if (!deck.sections[key]) return '';
-            const t = deck.sections[key];
-            const isFlipped = index % 2 !== 0;
-            return `
-                <section class="deck-section talent-slide ${key}-slide" style="z-index: ${10 + index}">
-                    <div class="slide-bg-wrapper">
-                         <div class="slide-bg" style="background-image: url('${t.project_image}');"></div>
-                    </div>
-                    <div class="overlay-grad ${isFlipped ? 'inverse' : ''}"></div>
-                    <div class="talent-flex container section-inner ${isFlipped ? 'flipped' : ''}">
-                        <div class="talent-photo reveal-gsap">
-                            <div class="photo-frame">
-                                <img src="/img/team/${key === 'raul' ? 'raul_lavado' : (key === 'cem' ? 'cem_040' : key)}.jpg" alt="${t.name}">
-                            </div>
+        try {
+            const talentsWrapper = document.getElementById('deck-talents-wrapper');
+            const talentKeys = ['raul', 'fady', 'cem'];
+            talentsWrapper.innerHTML = talentKeys.map((key, index) => {
+                if (!deck.sections || !deck.sections[key]) return '';
+                const t = deck.sections[key];
+                const isFlipped = index % 2 !== 0;
+                return `
+                    <section class="deck-section talent-slide ${key}-slide" style="z-index: ${10 + index}">
+                        <div class="slide-bg-wrapper">
+                             <div class="slide-bg" style="background-image: url('${t.project_image}');"></div>
                         </div>
-                        <div class="talent-info reveal-gsap">
-                            <span class="talent-label">KEY TALENT</span>
-                            <h2>${t.name}</h2>
-                            <h3 class="role-tag">${t.role}</h3>
-                            <div class="bio-box">
-                                <p>${t.bio}</p>
+                        <div class="overlay-grad ${isFlipped ? 'inverse' : ''}"></div>
+                        <div class="talent-flex container section-inner ${isFlipped ? 'flipped' : ''}">
+                            <div class="talent-photo reveal-gsap">
+                                <div class="photo-frame">
+                                    <img src="/img/team/${key === 'raul' ? 'raul_lavado' : (key === 'cem' ? 'cem_040' : key)}.jpg" alt="${t.name}">
+                                </div>
                             </div>
-                            <div class="key-works">
-                                <h4>SELECTED FILMOGRAPHY</h4>
-                                <div class="works-tags">
-                                    ${t.works.map(w => `<span class="work-tag">${w}</span>`).join('')}
+                            <div class="talent-info reveal-gsap">
+                                <span class="talent-label">KEY TALENT</span>
+                                <h2>${t.name}</h2>
+                                <h3 class="role-tag">${t.role}</h3>
+                                <div class="bio-box">
+                                    <p>${t.bio}</p>
+                                </div>
+                                <div class="key-works">
+                                    <h4>SELECTED FILMOGRAPHY</h4>
+                                    <div class="works-tags">
+                                        ${t.works ? t.works.map(w => `<span class="work-tag">${w}</span>`).join('') : ''}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            `;
-        }).join('');
+                    </section>
+                `;
+            }).join('');
+        } catch(e) { console.warn("Talents render fail:", e); }
 
         initAnimations();
     }
 
     function initAnimations() {
+        console.log("5. Initializing GSAP Animations");
         // Initial load animation
         gsap.from(".hero-slide .reveal-gsap", {
             opacity: 0, y: 30, duration: 1.5, stagger: 0.2, ease: "power3.out"
@@ -160,15 +180,17 @@ permalink: /deck/
         document.querySelectorAll('.deck-section').forEach(section => {
             const reveals = section.querySelectorAll('.reveal-gsap');
             if (reveals.length > 0) {
-                gsap.set(reveals, { opacity: 0, y: 30 });
-                gsap.to(reveals, {
+                // Ensure they are not invisible if GSAP fails to trigger
+                gsap.set(reveals, { opacity: 1, y: 0 }); 
+                // Then animate
+                gsap.from(reveals, {
                     scrollTrigger: {
                         trigger: section,
-                        start: "top 85%",
+                        start: "top 90%",
                         scroller: ".deck-container",
                         toggleActions: "play none none none"
                     },
-                    opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power2.out"
+                    opacity: 0, y: 30, duration: 1, stagger: 0.15, ease: "power2.out"
                 });
             }
 
@@ -179,10 +201,10 @@ permalink: /deck/
                         trigger: section,
                         start: "top bottom", end: "bottom top", scrub: true, scroller: ".deck-container"
                     },
-                    y: "15%", ease: "none"
+                    y: "10%", ease: "none"
                 });
             }
         });
     }
 
-    initDeck();
+    document.addEventListener('DOMContentLoaded', initDeck);

@@ -20,6 +20,7 @@ body.deck-active {
     background-color: var(--deck-bg);
     font-family: 'Outfit', sans-serif;
     color: var(--deck-text);
+    visibility: visible !important;
 }
 
 /* Hide Main Nav in Deck */
@@ -32,6 +33,7 @@ body.deck-active .navbar {
     width: 100%;
     overflow-x: hidden;
     background: var(--deck-bg);
+    min-height: 100vh;
 }
 
 .deck-section {
