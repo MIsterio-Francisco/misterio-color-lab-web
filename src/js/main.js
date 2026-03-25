@@ -190,7 +190,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalAttribution = document.getElementById('modal-attribution');
         if (modalAttribution) {
             if (project.digitalColor) {
-                modalAttribution.innerHTML = `<span class="attribution-label">DIGITAL COLOR:</span> <a href="https://cocolors.com" target="_blank" class="attribution-link">${project.digitalColor}</a>`;
+                const colorLink = project.digitalColor.includes('Fady Melek') 
+                    ? 'https://fadymelek.com/' 
+                    : 'https://cocolors.com';
+                modalAttribution.innerHTML = `<span class="attribution-label">DIGITAL COLOR:</span> <a href="${colorLink}" target="_blank" class="attribution-link">${project.digitalColor}</a>`;
                 modalAttribution.classList.add('active');
             } else {
                 modalAttribution.innerHTML = '';
