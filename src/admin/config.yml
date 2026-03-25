@@ -8,8 +8,11 @@ public_folder: "img/projects" # The src attribute for uploaded media will begin 
 collections:
   - name: "projects"
     label: "Projects"
-    folder: "src/data/collections/projects" # We use a folder here, but Decap can build JSON files
+    folder: "src/data/collections/projects"
+    extension: "json"
+    format: "json"
     create: true
+
     summary: "{{title.en}} — {{category.en}}"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
