@@ -1,19 +1,20 @@
 {
-  "title": {
-    "en": "La Última",
-    "es": "La Última"
-  },
-  "category": {
-    "en": "Disney+ Original Series",
-    "es": "Serie Original Disney+"
-  },
+  "digitalColor": "Raúl Lavado Verdú",
+  "stills": [],
   "director": "Eduard Cortés",
+  "featured": true,
   "synopsis": {
     "en": "Candela and Diego pursue their dreams in music and boxing, navigating love and challenges in Disney+'s first Spanish original series.",
     "es": "Candela y Diego persiguen sus sueños en la música y el boxeo, navegando el amor y los desafíos en la primera serie original española de Disney+."
   },
-  "image": "img/projects/LA_ULTIMA.jpg",
+  "title": {
+    "en": "La Última",
+    "es": "La Última"
+  },
   "video": "https://www.youtube.com/embed/Vkerray6aJM",
-  "featured": true,
-  "stills": []
+  "image": "img/projects/LA_ULTIMA.jpg",
+  "category": {
+    "en": "Disney+ Original Series",
+    "es": "Serie Original Disney+"
+  }
 }
