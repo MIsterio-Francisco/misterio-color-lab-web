@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const titleRef = typeof item === 'string' ? item : item.project;
                 const project = dynamicProjects.find(p => {
                     const pTitle = typeof p.title === 'string' ? p.title : (p.title.en || p.title.es);
-                    return pTitle === titleRef;
+                    return pTitle.trim().toLowerCase() === titleRef.trim().toLowerCase();
                 });
                 if (project) featuredProjects.push(project);
             });
