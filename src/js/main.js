@@ -166,7 +166,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Modal Logic ---
+    function getEmbedUrl(url) {
+        if (!url) return '';
+        
+        // Vimeo
+        if (url.includes('vimeo.com')) {
+            const parts = url.split('/');
+            const vimeoId = parts[parts.length - 1].split('?')[0];
+            return `https://player.vimeo.com/video/${vimeoId}`;
+        }
+        
+        // YouTube
+        if (url.includes('youtube.com') || url.includes('youtu.be')) {
+            let youtubeId = '';
+            if (url.includes('v=')) {
+                youtubeId = url.split('v=')[1].split('&')[0];
+            } else {
+                const parts = url.split('/');
+                youtubeId = parts[parts.length - 1].split('?')[0];
+            }
+            return `https://www.youtube.com/embed/${youtubeId}`;
+        }
+        
+        return url;
+    }
+
     function openProjectModal(project) {
+        if (!project) return;
         console.log("Opening modal for project:", project);
 
         const modal = document.getElementById('videoModal');
@@ -176,12 +202,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalDirector = document.getElementById('modal-director');
         const modalSynopsis = document.getElementById('modal-synopsis');
         const modalStills = document.getElementById('modal-stills-container');
+        const modalAttribution = document.getElementById('modal-attribution');
 
         if (!modal) {
             console.error("Modal element #videoModal not found in the DOM!");
             return;
         }
-        const getLocalized = (field) => typeof field === 'string' ? field : (field ? (field[currentLang] || field.en) : '');
+
+        const getLocalized = (field) => {
+            if (!field) return '';
+            if (typeof field === 'string') return field;
+            return field[currentLang] || field.en || '';
+        };
+
         if (modalTitle) modalTitle.innerText = getLocalized(project.title);
         if (modalCategory) modalCategory.innerText = getLocalized(project.category);
         if (modalDirector) modalDirector.innerText = project.director || '';
@@ -219,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalStills) {
             modalStills.innerHTML = '';
             if (project.stills && project.stills.length > 0) {
-                project.stills.forEach(still => {
+                 project.stills.forEach(still => {
                     const img = document.createElement('img');
                     img.src = typeof still === 'string' ? still : (still.still || '');
                     img.alt = getLocalized(project.title);
@@ -228,9 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        modal?.classList.add('open');
+        modal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
+
 
     function closeModal() {
         const modal = document.getElementById('videoModal');
