@@ -100,15 +100,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!galleryGrid) return;
         galleryGrid.innerHTML = '';
 
-        const featuredProjects = dynamicProjects.filter(p => p.featured);
+        let featuredProjects = [];
+        const orderList = cmsData.homeData?.featured_projects || [];
+
+        if (orderList.length > 0) {
+            // Map the titles to actual project objects in the specified order
+            orderList.forEach(titleRef => {
+                const project = dynamicProjects.find(p => {
+                    const pTitle = typeof p.title === 'string' ? p.title : (p.title.en || p.title.es);
+                    return pTitle === titleRef;
+                });
+                if (project) featuredProjects.push(project);
+            });
+
+            // Add any other projects that are marked as featured but not in the order list (optional)
+            dynamicProjects.filter(p => p.featured && !orderList.includes(typeof p.title === 'string' ? p.title : (p.title.en || p.title.es))).forEach(p => featuredProjects.push(p));
+        } else {
+            // Fallback to original logic if no order is defined in CMS
+            featuredProjects = dynamicProjects.filter(p => p.featured);
+        }
 
         featuredProjects.forEach(project => {
             const card = document.createElement('article');
             card.className = 'project-card reveal';
 
             const imgContent = project.image
-                ? `<img src="${project.image}" alt="${project.title}" class="project-img" loading="lazy">`
-                : `<div class="img-placeholder">${project.title}</div>`;
+                ? `<img src="${project.image}" alt="${typeof project.title === 'string' ? project.title : project.title.en}" class="project-img" loading="lazy">`
+                : `<div class="img-placeholder">${typeof project.title === 'string' ? project.title : project.title.en}</div>`;
 
             const title = typeof project.title === 'string' ? project.title : (project.title[currentLang] || project.title.en);
             const category = typeof project.category === 'string' ? project.category : (project.category[currentLang] || project.category.en);
