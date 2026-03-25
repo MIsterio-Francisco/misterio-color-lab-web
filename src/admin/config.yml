@@ -68,15 +68,15 @@ collections:
           - name: "featured_projects"
             label: "Featured Projects Order"
             widget: "list"
-            summary: "{{project}}"
+            summary: "{{fields.project}}"
             field:
               label: "Project"
-              name: "project"
               widget: "relation"
               collection: "projects"
               search_fields: ["title.en", "title.es"]
               value_field: "title.en"
               display_fields: ["title.en"]
+              search_limit: 1000
 
       - file: "src/data/settings/studio.json"
         label: "Studio Page"
