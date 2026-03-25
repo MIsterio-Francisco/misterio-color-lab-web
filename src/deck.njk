@@ -8,12 +8,12 @@ permalink: /deck/
 
 <div class="deck-container">
     <!-- Section 1: Hero -->
-    <section class="deck-section hero-slide">
+    <section class="deck-section hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ deck.hero.image }}'); background-size: cover; background-position: center;">
         <div class="overlay"></div>
         <div class="deck-content">
             <img src="/img/logo_white_hq.png" alt="Misterio Color Lab" class="reveal">
-            <h1 class="reveal">Cinematic Excellence</h1>
-            <p class="reveal">The Post-Production Boutique for the Discerning Visionary.</p>
+            <h1 class="reveal">{{ deck.hero.title | safe }}</h1>
+            <p class="reveal">{{ deck.hero.subtitle }}</p>
         </div>
     </section>
 
@@ -21,44 +21,36 @@ permalink: /deck/
     <section class="deck-section services-slide">
         <div class="container">
             <h2 class="reveal">Our Services</h2>
-            <div class="services-wrapper">
+            <div class="services-wrapper detailed-grid">
+                {% for service in deck.services %}
                 <div class="service-slide-item reveal">
-                    <h3>Color Grading & HDR</h3>
-                    <p>Dolby Vision Certified / 4K DCI Projection / Cinematic Mastering.</p>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
                 </div>
-                <div class="service-slide-item reveal">
-                    <h3>Digital Lab</h3>
-                    <p>Dailies / Transcoding / LTO Archiving / Technical Deliveries.</p>
-                </div>
-                <div class="service-slide-item reveal">
-                    <h3>VFX & Sound</h3>
-                    <p>Integrated Compositing / Atmospheric Sound Design & Mix.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
 
     <!-- Section 3: Raúl Lavado -->
     <section class="deck-section talent-slide raul-slide">
+        <div class="project-bg" style="background-image: url('{{ deck.sections.raul.project_image }}');"></div>
         <div class="talent-flex container">
             <div class="talent-photo reveal">
-                <img src="/img/team/raul_lavado.jpg" alt="Raúl Lavado Verdú">
+                <img src="/img/team/raul_lavado.jpg" alt="{{ deck.sections.raul.name }}">
             </div>
             <div class="talent-info reveal">
-                <h2>Raúl Lavado Verdú</h2>
-                <h3 class="role-tag">Senior Colorist & Co-founder</h3>
+                <h2>{{ deck.sections.raul.name }}</h2>
+                <h3 class="role-tag">{{ deck.sections.raul.role }}</h3>
                 <div class="bio-placeholder">
-                    <p>Senior Colorist and co-founder at MISTERIO, with over 17 years of experience across cinema, television, and advertising. A specialist in Baselight and HDR workflows, his work includes acclaimed projects such as <em>La Espera</em>, <em>La Última</em>, <em>Papeles</em>, and <em>Cuéntame</em>.</p>
-                    <p>In 2024, he became the only Spanish colorist to receive a <strong>FilmLight Color Award</strong>, recognized for his work on <em>La Espera</em>. He is also a color grading instructor at ECAM.</p>
+                    <p>{{ deck.sections.raul.bio }}</p>
                 </div>
                 <div class="key-works">
                     <h4>Key Works</h4>
                     <ul id="raul-works">
-                        <li>La Espera (FilmLight Award)</li>
-                        <li>La Última</li>
-                        <li>Papeles</li>
-                        <li>Cuéntame</li>
-                        <li>The Pact</li>
+                        {% for work in deck.sections.raul.works %}
+                        <li>{{ work }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -67,24 +59,23 @@ permalink: /deck/
 
     <!-- Section 4: Fady Melek -->
     <section class="deck-section talent-slide fady-slide">
+        <div class="project-bg" style="background-image: url('{{ deck.sections.fady.project_image }}');"></div>
         <div class="talent-flex container">
             <div class="talent-photo reveal">
-                <img src="/img/team/fady.jpg" alt="Fady Melek">
+                <img src="/img/team/fady.jpg" alt="{{ deck.sections.fady.name }}">
             </div>
             <div class="talent-info reveal">
-                <h2>Fady Melek</h2>
-                <h3 class="role-tag">Senior Colorist</h3>
+                <h2>{{ deck.sections.fady.name }}</h2>
+                <h3 class="role-tag">{{ deck.sections.fady.role }}</h3>
                 <div class="bio-placeholder">
-                    <p>With over 20 years of experience and a background in art and chemistry, Fady began his career in film laboratories and worked at <strong>Technicolor</strong>, contributing to major films such as <em>Taken</em> and <em>Transporter</em>.</p>
-                    <p>Winner of 4 Telly Awards and the 2024 Global Recognition Award, Fady leads Misterio Color Lab operations in Brazil.</p>
+                    <p>{{ deck.sections.fady.bio }}</p>
                 </div>
                 <div class="key-works">
                     <h4>Key Works</h4>
                     <ul>
-                        <li>Taken</li>
-                        <li>Transporter</li>
-                        <li>The Pact</li>
-                        <li>Orca</li>
+                        {% for work in deck.sections.fady.works %}
+                        <li>{{ work }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -93,26 +84,23 @@ permalink: /deck/
 
     <!-- Section 5: Cem Ozkilicci -->
     <section class="deck-section talent-slide cem-slide">
+        <div class="project-bg" style="background-image: url('{{ deck.sections.cem.project_image }}');"></div>
         <div class="talent-flex container">
             <div class="talent-photo reveal">
-                <img src="/img/projects/cem_040.jpg" alt="Cem Ozkilicci">
+                <img src="/img/projects/cem_040.jpg" alt="{{ deck.sections.cem.name }}">
             </div>
             <div class="talent-info reveal">
-                <h2>Cem Ozkilicci</h2>
-                <h3 class="role-tag">Senior Colorist</h3>
+                <h2>{{ deck.sections.cem.name }}</h2>
+                <h3 class="role-tag">{{ deck.sections.cem.role }}</h3>
                 <div class="bio-placeholder">
-                    <p>Proud recipient of the <strong>FilmLight Colour Award</strong> at Camerimage 2023.</p>
-                    <p>Bringing over 20 years of international experience spanning Canada, the United States, Scandinavia, and Asia, Cem specializes in color grading for commercials, features, and episodics using Baselight.</p>
-                    <p>From HDR/Dolby Vision grading to bespoke look development and tailored workflows, <strong>COCOLORS</strong> ensures a seamless, cohesive creative process.</p>
+                    <p>{{ deck.sections.cem.bio }}</p>
                 </div>
                 <div class="key-works">
                     <h4>Key Works</h4>
                     <ul>
-                        <li>Songs of Earth (FilmLight Award)</li>
-                        <li>Konvoi</li>
-                        <li>Gold Run</li>
-                        <li>Stargate</li>
-                        <li>Possession</li>
+                        {% for work in deck.sections.cem.works %}
+                        <li>{{ work }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

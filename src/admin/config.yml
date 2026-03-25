@@ -160,6 +160,55 @@ collections:
               - {label: "English", name: "en", widget: "string", default: "Crafting the visual soul of your story."}
               - {label: "Spanish", name: "es", widget: "string", default: "Creando el alma visual de tu historia."}
 
+      - file: "src/data/settings/deck.json"
+        label: "Sales Deck"
+        name: "deck"
+        fields:
+          - name: "hero"
+            label: "Hero Section"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - {label: "Background Image", name: "image", widget: "image"}
+          - name: "services"
+            label: "Services Detail"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          - name: "sections"
+            label: "Talent Bios"
+            widget: "object"
+            fields:
+              - name: "raul"
+                label: "Raúl Lavado"
+                widget: "object"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", widget: "string"}}
+                  - {label: "Featured Project Image", name: "project_image", widget: "image"}
+              - name: "fady"
+                label: "Fady Melek"
+                widget: "object"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", widget: "string"}}
+                  - {label: "Featured Project Image", name: "project_image", widget: "image"}
+              - name: "cem"
+                label: "Cem Ozkilicci"
+                widget: "object"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", widget: "string"}}
+                  - {label: "Featured Project Image", name: "project_image", widget: "image"}
+
   - name: "dynamic_pages"
     label: "Pages (Custom)"
     folder: "src/pages"
