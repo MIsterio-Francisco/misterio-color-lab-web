@@ -98,9 +98,15 @@ title: Sales Deck | Misterio Color Lab
     }
 
     function renderDeck(deck) {
+        const fixPath = (p) => {
+            if (!p) return '';
+            if (p.startsWith('http') || p.startsWith('/') || p.startsWith('data:')) return p;
+            return '/' + p;
+        };
+
         // 1. Hero
         try {
-            document.getElementById('hero-bg-img').style.backgroundImage = `url('${deck.hero.image}')`;
+            document.getElementById('hero-bg-img').style.backgroundImage = `url('${fixPath(deck.hero.image)}')`;
             document.getElementById('deck-hero-title').innerHTML = deck.hero.title;
             document.getElementById('deck-hero-subtitle').innerText = deck.hero.subtitle;
         } catch(e) { console.warn("Hero render fail:", e); }
@@ -130,13 +136,13 @@ title: Sales Deck | Misterio Color Lab
                 return `
                     <section class="deck-section talent-slide ${key}-slide" style="z-index: ${10 + index}">
                         <div class="slide-bg-wrapper">
-                             <div class="slide-bg" style="background-image: url('${t.project_image}');"></div>
+                             <div class="slide-bg" style="background-image: url('${fixPath(t.project_image)}');"></div>
                         </div>
                         <div class="overlay-grad ${isFlipped ? 'inverse' : ''}"></div>
                         <div class="talent-flex container section-inner ${isFlipped ? 'flipped' : ''}">
                             <div class="talent-photo reveal-gsap">
                                 <div class="photo-frame">
-                                    <img src="${t.photo || '/img/logo_white.png'}" alt="${t.name}">
+                                    <img src="${fixPath(t.photo) || '/img/logo_white.png'}" alt="${t.name}">
                                 </div>
                             </div>
                             <div class="talent-info reveal-gsap">
@@ -149,7 +155,7 @@ title: Sales Deck | Misterio Color Lab
                                 <div class="key-works">
                                     <h4>SELECTED FILMOGRAPHY</h4>
                                     <div class="works-tags">
-                                        ${t.works ? t.works.map(w => `<span class="work-tag">${w}</span>`).join('') : ''}
+                                        ${t.works ? t.works.map(w => `<span class="work-tag">${w.item || w}</span>`).join('') : ''}
                                     </div>
                                 </div>
                             </div>

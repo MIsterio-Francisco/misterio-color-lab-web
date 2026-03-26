@@ -5,7 +5,7 @@ backend:
 local_backend: true
 
 media_folder: "src/img/projects" # Media files will be stored in the repo under src/img/projects
-public_folder: "img/projects" # The src attribute for uploaded media will begin with img/projects
+public_folder: "/img/projects" # The src attribute for uploaded media will begin with /img/projects
 
 collections:
   - name: "projects"

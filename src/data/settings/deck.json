@@ -2,7 +2,7 @@
   "hero": {
     "title": "Cinematic Excellence",
     "subtitle": "The Post-Production Boutique for the Discerning Visionary.",
-    "image": "img/projects/LA_ESPERA.jpg"
+    "image": "/img/projects/LA_ESPERA.jpg"
   },
   "services": [
     {
@@ -41,7 +41,7 @@
         "Papeles",
         "Cuéntame"
       ],
-      "project_image": "img/projects/whatsapp-image-2024-08-24-at-12.09_edited.jpg",
+      "project_image": "/img/projects/whatsapp-image-2024-08-24-at-12.09_edited.jpg",
       "photo": "/img/team/raul_lavado.jpg"
     },
     "fady": {
