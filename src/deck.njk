@@ -184,22 +184,36 @@ title: Sales Deck | Misterio Color Lab
             if (deck.showreel && deck.showreel.url) {
                 showreelSection.style.display = 'block';
                 const videoContainer = document.getElementById('deck-showreel-container');
-                const embedUrl = getEmbedUrl(deck.showreel.url);
+                
                 videoContainer.innerHTML = `
-                    <div class="iframe-wrapper">
-                        <iframe src="${embedUrl}" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+                    <div class="showreel-thumb-wrapper" style="background-image: url('${fixPath(deck.showreel.thumbnail) || '/img/projects/LA_ESPERA.jpg'}');">
+                        <div class="showreel-overlay">
+                            <h3 class="showreel-title">${deck.showreel.title || 'REEL - MISTERIO'}</h3>
+                        </div>
+                        <div class="play-icon-large">
+                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
                     </div>
                 `;
+
+                videoContainer.onclick = () => {
+                    if (window.openProjectModal) {
+                        window.openProjectModal({
+                            title: deck.showreel.title || 'REEL - MISTERIO',
+                            category: 'Showreel',
+                            video: deck.showreel.url,
+                            director: 'Misterio Color Lab',
+                            synopsis: 'A showcase of our cinematic color grading and post-production work.'
+                        });
+                    }
+                };
             }
         } catch(e) { console.warn("Showreel render fail:", e); }
 
         function getEmbedUrl(url) {
             if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                const id = url.split('/').pop().split('v=').pop().split('&')[0];
-                return `https://www.youtube.com/embed/${id}?autoplay=0&rel=0`;
+                const id = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop().split('?')[0];
+                return `https://www.youtube.com/embed/${id}?autoplay=0&rel=0&modestbranding=1&controls=1`;
             }
             if (url.includes('vimeo.com')) {
                 const id = url.split('/').pop();

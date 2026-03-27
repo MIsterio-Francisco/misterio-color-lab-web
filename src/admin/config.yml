@@ -216,6 +216,8 @@ collections:
             widget: "object"
             fields:
               - {label: "YouTube/Vimeo URL", name: "url", widget: "string"}
+              - {label: "Thumbnail Image", name: "thumbnail", widget: "image"}
+              - {label: "Title", name: "title", widget: "string", default: "REEL - MISTERIO"}
 
   - name: "dynamic_pages"
     label: "Pages (Custom)"

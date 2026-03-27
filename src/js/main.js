@@ -185,14 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // YouTube
         if (url.includes('youtube.com') || url.includes('youtu.be')) {
-            let youtubeId = '';
-            if (url.includes('v=')) {
-                youtubeId = url.split('v=')[1].split('&')[0];
-            } else {
-                const parts = url.split('/');
-                youtubeId = parts[parts.length - 1].split('?')[0];
-            }
-            return `https://www.youtube.com/embed/${youtubeId}`;
+            const youtubeId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop().split('?')[0];
+            return `https://www.youtube.com/embed/${youtubeId}?autoplay=0&rel=0&modestbranding=1&controls=1`;
         }
         
         return url;
@@ -271,6 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
+
+    window.openProjectModal = openProjectModal;
+    window.closeModal = closeModal;
 
 
     function closeModal() {
