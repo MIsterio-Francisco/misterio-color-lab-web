@@ -46,6 +46,19 @@ title: Sales Deck | Misterio Color Lab
     <!-- Talent Slides -->
     <div id="deck-talents-wrapper"></div>
 
+    <!-- Section: Showreel -->
+    <section class="deck-section showreel-slide" id="deck-showreel-section" style="display:none;">
+        <div class="slide-bg-wrapper">
+             <div class="slide-bg" style="background-color: #000; opacity: 0.8;"></div>
+        </div>
+        <div class="container section-inner">
+            <h2 class="section-title reveal-gsap" style="margin-bottom: 2rem;">Showreel</h2>
+            <div class="video-container-premium reveal-gsap" id="deck-showreel-container">
+                 <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
     <!-- Section 6: Closing -->
     <section class="deck-section closing-slide">
         <div class="slide-bg-wrapper">
@@ -164,6 +177,36 @@ title: Sales Deck | Misterio Color Lab
                 `;
             }).join('');
         } catch(e) { console.warn("Talents render fail:", e); }
+
+        // 4. Showreel
+        try {
+            const showreelSection = document.getElementById('deck-showreel-section');
+            if (deck.showreel && deck.showreel.url) {
+                showreelSection.style.display = 'block';
+                const videoContainer = document.getElementById('deck-showreel-container');
+                const embedUrl = getEmbedUrl(deck.showreel.url);
+                videoContainer.innerHTML = `
+                    <div class="iframe-wrapper">
+                        <iframe src="${embedUrl}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+        } catch(e) { console.warn("Showreel render fail:", e); }
+
+        function getEmbedUrl(url) {
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                const id = url.split('/').pop().split('v=').pop().split('&')[0];
+                return `https://www.youtube.com/embed/${id}?autoplay=0&rel=0`;
+            }
+            if (url.includes('vimeo.com')) {
+                const id = url.split('/').pop();
+                return `https://player.vimeo.com/video/${id}`;
+            }
+            return url;
+        }
 
         setTimeout(initAnimations, 100);
     }
