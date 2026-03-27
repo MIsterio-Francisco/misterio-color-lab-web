@@ -211,6 +211,11 @@ collections:
                   - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", name: "item", widget: "string"}}
                   - {label: "Portrait Photo", name: "photo", widget: "image"}
                   - {label: "Featured Project Image", name: "project_image", widget: "image"}
+          - name: "showreel"
+            label: "Showreel Video"
+            widget: "object"
+            fields:
+              - {label: "YouTube/Vimeo URL", name: "url", widget: "string"}
 
   - name: "dynamic_pages"
     label: "Pages (Custom)"
