@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadProjects();
         renderDynamicSettings();
         initCarousel();
+        initIntlTel();
 
         // Handle URL hash on load (e.g. from /deck/#contact-form)
         if (window.location.hash) {
@@ -382,4 +383,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start everything
     initApp();
+
+    // Initialize International Phone Input
+    function initIntlTel() {
+        const phoneInput = document.querySelector("#phone");
+        if (phoneInput && window.intlTelInput) {
+            window.intlTelInput(phoneInput, {
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+                initialCountry: "auto",
+                geoIpLookup: function(success, failure) {
+                    fetch("https://ipapi.co/json")
+                        .then(res => res.json())
+                        .then(data => success(data.country_code))
+                        .catch(() => success("es"));
+                },
+                separateDialCode: true,
+                preferredCountries: ["es", "no", "mx", "br", "us"]
+            });
+        }
+    }
 });

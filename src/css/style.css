@@ -945,6 +945,15 @@ img[src*="marina.jpg"] {
     flex: 1;
 }
 
+/* 65/35 split for Email and Phone */
+.form-row .form-group:first-child {
+    flex: 2;
+}
+
+.form-row .form-group:last-child {
+    flex: 1;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -955,6 +964,25 @@ img[src*="marina.jpg"] {
     color: var(--color-text-main);
     font-family: var(--font-body);
     transition: var(--transition-fast);
+}
+
+/* intl-tel-input styling */
+.iti {
+    width: 100%;
+}
+
+.iti__country-list {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.iti__country:hover, .iti__country.iti__highlight {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.iti__selected-dial-code {
+    color: #fff;
 }
 
 .form-group input:focus,
