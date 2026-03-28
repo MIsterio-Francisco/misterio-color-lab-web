@@ -154,22 +154,21 @@ title: Misterio Color Lab
                         <p class="hidden" style="display:none;">
                             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
                         </p>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name"
+                                data-i18n-hold="form_name" required>
+                        </div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" placeholder="Your Name"
-                                    data-i18n-hold="form_name" required>
-                            </div>
                             <div class="form-group">
                                 <input type="email" id="email" name="email" placeholder="Email Address"
                                     data-i18n-hold="form_email" required>
                             </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number"
+                                    data-i18n-hold="form_phone" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..."
-                                data-i18n-hold="form_message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">Send
-                            Message</button>
+                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">Request Quote</button>
                     </form>
                 </div>
             </div>
