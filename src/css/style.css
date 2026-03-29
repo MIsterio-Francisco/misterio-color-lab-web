@@ -1354,9 +1354,14 @@ img[src*="marina.jpg"] {
     height: 40px;
     max-width: 150px;
     width: auto;
-    /* Premium Monochrome Look */
+    /* Premium Monochrome Look - Forces any color to pure white */
     filter: brightness(0) invert(1) opacity(0.6);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-item img.logo-amazon {
+    height: 55px; /* Legibility boost for Prime Video */
+    opacity: 0.8; /* Slightly more prominent */
 }
 
 .logo-item:hover img {
