@@ -1314,3 +1314,109 @@ img[src*="marina.jpg"] {
 .attribution-link:hover {
     color: var(--color-accent);
 }
+
+/* ==========================================================================
+   Client Logos Carousel
+   ========================================================================== */
+.client-carousel {
+    padding: 80px 0;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+}
+
+.logos-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Soft fade on edges */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.logos-track {
+    display: flex;
+    width: max-content;
+    animation: scrollLogos 60s linear infinite;
+    gap: 6rem;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-item img {
+    height: 40px;
+    max-width: 150px;
+    width: auto;
+    /* Premium Monochrome Look */
+    filter: brightness(0) invert(1) opacity(0.6);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-item:hover img {
+    filter: brightness(0) invert(1) opacity(1);
+    transform: scale(1.1);
+}
+
+.landia-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.4s ease;
+}
+
+.logo-item:hover .landia-text {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+@keyframes scrollLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move by half the track width (one complete set) */
+        transform: translateX(calc(-50% - 3rem));
+    }
+}
+
+/* Pause on hover for better UX */
+.logos-track:hover {
+    animation-play-state: paused;
+}
+
+/* Responsive Scaling */
+@media (max-width: 992px) {
+    .logos-track {
+        gap: 4rem;
+    }
+    .logo-item img {
+        height: 30px;
+    }
+    .landia-text {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-carousel {
+        padding: 50px 0;
+    }
+    .logos-track {
+        gap: 3rem;
+    }
+    .logo-item img {
+        height: 25px;
+    }
+    .landia-text {
+        font-size: 1.1rem;
+    }
+}
