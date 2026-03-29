@@ -945,15 +945,6 @@ img[src*="marina.jpg"] {
     flex: 1;
 }
 
-/* 65/35 split for Email and Phone */
-.form-row .form-group:first-child {
-    flex: 2;
-}
-
-.form-row .form-group:last-child {
-    flex: 1;
-}
-
 .form-group input,
 .form-group textarea {
     width: 100%;
