@@ -1350,23 +1350,98 @@ img[src*="marina.jpg"] {
     justify-content: center;
 }
 
-.logo-item img {
-    height: 40px;
-    max-width: 150px;
+.logo-item img,
+.logo-item svg {
+    height: 55px; /* Boosted baseline */
+    max-width: 200px;
     width: auto;
-    /* Premium Monochrome Look - Forces any color to pure white */
-    filter: brightness(0) invert(1) opacity(0.6);
+    object-fit: contain; /* Ensure aspect ratio is preserved */
+    filter: brightness(0) invert(1) opacity(0.7);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo-item img.logo-amazon {
-    height: 55px; /* Legibility boost for Prime Video */
-    opacity: 0.8; /* Slightly more prominent */
+/* Logos with black background and white text (Wildhouse, Nostromo, La Posta) */
+.logo-item img.logo-special,
+.logo-item svg.logo-special {
+    height: 150px; /* Refined XL size */
+    max-width: 240px;
+    filter: brightness(0) invert(1) opacity(0.85); 
+    mix-blend-mode: screen; /* Safety to hide black backgrounds */
+}
+
+/* Specific visibility and sizing boosts (Tiers) */
+.logo-item img[alt="HBO Max"],
+.logo-item img[alt="Max"],
+.logo-item img[alt="ViX"],
+.logo-item img[alt="VIX"],
+.logo-item svg[aria-label="Max"],
+.logo-item svg[aria-label="ViX"] {
+    height: 45px; /* Discrete and elegant */
+    opacity: 0.9;
+}
+
+.logo-item img[alt="Prime Video"],
+.logo-item img[alt="Star+"],
+.logo-item img[alt="RTVE"] {
+    height: 65px;
+    opacity: 0.9;
+}
+
+.logo-item img[alt="Arri"] {
+    height: 45px; /* Otro paso más pequeño */
+    opacity: 0.9;
+}
+
+.logo-item img[alt="Atresmedia Cine"],
+.logo-item svg[aria-label="Atresmedia Cine"] {
+    height: 170px;
+    opacity: 1;
+    filter: none !important;
+    mix-blend-mode: screen !important;
+}
+
+.logo-item img[alt="Disney+"] {
+    height: 80px; /* Dos pasitos más grande */
+    opacity: 0.9;
+}
+
+.logo-item img[alt="Sony Music"],
+.logo-item img[alt="Cattleya"],
+.logo-item img[alt="La Canica"],
+.logo-item img[alt="El Sueño Eterno"] {
+    height: 85px; /* L tier */
+    opacity: 0.85;
+}
+
+.logo-item img[alt="Sony Music"] {
+    filter: brightness(0) invert(1) opacity(0.85) !important; /* Negro a blanco */
+}
+
+.logo-item img[alt="La Posta"] {
+    height: 180px !important;
+    max-width: 320px !important;
+    filter: none !important;
+    mix-blend-mode: screen !important;
+}
+
+.logo-item img[alt="Nostromo Pictures"] {
+    height: 80px !important;
+}
+
+.logo-item img[alt="Katara Studios"] {
+    height: 85px;
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.85;
 }
 
 .logo-item:hover img {
     filter: brightness(0) invert(1) opacity(1);
     transform: scale(1.1);
+}
+
+.logo-item:hover img.logo-special {
+    filter: contrast(3) brightness(2);
+    opacity: 1;
 }
 
 .landia-text {
