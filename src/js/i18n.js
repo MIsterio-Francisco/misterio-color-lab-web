@@ -18,12 +18,12 @@ const i18n = {
         service_5: "VFX & Compositing",
         service_6: "Post-production Supervision",
         studio_visual: "Misterio Color<br>Facilities",
-        contact_title: "Contact Us",
-        contact_subtitle: "Have a project in mind? Let's talk about how we can give it the final touch it deserves.",
+        contact_title: "Color Grading Worldwide",
+        contact_subtitle: "Looking for high-end color grading in Madrid, Mexico City, Sao Paulo, or Oslo? Let's craft the final cinematic touch your project deserves.",
         form_name: "Your Name",
         form_email: "Email Address",
         form_phone: "Phone Number",
-        form_submit: "Request Quote",
+        form_submit: "Request a Post-Production Quote",
         footer_desc: "Crafting the visual soul of your story.",
         section_team: "Our Team",
         role_head_color: "Head of Color",
@@ -59,12 +59,12 @@ const i18n = {
         service_5: "VFX y Composición",
         service_6: "Supervisión de Post-producción",
         studio_visual: "Instalaciones<br>Misterio Color",
-        contact_title: "Contáctanos",
-        contact_subtitle: "¿Tienes un proyecto en mente? Hablemos sobre cómo podemos darle el acabado final que merece.",
+        contact_title: "Etalonaje y Color a Nivel Global",
+        contact_subtitle: "¿Buscas corrección de color y postproducción en Madrid, Ciudad de México, São Paulo u Oslo? Conversemos para darle el acabado cinematográfico que tu proyecto necesita.",
         form_name: "Tu Nombre",
         form_email: "Correo Electrónico",
         form_phone: "Número de Teléfono",
-        form_submit: "Solicitar Presupuesto",
+        form_submit: "Solicitar Presupuesto de Color",
         footer_desc: "Creando el alma visual de tu historia.",
         section_team: "Nuestro Equipo",
         role_head_color: "Director de Color",
@@ -82,3 +82,5 @@ const i18n = {
     }
 
 };
+
+window.i18n = i18n;

@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ lang | default('en') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Misterio Color Lab - Post-producción de color de alto nivel para cine, televisión y publicidad.">
-    <title>{{ title | default("Misterio Color Lab") }}</title>
+    {% set pageTitle = title + " — " + site.name if title else site.name %}
+    {% set pageDesc = seo_description | default(site.description) %}
+    {% set pageImage = site.url + (seo_image | default(site.image)) %}
+    {% set currentUrl = site.url + page.url %}
+
+    <!-- Standard Meta Tags -->
+    <meta name="description" content="{{ pageDesc }}">
+    <title>{{ pageTitle }}</title>
+    <link rel="canonical" href="{{ currentUrl }}">
+
+    <!-- Open Graph (Facebook/LinkedIn) -->
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta property="og:description" content="{{ pageDesc }}">
+    <meta property="og:type" content="{{ og_type | default('website') }}">
+    <meta property="og:url" content="{{ currentUrl }}">
+    <meta property="og:image" content="{{ pageImage }}">
+    <meta property="og:image:alt" content="{{ pageTitle }}">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="{{ site.social.twitter }}">
+    <meta name="twitter:title" content="{{ pageTitle }}">
+    <meta name="twitter:description" content="{{ pageDesc }}">
+    <meta name="twitter:image" content="{{ pageImage }}">
+    <meta name="twitter:image:alt" content="{{ pageTitle }}">
+
+    <!-- LocalBusiness & Organization schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PostProductionCompany",
+      "name": "Misterio Color Lab",
+      "url": "https://misteriocolorlab.com",
+      "logo": "https://misteriocolorlab.com/img/logo_white_hq.png",
+      "image": "https://misteriocolorlab.com/img/logo_white_hq.png",
+      "description": "Boutique Color Grading Studio based in Madrid.",
+      "telephone": "+34638862751",
+      "email": "info@misteriocolorlab.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "C. de Albasanz, 59",
+          "addressLocality": "Madrid",
+          "addressRegion": "Madrid",
+          "postalCode": "28037",
+          "addressCountry": "ES"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Goethe 39, Anzures",
+          "addressLocality": "Mexico City",
+          "addressCountry": "MX"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Sebastião Stokler 21",
+          "addressLocality": "Sao Paulo",
+          "addressCountry": "BR"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Oscars gate 27",
+          "addressLocality": "Oslo",
+          "postalCode": "0352",
+          "addressCountry": "NO"
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,6 +184,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
+    <script src="/js/i18n.js"></script>
     <script src="/js/cms-settings.js"></script>
     <script src="/js/main.js"></script>
 </body>
