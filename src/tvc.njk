@@ -102,65 +102,18 @@ eleventyExcludeFromCollections: true
         <div class="section-inner tcv-content">
             <div class="tcv-grid">
                 
-                <!-- Video 1 -->
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'The search for the Last Coca Cola', video: 'https://www.youtube.com/watch?v=HzGgPRoT4HU'})">
+                {% for video in tvc.videos %}
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: '{{ video.title }}', video: 'https://www.youtube.com/watch?v={{ video.youtube_id }}'})">
                     <div class="video-container-premium">
-                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/HzGgPRoT4HU/maxresdefault.jpg');">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg');">
                             <div class="play-icon-large" style="width: 60px; height: 60px;">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                         </div>
                     </div>
-                    <div class="video-meta-title">The search for the Last Coca Cola</div>
+                    <div class="video-meta-title">{{ video.title }}</div>
                 </div>
-
-                <!-- Video 2 -->
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'BBVA Abuelo', video: 'https://www.youtube.com/watch?v=XdGwyHpqr7w'})">
-                    <div class="video-container-premium">
-                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/XdGwyHpqr7w/maxresdefault.jpg');">
-                            <div class="play-icon-large" style="width: 60px; height: 60px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-meta-title">BBVA Abuelo</div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Betano Benfica', video: 'https://www.youtube.com/watch?v=dBYvjxR_4cI'})">
-                    <div class="video-container-premium">
-                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/dBYvjxR_4cI/maxresdefault.jpg');">
-                            <div class="play-icon-large" style="width: 60px; height: 60px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-meta-title">Betano Benfica</div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Betano Sporting CP', video: 'https://www.youtube.com/watch?v=igiumZ-eo2g'})">
-                    <div class="video-container-premium">
-                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/igiumZ-eo2g/maxresdefault.jpg');">
-                            <div class="play-icon-large" style="width: 60px; height: 60px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-meta-title">Betano Sporting CP</div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Alexia, 500 partits', video: 'https://www.youtube.com/watch?v=xdwWHTc4YeE'})">
-                    <div class="video-container-premium">
-                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/xdwWHTc4YeE/maxresdefault.jpg');">
-                            <div class="play-icon-large" style="width: 60px; height: 60px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="video-meta-title">Alexia, 500 partits</div>
-                </div>
+                {% endfor %}
 
             </div>
         </div>

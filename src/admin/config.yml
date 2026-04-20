@@ -219,6 +219,17 @@ collections:
               - {label: "Thumbnail Image", name: "thumbnail", widget: "image"}
               - {label: "Title", name: "title", widget: "string", default: "REEL - MISTERIO"}
 
+      - file: "src/_data/tvc.json"
+        label: "TVC Comerciales"
+        name: "tvc"
+        fields:
+          - name: "videos"
+            label: "Videos YouTube"
+            widget: "list"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "YouTube ID", name: "youtube_id", widget: "string", hint: "Solo el código. Por ejemplo, en https://youtube.com/watch?v=HzGgPRoT4HU, el ID es HzGgPRoT4HU"}
+
   - name: "dynamic_pages"
     label: "Pages (Custom)"
     folder: "src/pages"
