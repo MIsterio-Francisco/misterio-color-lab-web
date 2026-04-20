@@ -1,0 +1,225 @@
+---
+layout: layouts/base.njk
+title: TVC Comerciales | Misterio Color Lab
+permalink: /tvc/
+excludeFromSitemap: true
+eleventyExcludeFromCollections: true
+---
+
+<!-- NoIndex Meta -->
+<script>
+    const meta = document.createElement('meta');
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.getElementsByTagName('head')[0].appendChild(meta);
+</script>
+
+<link rel="stylesheet" href="/css/deck.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Embedded Local Styles for Videos to complement Deck -->
+<style>
+    .tcv-content {
+        width: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding-top: 5rem;
+    }
+    
+    .tcv-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+    }
+    
+    .video-card-premium {
+        width: calc(33.333% - 2rem);
+        min-width: 300px;
+    }
+    
+    .video-card-premium .showreel-title {
+        font-size: 1.5rem;
+    }
+    
+    .video-meta-title {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 300;
+        letter-spacing: 0.15em;
+        color: var(--deck-text-dim);
+        text-transform: uppercase;
+        text-align: center;
+        transition: color 0.3s ease;
+    }
+    
+    .video-card-premium:hover .video-meta-title {
+        color: var(--deck-accent);
+    }
+    
+    @media (max-width: 1024px) {
+        .video-card-premium {
+            width: calc(50% - 1.5rem);
+        }
+    }
+    @media (max-width: 768px) {
+        .video-card-premium {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="deck-container">
+    <div class="film-grain"></div>
+
+    <!-- Hero / Main Cover section -->
+    <section class="deck-section hero-slide" style="min-height: 70vh;">
+        <div class="slide-bg-wrapper">
+             <div class="slide-bg" style="background-image: url('/img/tcv_cover_1.jpg'); opacity: 0.85; filter: brightness(0.7) contrast(1.1) saturate(0.85);"></div>
+        </div>
+        <div class="overlay-grad"></div>
+        <div class="overlay-vignette"></div>
+        <div class="deck-content section-inner">
+            <div class="hero-logo-wrapper reveal-gsap">
+                <img src="/img/logo_white_hq.png" alt="Misterio Color Lab">
+            </div>
+            <h1 class="reveal-gsap" style="font-size: 3.5rem;">TVC COMERCIALES</h1>
+            <div class="hero-divider reveal-gsap"></div>
+            <p class="reveal-gsap">Misterio Color Lab Exclusive Selection</p>
+            <div class="scroll-indicator reveal-gsap">
+                <span>SCROLL DOWN</span>
+                <div class="mouse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="deck-section">
+        <div class="slide-bg-wrapper">
+             <div class="slide-bg" style="background-color: #050505;"></div>
+        </div>
+        <div class="section-inner tcv-content">
+            <div class="tcv-grid">
+                
+                <!-- Video 1 -->
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'The search for the Last Coca Cola', video: 'https://www.youtube.com/watch?v=HzGgPRoT4HU'})">
+                    <div class="video-container-premium">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/HzGgPRoT4HU/maxresdefault.jpg');">
+                            <div class="play-icon-large" style="width: 60px; height: 60px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-meta-title">The search for the Last Coca Cola</div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'BBVA Abuelo', video: 'https://www.youtube.com/watch?v=XdGwyHpqr7w'})">
+                    <div class="video-container-premium">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/XdGwyHpqr7w/maxresdefault.jpg');">
+                            <div class="play-icon-large" style="width: 60px; height: 60px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-meta-title">BBVA Abuelo</div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Betano Benfica', video: 'https://www.youtube.com/watch?v=dBYvjxR_4cI'})">
+                    <div class="video-container-premium">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/dBYvjxR_4cI/maxresdefault.jpg');">
+                            <div class="play-icon-large" style="width: 60px; height: 60px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-meta-title">Betano Benfica</div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Betano Sporting CP', video: 'https://www.youtube.com/watch?v=igiumZ-eo2g'})">
+                    <div class="video-container-premium">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/igiumZ-eo2g/maxresdefault.jpg');">
+                            <div class="play-icon-large" style="width: 60px; height: 60px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-meta-title">Betano Sporting CP</div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" onclick="window.openProjectModal({title: 'Alexia, 500 partits', video: 'https://www.youtube.com/watch?v=xdwWHTc4YeE'})">
+                    <div class="video-container-premium">
+                        <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/xdwWHTc4YeE/maxresdefault.jpg');">
+                            <div class="play-icon-large" style="width: 60px; height: 60px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-meta-title">Alexia, 500 partits</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Finish Section -->
+    <section class="deck-section closing-slide" style="min-height: 50vh;">
+        <div class="slide-bg-wrapper">
+             <div class="slide-bg" style="background-image: url('/img/tcv_cover_2.jpg'); opacity: 0.85; filter: brightness(0.7) contrast(1.1) saturate(1.1);"></div>
+        </div>
+        <div class="overlay-grad"></div>
+        <div class="overlay-vignette"></div>
+        <div class="deck-content section-inner reveal-gsap" style="text-align: center;">
+            <h2 class="closing-title">MISTERIO COLOR LAB</h2>
+            <div class="hero-divider" style="margin: 2rem auto;"></div>
+            <a href="/#contact-form" class="deck-btn-premium" style="margin-top: 1rem;">GET IN TOUCH</a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Ativa the deck framework styling globally
+    document.body.classList.add('deck-active');
+
+    // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initial hero animations
+        gsap.from(".hero-slide .reveal-gsap", {
+            opacity: 0, y: 30, duration: 1.5, stagger: 0.2, ease: "power3.out"
+        });
+
+        // Trigger animations for sections
+        document.querySelectorAll('.deck-section').forEach(section => {
+            const reveals = section.querySelectorAll('.reveal-gsap');
+            if (reveals.length > 0) {
+                gsap.from(reveals, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        scroller: ".deck-container",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0, y: 30, duration: 1, stagger: 0.15, ease: "power2.out"
+                });
+            }
+
+            const bg = section.querySelector('.slide-bg');
+            if (bg) {
+                gsap.to(bg, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom", end: "bottom top", scrub: true, scroller: ".deck-container"
+                    },
+                    y: "10%", ease: "none"
+                });
+            }
+        });
+    });
+</script>
