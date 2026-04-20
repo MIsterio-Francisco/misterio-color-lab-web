@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /tcv/
 
 Sitemap: https://misteriocolorlab.com/sitemap.xml
