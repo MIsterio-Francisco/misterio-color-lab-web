@@ -1,6 +1,7 @@
 const i18n = {
     en: {
         nav_work: "Work",
+        nav_branded: "Branded Content",
         nav_studio: "Studio",
         nav_contact: "Contact",
         nav_services: "Services",
@@ -42,6 +43,7 @@ const i18n = {
 
     es: {
         nav_work: "Trabajo",
+        nav_branded: "Branded Content",
         nav_studio: "Estudio",
         nav_contact: "Contacto",
         nav_services: "Servicios",
