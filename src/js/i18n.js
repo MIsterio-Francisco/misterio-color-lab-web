@@ -55,7 +55,7 @@ const i18n = {
         studio_text_1: "Misterio Color Lab es una boutique de post-producción especializada en etalonaje y finalización. Creemos en el poder del color para contar historias, transmitiendo la emoción exacta en cada fotograma.",
         studio_text_2: "Nuestro enfoque combina tecnología de vanguardia con una visión artística única, colaborando estrechamente con directores y directores de fotografía para alcanzar su máxima visión.",
         service_1: "Laboratorio Digital Integrado",
-        service_2: "Gradación de Color y HDR",
+        service_2: "Etalonaje Digital y HDR",
         service_3: "Mastering y Entregas",
         service_4: "Diseño de Sonido y Mezcla",
         service_5: "VFX y Composición",
