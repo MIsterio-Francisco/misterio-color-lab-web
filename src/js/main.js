@@ -122,6 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (project) featuredProjects.push(project);
             });
 
+            // Add any other projects that are marked as featured but not in the order list
+            const currentTitles = featuredProjects.map(p => typeof p.title === 'string' ? p.title : (p.title.en || p.title.es));
+            dynamicProjects.filter(p => p.featured && !currentTitles.includes(typeof p.title === 'string' ? p.title : (p.title.en || p.title.es))).forEach(p => featuredProjects.push(p));
         } else {
             // Fallback to original logic if no order is defined in CMS
             featuredProjects = dynamicProjects.filter(p => p.featured);
