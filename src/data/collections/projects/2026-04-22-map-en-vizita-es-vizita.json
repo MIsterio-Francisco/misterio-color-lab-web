@@ -1,0 +1,19 @@
+{
+  "featured": true,
+  "title": {
+    "en": "VIZITA",
+    "es": "VIZITA"
+  },
+  "category": {
+    "en": "Documentary",
+    "es": "Documental"
+  },
+  "digitalColor": "Raúl Lavado Verdú",
+  "synopsis": {
+    "es": "En Ámsterdam, la vida de un repartidor de alimentos indocumentado da un giro inesperado cuando su padre conduce más de 2.000 km para verlo.",
+    "en": "In Amsterdam, the life of an undocumented food delivery worker takes an unexpected turn when his father drives more than 2,000 km to see him."
+  },
+  "video": "https://vimeo.com/1184165618/504a46778b",
+  "image": "/img/projects/VIZITA.jpg",
+  "director": " Ardit Sadiku"
+}
