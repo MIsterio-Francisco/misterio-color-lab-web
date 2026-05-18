@@ -1,0 +1,19 @@
+{
+  "featured": true,
+  "title": {
+    "en": "Los Nadadores",
+    "es": "Los Nadadores"
+  },
+  "category": {
+    "en": "FEATURE",
+    "es": "FEATURE"
+  },
+  "digitalColor": "Raúl Lavado Verdú",
+  "synopsis": {
+    "en": "It is the 368th day of summer, night hasn't fallen for three days. Amidst the extreme heat, power outages, and massive exodus to the outside, a group of friends spends the day on the streets. Haunted by the delirium of the heat, they decide to start breaking into the mansions of an empty neighborhood to try all the pools they can, but this paradise can also be a hell. World premiere at the 29th edition of the Málaga Film Festival.",
+    "es": "Es el día 368 de verano, hace tres días que no llega la noche. Entre el calor extremo, los cortes de luz y el éxodo masivo al exterior, un grupo de amigos pasa el día en la calle. Acechados por el delirio del calor, deciden empezar a meterse en las mansiones de un vecindario vacío y probar así todas las piletas que puedan, pero este paraíso también puede ser infernal. Estreno mundial en 29.ª edición del Festival de cine de Málaga."
+  },
+  "video": "https://www.youtube.com/watch?v=zES-vsarfD8",
+  "image": "/img/projects/los_nadadores.jpg",
+  "director": "Sol Iglesias SK"
+}
