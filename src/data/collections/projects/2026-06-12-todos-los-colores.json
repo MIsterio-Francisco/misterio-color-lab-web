@@ -14,6 +14,6 @@
     },
     "image": "/img/projects/todos_los_colores.jpg",
     "video": "https://www.youtube.com/watch?v=01RAr__iIGU",
-    "featured": false,
+    "featured": true,
     "stills": []
 }
