@@ -11,6 +11,9 @@
   },
   "carousel": [
     {
+      "image": "img/projects/todos_los_colores.jpg"
+    },
+    {
       "image": "img/projects/los_nadadores.jpg"
     },
     {
@@ -69,6 +72,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "Todos los Colores"
+    },
     {
       "project": "Los Nadadores"
     },
