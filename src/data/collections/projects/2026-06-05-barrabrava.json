@@ -1,0 +1,20 @@
+{
+    "title": {
+        "en": "Barrabrava",
+        "es": "Barrabrava"
+    },
+    "category": {
+        "en": "Drama Series",
+        "es": "Serie Dramática"
+    },
+    "director": "Jesús Braceras",
+    "digitalColor": "Raúl Lavado Verdú",
+    "synopsis": {
+        "en": "Following a vicious internal conflict, two brothers are expelled from the gang representing their beloved soccer club. They are forced to navigate a dangerous landscape of marginality, corruption, and power struggles as they attempt to survive outside the hierarchy of the gang.",
+        "es": "Tras un feroz conflicto interno, dos hermanos son expulsados de la barra brava de su amado club de fútbol. Se ven obligados a navegar por un peligroso mundo de marginalidad, corrupción y luchas de poder mientras intentan sobrevivir fuera de la jerarquía de la pandilla."
+    },
+    "image": "/img/projects/barrabrava_s2.jpg",
+    "video": "https://www.youtube.com/watch?v=eFtgaj7XJRc",
+    "featured": true,
+    "stills": []
+}

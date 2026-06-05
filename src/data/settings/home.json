@@ -11,6 +11,9 @@
   },
   "carousel": [
     {
+      "image": "img/projects/barrabrava_s2.jpg"
+    },
+    {
       "image": "img/projects/todos_los_colores.jpg"
     },
     {
@@ -18,9 +21,6 @@
     },
     {
       "image": "img/projects/VIZITA.jpg"
-    },
-    {
-      "image": "img/projects/BARRA_BRAVA.png"
     },
     {
       "image": "img/projects/EL SANTO.png"
@@ -72,6 +72,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "Barrabrava"
+    },
     {
       "project": "Todos los Colores"
     },
