@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Featured Projects ---
     const galleryGrid = document.getElementById('gallery-grid');
+    const galleryGridHome = document.getElementById('gallery-grid-home');
 
     async function loadProjects() {
         try {
@@ -105,8 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderGallery() {
-        if (!galleryGrid) return;
-        galleryGrid.innerHTML = '';
+        if (!galleryGrid && !galleryGridHome) return;
+        if (galleryGrid) galleryGrid.innerHTML = '';
+        if (galleryGridHome) galleryGridHome.innerHTML = '';
 
         let featuredProjects = [];
         const orderList = cmsData.homeData?.featured_projects || [];
@@ -130,12 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
             featuredProjects = dynamicProjects.filter(p => p.featured);
         }
 
-        featuredProjects.forEach(project => {
+        const createCard = (project) => {
             const card = document.createElement('article');
             card.className = 'project-card reveal';
 
+            const imgSrc = (project.image && project.image.startsWith('/')) ? project.image : '/' + project.image;
             const imgContent = project.image
-                ? `<img src="${project.image}" alt="${typeof project.title === 'string' ? project.title : project.title.en}" class="project-img" loading="lazy">`
+                ? `<img src="${imgSrc}" alt="${typeof project.title === 'string' ? project.title : project.title.en}" class="project-img" loading="lazy">`
                 : `<div class="img-placeholder">${typeof project.title === 'string' ? project.title : project.title.en}</div>`;
 
             const title = typeof project.title === 'string' ? project.title : (project.title[currentLang] || project.title.en);
@@ -153,25 +156,43 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             // Store the project data on the element for delegated click
             card.dataset.projectId = project.id || title;
-            galleryGrid.appendChild(card);
-            revealObserver.observe(card);
+            return card;
+        };
+
+        featuredProjects.forEach((project, index) => {
+            if (galleryGrid) {
+                const card = createCard(project);
+                galleryGrid.appendChild(card);
+                revealObserver.observe(card);
+            }
+            if (galleryGridHome && index < 4) {
+                const cardHome = createCard(project);
+                galleryGridHome.appendChild(cardHome);
+                revealObserver.observe(cardHome);
+            }
         });
     }
 
     // Use event delegation for clicking cards (fixes dynamically injected content losing events)
-    if (galleryGrid) {
-        galleryGrid.addEventListener('click', (e) => {
-            const card = e.target.closest('.project-card');
-            if (!card) return;
+    const delegateClick = (gridId) => {
+        const grid = document.getElementById(gridId);
+        if (grid) {
+            grid.addEventListener('click', (e) => {
+                const card = e.target.closest('.project-card');
+                if (!card) return;
 
-            const projectId = card.dataset.projectId;
-            const project = dynamicProjects.find(p => (p.id || (typeof p.title === 'string' ? p.title : (p.title[currentLang] || p.title.en))) === projectId);
+                const projectId = card.dataset.projectId;
+                const project = dynamicProjects.find(p => (p.id || (typeof p.title === 'string' ? p.title : (p.title[currentLang] || p.title.en))) === projectId);
 
-            if (project) {
-                openProjectModal(project);
-            }
-        });
-    }
+                if (project) {
+                    openProjectModal(project);
+                }
+            });
+        }
+    };
+
+    delegateClick('gallery-grid');
+    delegateClick('gallery-grid-home');
 
     // --- Modal Logic ---
     function getEmbedUrl(url) {
@@ -331,16 +352,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const topMembers = members.filter(m => !m.email);
                 const bottomMembers = members.filter(m => m.email);
 
-                const renderMember = (m) => `
+                const renderMember = (m) => {
+                     const photoSrc = (m.photo && m.photo.startsWith('/')) ? m.photo : '/' + m.photo;
+                     return `
                      <div class="team-member reveal active">
                         <div class="member-photo-wrapper">
-                            ${m.photo ? `<img src="${m.photo}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
+                            ${m.photo ? `<img src="${photoSrc}" alt="${m.name}" class="member-photo">` : '<div class="member-photo"></div>'}
                         </div>
                         <h3 class="member-name">${m.name}</h3>
                         <p class="member-role">${window.CMS.getLocalizedText(m.role, currentLang)}</p>
                         ${m.email ? `<a href="mailto:${m.email}" class="member-email">${m.email}</a>` : ''}
                      </div>
-                 `;
+                 `};
 
                 rowTop.innerHTML = topMembers.map(renderMember).join('');
                 rowBottom.innerHTML = bottomMembers.map(renderMember).join('');

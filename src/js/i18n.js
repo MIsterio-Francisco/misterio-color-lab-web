@@ -1,6 +1,8 @@
 const i18n = {
     en: {
         nav_work: "Work",
+        nav_team: "Our Team",
+        nav_long_form: "Long Form",
         nav_branded: "Branded Content",
         nav_studio: "Studio",
         nav_contact: "Contact",
@@ -43,6 +45,8 @@ const i18n = {
 
     es: {
         nav_work: "Trabajo",
+        nav_team: "Nuestro Equipo",
+        nav_long_form: "Proyectos",
         nav_branded: "Branded Content",
         nav_studio: "Estudio",
         nav_contact: "Contacto",
