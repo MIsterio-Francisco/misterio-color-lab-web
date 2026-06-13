@@ -1,0 +1,20 @@
+{
+    "title": {
+        "en": "Dante",
+        "es": "Dante"
+    },
+    "category": {
+        "en": "Feature Film",
+        "es": "Largometraje"
+    },
+    "director": "Hugo Ruiz",
+    "digitalColor": "Raúl Lavado Verdú",
+    "synopsis": {
+        "en": "During his night shift in Madrid, well-meaning paramedic Eduardo responds to an emergency call at the home of a criminal named Mario. Before dying, Mario forces Eduardo to take a highly coveted object, thrusting him into a desperate, high-stakes conflict involving rival criminal factions.",
+        "es": "Durante su turno de noche en Madrid, Eduardo, un paramédico bienintencionado, acude a una llamada de emergencia en la casa de un criminal llamado Mario. Antes de morir, Mario obliga a Eduardo a tomar un objeto muy codiciado, empujándolo a un conflicto desesperado de alto riesgo con facciones criminales rivales."
+    },
+    "image": "/img/projects/dante.jpg",
+    "video": "https://www.youtube.com/watch?v=sKuCRU9xPWI",
+    "featured": true,
+    "stills": []
+}

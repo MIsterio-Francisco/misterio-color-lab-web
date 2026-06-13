@@ -11,6 +11,9 @@
   },
   "carousel": [
     {
+      "image": "img/projects/dante.jpg"
+    },
+    {
       "image": "img/projects/barrabrava_s2.jpg"
     },
     {
@@ -72,6 +75,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "Dante"
+    },
     {
       "project": "Barrabrava"
     },

@@ -1483,9 +1483,7 @@ img[src*="marina.jpg"] {
 }
 
 /* Pause on hover for better UX */
-.logos-track:hover {
-    animation-play-state: paused;
-}
+
 
 /* Responsive Scaling */
 @media (max-width: 992px) {
