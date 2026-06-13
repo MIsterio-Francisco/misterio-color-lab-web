@@ -1398,6 +1398,11 @@ img[src*="marina.jpg"] {
 }
 
 /* Specific visibility and sizing boosts (Tiers) */
+.logo-item img[alt="Gilda Productions"] {
+    height: 120px; /* 20% smaller than standard logo-special size */
+}
+
+
 .logo-item img[alt="HBO Max"],
 .logo-item img[alt="Max"],
 .logo-item img[alt="ViX"],
