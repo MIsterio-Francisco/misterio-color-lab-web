@@ -580,6 +580,30 @@ a {
         height: 400px;
         position: relative;
     }
+
+    .close-modal {
+        top: 15px;
+        left: 15px;
+        right: auto;
+        font-size: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 9999;
+    }
+    
+    .close-icon {
+        display: none;
+    }
+    
+    .close-text {
+        display: inline !important;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 }
 
 
@@ -1225,7 +1249,7 @@ img[src*="marina.jpg"] {
 /* Poster Carousel */
 .poster-carousel {
     position: absolute;
-    bottom: -180px; /* Sits mostly below the video, overlapping just a bit */
+    bottom: -240px; /* Sits mostly below the video, overlapping just a bit */
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -1326,7 +1350,7 @@ img[src*="marina.jpg"] {
     background: #000;
     overflow: hidden;
     position: relative;
-    margin-top: 180px; /* Make room for the protruding poster carousel */
+    margin-top: 240px; /* Make room for the protruding poster carousel */
 }
 
 .logos-wrapper {
