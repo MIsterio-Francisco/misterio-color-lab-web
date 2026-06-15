@@ -211,6 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
         }
         
+        // Instagram
+        if (url.includes('instagram.com')) {
+            const cleanUrl = url.split('?')[0].replace(/\/$/, "");
+            return `${cleanUrl}/embed/`;
+        }
+        
         return url;
     }
 
