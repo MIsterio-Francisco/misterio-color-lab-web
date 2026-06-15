@@ -97,7 +97,7 @@ seo_image: "/img/projects/VIZITA.jpg"
             <div class="tcv-grid">
                 
                 {% for video in tvc.videos %}
-                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" data-title="{{ video.title | escape }}" data-video="https://www.youtube.com/watch?v={{ video.youtube_id }}" onclick="window.openProjectModal({title: this.getAttribute('data-title'), video: this.getAttribute('data-video')})">
+                <div class="video-card-premium reveal-gsap" style="cursor: pointer;" data-title="{{ video.title | escape }}" data-video="https://www.youtube.com/watch?v={{ video.youtube_id }}" data-synopsis="{{ video.credits_html | escape }}" onclick="window.openProjectModal({title: this.getAttribute('data-title'), video: this.getAttribute('data-video'), synopsis: this.getAttribute('data-synopsis')})">
                     <div class="video-container-premium">
                         <div class="showreel-thumb-wrapper" style="background-image: url('https://img.youtube.com/vi/{{ video.youtube_id }}/maxresdefault.jpg');">
                             <div class="play-icon-large" style="width: 60px; height: 60px;">

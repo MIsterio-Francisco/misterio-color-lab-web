@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalTitle) modalTitle.innerText = getLocalized(project.title);
         if (modalCategory) modalCategory.innerText = getLocalized(project.category);
         if (modalDirector) modalDirector.innerText = project.director || '';
-        if (modalSynopsis) modalSynopsis.innerText = getLocalized(project.synopsis);
+        if (modalSynopsis) modalSynopsis.innerHTML = getLocalized(project.synopsis);
 
         if (modalAttribution) {
             if (project.digitalColor) {
