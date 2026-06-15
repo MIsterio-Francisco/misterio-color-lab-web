@@ -19,8 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle URL hash on load (e.g. from /deck/#contact-form)
         if (window.location.hash) {
             setTimeout(() => {
-                const el = document.querySelector(window.location.hash);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                if (window.location.hash.startsWith('#video-')) {
+                    const targetId = window.location.hash.replace('#video-', '');
+                    const targetCard = document.querySelector(`[data-id="${targetId}"]`) || document.querySelector(`.project-card[data-project-id="${targetId}"]`);
+                    if (targetCard) {
+                        targetCard.click();
+                    }
+                } else {
+                    const el = document.querySelector(window.location.hash);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
             }, 600);
         }
     }
@@ -290,6 +298,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        if (project.id) {
+            // Use replaceState to avoid cluttering history with modal opens, or pushState to allow back button
+            window.history.pushState(null, null, '#video-' + project.id);
+        }
+
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -304,6 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modal?.classList.remove('open');
         if (iframeContainer) iframeContainer.innerHTML = '';
         document.body.style.overflow = '';
+        
+        if (window.location.hash && window.location.hash.startsWith('#video-')) {
+            window.history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
     }
 
     // Use event delegation for the close button and background click since modal might be dynamic
