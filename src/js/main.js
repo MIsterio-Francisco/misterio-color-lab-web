@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             // Store the project data on the element for delegated click
             card.dataset.projectId = project.id || title;
+            card.dataset.id = (project.id || title).toString().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
             return card;
         };
 
@@ -193,6 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const project = dynamicProjects.find(p => (p.id || (typeof p.title === 'string' ? p.title : (p.title[currentLang] || p.title.en))) === projectId);
 
                 if (project) {
+                    if (!project.id) {
+                        project.id = card.dataset.id;
+                    }
                     openProjectModal(project);
                 }
             });
