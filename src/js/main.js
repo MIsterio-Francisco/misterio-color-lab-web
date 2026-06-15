@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // YouTube
         if (url.includes('youtube.com') || url.includes('youtu.be')) {
             const youtubeId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop().split('?')[0];
-            return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0`;
+            return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&controls=0&showinfo=0&disablekb=1&iv_load_policy=3`;
         }
         
         return url;
