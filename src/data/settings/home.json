@@ -11,6 +11,9 @@
   },
   "carousel": [
     {
+      "image": "img/projects/fiesta_pagana.jpg"
+    },
+    {
       "image": "img/projects/dante.jpg"
     },
     {
@@ -75,6 +78,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "Fiesta Pagana"
+    },
     {
       "project": "Dante"
     },

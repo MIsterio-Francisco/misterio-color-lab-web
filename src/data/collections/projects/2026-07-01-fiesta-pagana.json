@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Fiesta Pagana",
+    "es": "Fiesta Pagana"
+  },
+  "category": {
+    "en": "Feature Film",
+    "es": "Largometraje"
+  },
+  "director": "Álvaro Brechner",
+  "digitalColor": "Raúl Lavado Verdú",
+  "synopsis": {
+    "en": "Biopic inspired by the journey of the Spanish rock band Mägo de Oz. The film explores the band's origins in the 80s and 90s, their meteoric rise to fame fusing heavy metal with Celtic folk, and the personal and professional conflicts that marked their path.",
+    "es": "Película biográfica inspirada en la trayectoria de la banda de rock española Mägo de Oz. El largometraje explora los orígenes de la banda en los años 80 y 90, su ascenso a la fama combinando heavy metal y folk celta, y los conflictos personales y profesionales que los acompañaron en el camino."
+  },
+  "image": "/img/projects/fiesta_pagana.jpg",
+  "video": "https://www.youtube.com/watch?v=_xupg1lHTEk",
+  "featured": true,
+  "stills": []
+}
