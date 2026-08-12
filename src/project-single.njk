@@ -1,0 +1,104 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: allProjects
+  size: 1
+  alias: project
+permalink: "/project/{{ project.slug }}/"
+eleventyComputed:
+  title: "{{ (project.title.en if project.title.en else (project.title.es if project.title.es else project.title)) }} — Misterio Color Lab"
+  seo_description: "{{ (project.synopsis.en if project.synopsis.en else (project.synopsis.es if project.synopsis.es else (project.synopsis if project.synopsis else site.description))) | striptags | truncate(160) }}"
+  seo_image: "{{ project.image if project.image else site.image }}"
+---
+
+<!-- Single Project View Section -->
+<section class="work-section" id="work" style="padding-top: 10rem; padding-bottom: 6rem; min-height: 80vh;">
+    <div class="container">
+        
+        <!-- Breadcrumb / Back Link -->
+        <div style="margin-bottom: 2rem;">
+            <a href="/long-form/" class="btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-accent, #c9a96e); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: opacity 0.3s ease;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to All Long Form
+            </a>
+        </div>
+
+        <div class="section-header reveal">
+            <h1 class="section-title" style="font-size: 2.5rem; text-transform: uppercase;">
+                {{ project.title.en if project.title.en else (project.title.es if project.title.es else project.title) }}
+            </h1>
+            <div class="section-line"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 3rem; margin-top: 3rem; align-items: start;">
+            <!-- Poster Image -->
+            <div style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+                <img src="{{ project.image }}" alt="{{ project.title.en if project.title.en else project.title }}" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <!-- Project Details -->
+            <div>
+                {% set projCategory = project.category.en if project.category.en else (project.category.es if project.category.es else project.category) %}
+                {% if projCategory %}
+                    <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(201, 169, 110, 0.15); border: 1px solid rgba(201, 169, 110, 0.4); color: #c9a96e; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; border-radius: 20px; margin-bottom: 1rem;">
+                        {{ projCategory }}
+                    </span>
+                {% endif %}
+
+                {% if project.director %}
+                    <p style="font-size: 1.1rem; color: #fff; font-weight: 500; margin-bottom: 0.5rem;">
+                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIRECTOR</span>
+                        {{ project.director }}
+                    </p>
+                {% endif %}
+
+                {% if project.digitalColor %}
+                    <p style="font-size: 1rem; color: #c9a96e; margin-bottom: 1.5rem;">
+                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIGITAL COLOR</span>
+                        {{ project.digitalColor }}
+                    </p>
+                {% endif %}
+
+                {% set projSynopsis = project.synopsis.en if project.synopsis.en else (project.synopsis.es if project.synopsis.es else project.synopsis) %}
+                {% if projSynopsis %}
+                    <div style="font-size: 1.05rem; line-height: 1.8; color: #ccc; margin-bottom: 2rem;">
+                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">SYNOPSIS</span>
+                        {{ projSynopsis }}
+                    </div>
+                {% endif %}
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    {% if project.video %}
+                        <button onclick="triggerProjectModal()" class="btn" style="background: #c9a96e; color: #000; padding: 0.8rem 1.8rem; border: none; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.3s ease;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            Watch Trailer
+                        </button>
+                    {% endif %}
+                    <a href="/long-form/" class="btn-outline" style="border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 0.8rem 1.8rem; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease;">
+                        View All Long Form
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    const currentProject = {{ project | dump | safe }};
+
+    function triggerProjectModal() {
+        if (window.openProjectModal) {
+            window.openProjectModal(currentProject);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Automatically trigger the trailer modal on load if video URL exists
+        setTimeout(() => {
+            if (currentProject && currentProject.video && window.openProjectModal) {
+                window.openProjectModal(currentProject);
+            }
+        }, 300);
+    });
+</script>

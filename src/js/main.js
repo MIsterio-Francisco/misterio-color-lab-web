@@ -302,9 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (project.id) {
-            // Use replaceState to avoid cluttering history with modal opens, or pushState to allow back button
-            window.history.pushState(null, null, '#video-' + project.id);
+        if (project.slug || project.id) {
+            const itemSlug = project.slug || project.id;
+            const isTvc = (project.category && typeof project.category === 'string' && (project.category.toLowerCase().includes('branded') || project.category.toLowerCase().includes('tvc'))) || (!project.director && !project.digitalColor && (!project.synopsis || typeof project.synopsis === 'string'));
+            const targetPath = isTvc ? '/tvc/' + itemSlug + '/' : '/project/' + itemSlug + '/';
+            if (window.location.pathname !== targetPath) {
+                window.history.pushState(null, null, targetPath);
+            }
         }
 
         modal.classList.add('open');
@@ -322,7 +326,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (iframeContainer) iframeContainer.innerHTML = '';
         document.body.style.overflow = '';
         
-        if (window.location.hash && window.location.hash.startsWith('#video-')) {
+        if (window.location.pathname.startsWith('/project/') || window.location.pathname.startsWith('/tvc/')) {
+            const fallbackPath = window.location.pathname.startsWith('/tvc/') ? '/tvc/' : '/long-form/';
+            window.history.replaceState(null, null, fallbackPath);
+        } else if (window.location.hash && window.location.hash.startsWith('#video-')) {
             window.history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     }

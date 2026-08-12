@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% set pageTitle = title + " — " + site.name if title else site.name %}
+    {% set pageTitle = title if (title and "Misterio Color Lab" in title) else (title + " — " + site.name if title else site.name) %}
     {% set pageDesc = seo_description | default(site.description) %}
-    {% set pageImage = site.url + (seo_image | default(site.image)) %}
+    {% set rawImage = seo_image | default(site.image) %}
+    {% set pageImage = rawImage if (rawImage.startsWith('http://') or rawImage.startsWith('https://')) else (site.url + (rawImage if rawImage.startsWith('/') else '/' + rawImage)) %}
     {% set currentUrl = site.url + page.url %}
 
     <!-- Standard Meta Tags -->
