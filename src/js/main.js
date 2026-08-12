@@ -232,9 +232,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return url;
     }
 
+    let modalOriginPath = window.location.pathname;
+
     function openProjectModal(project) {
         if (!project) return;
         console.log("Opening modal for project:", project);
+
+        if (!window.location.pathname.startsWith('/project/') && !window.location.pathname.startsWith('/tvc/')) {
+            modalOriginPath = window.location.pathname;
+        }
 
         const modal = document.getElementById('videoModal');
         const iframeContainer = document.getElementById('iframeContainer');
@@ -327,7 +333,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         
         if (window.location.pathname.startsWith('/project/') || window.location.pathname.startsWith('/tvc/')) {
-            const fallbackPath = window.location.pathname.startsWith('/tvc/') ? '/tvc/' : '/long-form/';
+            let fallbackPath = modalOriginPath;
+            if (!fallbackPath || fallbackPath.startsWith('/project/') || fallbackPath.startsWith('/tvc/')) {
+                fallbackPath = window.location.pathname.startsWith('/tvc/') ? '/tvc/' : '/long-form/';
+            }
             window.history.replaceState(null, null, fallbackPath);
         } else if (window.location.hash && window.location.hash.startsWith('#video-')) {
             window.history.replaceState(null, null, window.location.pathname + window.location.search);
