@@ -11,6 +11,9 @@
   },
   "carousel": [
     {
+      "image": "img/projects/if_you_really_love_me_outlive_me.jpg"
+    },
+    {
       "image": "img/projects/fiesta_pagana.jpg"
     },
     {
@@ -78,6 +81,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "If You Really Love Me, Outlive Me"
+    },
     {
       "project": "Fiesta Pagana"
     },
