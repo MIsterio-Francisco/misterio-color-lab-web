@@ -4,12 +4,18 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in collections.all %}
-  {% if not page.data.excludeFromSitemap %}
+{% for locale in locales %}
   <url>
-    <loc>{{ site.url }}{{ page.url | url }}</loc>
-    <lastmod>{{ page.date.toISOString() }}</lastmod>
+    <loc>{{ site.url }}/{{ locale.code }}/</loc>
   </url>
-  {% endif %}
+{% endfor %}
+{% for path in ['/services/', '/team/', '/long-form/', '/tvc/'] %}
+  <url><loc>{{ site.url }}{{ path }}</loc></url>
+{% endfor %}
+{% for project in allProjects %}
+  <url><loc>{{ site.url }}/project/{{ project.slug }}/</loc></url>
+{% endfor %}
+{% for video in tvcVideos %}
+  <url><loc>{{ site.url }}/tvc/{{ video.slug }}/</loc></url>
 {% endfor %}
 </urlset>

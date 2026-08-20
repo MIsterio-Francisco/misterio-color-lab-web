@@ -131,6 +131,7 @@ a {
     cursor: pointer;
     transition: var(--transition-fast);
     padding: 0.2rem 0.4rem;
+    text-decoration: none;
 }
 
 .lang-btn.active {
@@ -923,7 +924,7 @@ img[src*="marina.jpg"] {
     }
 }
 
-.info-block h4 {
+.info-block h3 {
     color: var(--color-accent);
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -1246,6 +1247,16 @@ img[src*="marina.jpg"] {
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
 }
 
+.hero-heading {
+    max-width: 760px;
+    margin: 0 auto 0.75rem;
+    font-size: clamp(1.35rem, 2.6vw, 2.35rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+}
+
 /* Poster Carousel */
 .poster-carousel {
     position: absolute;
@@ -1265,6 +1276,8 @@ img[src*="marina.jpg"] {
     gap: 1.5rem;
     width: max-content;
     will-change: transform;
+    --carousel-total-width: 4232px;
+    animation: carouselScroll 57.5s linear infinite;
 }
 
 .poster-slide {
@@ -1308,6 +1321,42 @@ img[src*="marina.jpg"] {
     .poster-slide img {
         width: 120px;
         height: 180px;
+    }
+
+    .poster-track {
+        --carousel-total-width: 3312px;
+        animation: none;
+    }
+
+    .poster-carousel {
+        bottom: -340px;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .poster-carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .poster-slide {
+        scroll-snap-align: start;
+    }
+
+    .client-carousel {
+        margin-top: 340px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .poster-track {
+        animation: none;
+    }
+
+    #hero-video {
+        display: none;
     }
 }
 /* Project Modal Attribution */
@@ -1756,4 +1805,3 @@ img[src*="marina.jpg"] {
         grid-template-columns: 1fr;
     }
 }
-

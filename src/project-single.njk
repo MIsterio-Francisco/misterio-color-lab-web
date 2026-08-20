@@ -33,7 +33,7 @@ eleventyComputed:
         <div style="display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 3rem; margin-top: 3rem; align-items: start;">
             <!-- Poster Image -->
             <div style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
-                <img src="{{ project.image }}" alt="{{ project.title.en if project.title.en else project.title }}" style="width: 100%; height: auto; display: block;">
+                <img src="{{ project.image | webImage(640) }}" srcset="{{ project.image | webImage(320) }} 320w, {{ project.image | webImage(640) }} 640w, {{ project.image | webImage(960) }} 960w" sizes="(max-width: 768px) 100vw, 380px" width="640" height="960" loading="eager" decoding="async" alt="{{ project.title.en if project.title.en else project.title }} — Misterio Color Lab" style="width: 100%; height: auto; display: block;">
             </div>
 
             <!-- Project Details -->

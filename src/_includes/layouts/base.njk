@@ -13,6 +13,15 @@
     <meta name="description" content="{{ pageDesc }}">
     <title>{{ pageTitle }}</title>
     <link rel="canonical" href="{{ currentUrl }}">
+    {% if page.url == '/en/' or page.url == '/es/' %}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
+    <link rel="alternate" hreflang="es" href="{{ site.url }}/es/">
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+    <link rel="preload" as="image" href="/img/video/web/reel-poster.webp" fetchpriority="high">
+    {% endif %}
+    <link rel="icon" href="/img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/img/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 
     <!-- Open Graph (Facebook/LinkedIn) -->
     <meta property="og:site_name" content="{{ site.name }}">
@@ -22,6 +31,7 @@
     <meta property="og:url" content="{{ currentUrl }}">
     <meta property="og:image" content="{{ pageImage }}">
     <meta property="og:image:alt" content="{{ pageTitle }}">
+    <meta property="og:locale" content="{{ 'es_ES' if lang == 'es' else 'en_US' }}">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
@@ -35,12 +45,17 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "PostProductionCompany",
+      "@type": ["Organization", "ProfessionalService"],
       "name": "Misterio Color Lab",
       "url": "https://misteriocolorlab.com",
+      "inLanguage": "{{ lang | default('en') }}",
       "logo": "https://misteriocolorlab.com/img/logo_white_hq.png",
       "image": "https://misteriocolorlab.com/img/logo_white_hq.png",
-      "description": "Boutique Color Grading Studio based in Madrid.",
+      "description": "{{ pageDesc }}",
+      "priceRange": "€€€",
+      "areaServed": ["ES", "MX", "BR", "NO"],
+      "knowsAbout": ["Color grading", "Digital intermediate", "HDR finishing", "Digital mastering", "Post-production"],
+      "sameAs": ["https://www.instagram.com/misteriocolorlab/"],
       "telephone": "+34638862751",
       "email": "info@misteriocolorlab.com",
       "address": [
@@ -80,13 +95,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=20260820">
     <!-- intl-tel-input CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css"></noscript>
     <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 </head>
-<body data-lang="en">
+<body data-lang="{{ lang | default('en') }}">
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -101,17 +117,17 @@
 
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="/team/" class="nav-link" data-i18n="nav_team" id="cms-nav_team">Our Team</a></li>
-                    <li><a href="/long-form/" class="nav-link" data-i18n="nav_long_form" id="cms-nav_long_form">Long Form</a></li>
+                    <li><a href="/team/" class="nav-link" data-i18n="nav_team" id="cms-nav_team">{{ 'Nuestro Equipo' if lang == 'es' else 'Our Team' }}</a></li>
+                    <li><a href="/long-form/" class="nav-link" data-i18n="nav_long_form" id="cms-nav_long_form">{{ 'Proyectos' if lang == 'es' else 'Long Form' }}</a></li>
                     <li><a href="/tvc/" class="nav-link" data-i18n="nav_branded" id="cms-nav_branded">Branded Content</a></li>
-                    <li><a href="/services/" class="nav-link" data-i18n="nav_studio" id="cms-nav_studio">Studio</a></li>
-                    <li><a href="/#contact" class="nav-link" data-i18n="nav_contact" id="cms-nav_contact">Contact</a></li>
+                    <li><a href="/services/" class="nav-link" data-i18n="nav_studio" id="cms-nav_studio">{{ 'Estudio' if lang == 'es' else 'Studio' }}</a></li>
+                    <li><a href="/{{ lang | default('en') }}/#contact" class="nav-link" data-i18n="nav_contact" id="cms-nav_contact">{{ 'Contacto' if lang == 'es' else 'Contact' }}</a></li>
                 </ul>
 
                 <div class="lang-toggle">
-                    <button id="lang-en" class="lang-btn active">EN</button>
+                    <a href="/en/" id="lang-en" class="lang-btn{% if lang != 'es' %} active{% endif %}" lang="en" hreflang="en">EN</a>
                     <span class="separator">|</span>
-                    <button id="lang-es" class="lang-btn">ES</button>
+                    <a href="/es/" id="lang-es" class="lang-btn{% if lang == 'es' %} active{% endif %}" lang="es" hreflang="es">ES</a>
                 </div>
 
                 <div class="hamburger">
@@ -196,6 +212,6 @@
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
     <script src="/js/i18n.js"></script>
     <script src="/js/cms-settings.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=20260820"></script>
 </body>
 </html>

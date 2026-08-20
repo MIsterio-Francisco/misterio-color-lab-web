@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLanguage(currentLang);
         loadProjects();
         renderDynamicSettings();
-        initCarousel();
         initIntlTel();
 
         // Handle URL hash on load (e.g. from /deck/#contact-form)
@@ -33,38 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Poster Carousel ---
-    function initCarousel() {
-        const track = document.getElementById('poster-track');
-        if (!track) return;
-        track.innerHTML = '';
+    function initHeroVideo() {
+        const video = document.getElementById('hero-video');
+        if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) return;
 
-        let posters = [];
-        if (cmsData.homeData && cmsData.homeData.carousel) {
-            posters = cmsData.homeData.carousel.map(item => typeof item === 'string' ? item : item.image);
-        } else {
-            // Fallback just in case
-            posters = [
-                "img/projects/BARRA_BRAVA.png",
-                "img/projects/EL SANTO.png",
-                "img/projects/HBO_MUXES.webp"
-            ];
-        }
+        const loadVideo = () => {
+            video.querySelectorAll('source[data-src]').forEach(source => {
+                source.src = source.dataset.src;
+                source.removeAttribute('data-src');
+            });
+            video.load();
+            video.play().catch(() => {});
+        };
 
-        // Build poster elements (duplicate set for infinite scroll)
-        const postersHTML = posters.map(img =>
-            `<div class="poster-slide"><img src="/${img}" alt="Project poster" loading="lazy"></div>`
-        ).join('');
-
-        // Duplicate for seamless infinite scroll
-        track.innerHTML = postersHTML + postersHTML;
-
-        const posterWidth = 184;
-        const totalWidth = posters.length * posterWidth;
-        const duration = posters.length * 2.5; // total seconds for one full set
-
-        track.style.animation = `carouselScroll ${duration}s linear infinite`;
-        track.style.setProperty('--carousel-total-width', `${totalWidth}px`);
+        // Let the poster, typography and carousel thumbnails paint before the
+        // background reel starts competing for bandwidth.
+        window.setTimeout(loadVideo, 4500);
     }
 
     // --- i18n Logic ---
@@ -102,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Featured Projects ---
     const galleryGrid = document.getElementById('gallery-grid');
     const galleryGridHome = document.getElementById('gallery-grid-home');
+
+    function responsiveProjectImage(imagePath, width = 640) {
+        if (!imagePath || /^https?:\/\//i.test(imagePath)) return imagePath;
+        const filename = imagePath.split('/').pop();
+        return `/img/projects/web/${filename}-${width}.webp`;
+    }
 
     async function loadProjects() {
         try {
@@ -146,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const imgSrc = (project.image && project.image.startsWith('/')) ? project.image : '/' + project.image;
             const imgContent = project.image
-                ? `<img src="${imgSrc}" alt="${typeof project.title === 'string' ? project.title : project.title.en}" class="project-img" loading="lazy">`
+                ? `<img src="${responsiveProjectImage(imgSrc, 640)}" srcset="${responsiveProjectImage(imgSrc, 320)} 320w, ${responsiveProjectImage(imgSrc, 640)} 640w, ${responsiveProjectImage(imgSrc, 960)} 960w" sizes="(max-width: 768px) 50vw, 25vw" alt="${typeof project.title === 'string' ? project.title : project.title.en} — Misterio Color Lab" class="project-img" width="640" height="960" loading="lazy" decoding="async">`
                 : `<div class="img-placeholder">${typeof project.title === 'string' ? project.title : project.title.en}</div>`;
 
             const title = typeof project.title === 'string' ? project.title : (project.title[currentLang] || project.title.en);
@@ -448,6 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // Start everything
+    initHeroVideo();
     initApp();
 
     // Initialize International Phone Input

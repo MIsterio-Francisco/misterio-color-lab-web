@@ -1,26 +1,48 @@
 ---
 layout: layouts/base.njk
-title: Misterio Color Lab | Color Grading in Madrid & Etalonaje Digital
-seo_description: "Estudio boutique de postproducción audiovisual y etalonaje digital en Madrid. Boutique color grading studio in Madrid specializing in high-end finishing for films and commercials."
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "/{{ locale.code }}/index.html"
+eleventyComputed:
+  title: "{{ locale.title }}"
+  seo_description: "{{ locale.description }}"
+  lang: "{{ locale.code }}"
+  excludeFromSitemap: false
 ---
 <!-- Hero Section -->
     <header class="hero" id="home">
         <div class="hero-bg">
-            <video autoplay loop muted playsinline id="hero-video">
-                <source src="/img/video/reel.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline preload="metadata" poster="/img/video/web/reel-poster.webp" id="hero-video" aria-hidden="true">
+                <source data-src="/img/video/web/reel-720.webm" type="video/webm">
+                <source data-src="/img/video/web/reel-720.mp4" type="video/mp4">
             </video>
         </div>
         <div class="hero-content reveal">
-            <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Misterio Color Lab - Premier Color Grading Studio in Madrid & Etalonaje Digital</h1>
-            <img src="img/logo_white_hq.png" alt="Misterio Color Lab" class="hero-logo">
-            <p class="hero-subtitle" id="cms-hero_subtitle">Specialists in color grading and finishing for films,
-                documentaries, and commercials worldwide.</p>
+            <img src="/img/logo_white_hq.png" alt="Misterio Color Lab" class="hero-logo" width="600" height="513" fetchpriority="high">
+            <h1 class="hero-heading">{% if locale.code == 'es' %}Etalonaje y postproducción audiovisual en Madrid{% else %}Color grading and post-production studio in Madrid{% endif %}</h1>
+            <p class="hero-subtitle" id="cms-hero_subtitle">{% if locale.code == 'es' %}Especialistas en etalonaje, acabado HDR y mastering para cine, documentales y publicidad internacional.{% else %}Specialists in color grading, HDR finishing and mastering for films, documentaries and commercials worldwide.{% endif %}</p>
         </div>
 
         <!-- Poster Carousel -->
         <div class="poster-carousel">
             <div class="poster-track" id="poster-track">
-                <!-- Posters injected by JS -->
+                {% for set in [1, 2] %}
+                    {% for item in home.carousel %}
+                    <div class="poster-slide">
+                        <img
+                            src="{{ item.image | webImage(320) }}"
+                            srcset="{{ item.image | webImage(320) }} 320w, {{ item.image | webImage(640) }} 640w"
+                            sizes="(max-width: 768px) 120px, 160px"
+                            alt="{{ item | projectAlt(locale.code) }}"
+                            width="160"
+                            height="240"
+                            loading="lazy"
+                            decoding="async">
+                    </div>
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
 
@@ -82,14 +104,14 @@ seo_description: "Estudio boutique de postproducción audiovisual y etalonaje di
     <section class="work-section sneak-peek" id="home-long-form" style="padding-top: 4rem; padding-bottom: 2rem;">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Long Form</h2>
+                <h2 class="section-title">{% if locale.code == 'es' %}Cine y series{% else %}Long Form{% endif %}</h2>
                 <div class="section-line"></div>
             </div>
             <div class="poster-grid" id="gallery-grid-home">
                 <!-- Injected by JS -->
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="/long-form/" class="btn btn-outline" style="border: 1px solid var(--color-accent); color: white; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease;">View All Long Form</a>
+                <a href="/long-form/" class="btn btn-outline" style="border: 1px solid var(--color-accent); color: white; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease;">{% if locale.code == 'es' %}Ver todos los proyectos{% else %}View All Long Form{% endif %}</a>
             </div>
         </div>
     </section>
@@ -98,7 +120,7 @@ seo_description: "Estudio boutique de postproducción audiovisual y etalonaje di
     <section class="work-section sneak-peek" id="home-tvc" style="padding-top: 4rem; padding-bottom: 6rem;">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Branded Content</h2>
+                <h2 class="section-title">{% if locale.code == 'es' %}Publicidad y branded content{% else %}Branded Content{% endif %}</h2>
                 <div class="section-line"></div>
             </div>
             <div class="tvc-row-grid" id="tcv-grid-home">
@@ -120,7 +142,7 @@ seo_description: "Estudio boutique de postproducción audiovisual y etalonaje di
                 {% endfor %}
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="/tvc/" class="btn btn-outline" style="border: 1px solid var(--color-accent); color: white; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease;">View All Branded Content</a>
+                <a href="/tvc/" class="btn btn-outline" style="border: 1px solid var(--color-accent); color: white; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease;">{% if locale.code == 'es' %}Ver toda la publicidad{% else %}View All Branded Content{% endif %}</a>
             </div>
         </div>
     </section>
@@ -129,26 +151,26 @@ seo_description: "Estudio boutique de postproducción audiovisual y etalonaje di
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-box reveal">
-                <h2 class="section-title text-center" data-i18n="contact_title">Color Grading Worldwide</h2>
+                <h2 class="section-title text-center" data-i18n="contact_title">{% if locale.code == 'es' %}Etalonaje y color a nivel global{% else %}Color Grading Worldwide{% endif %}</h2>
                 <div class="section-line center-line"></div>
-                <p class="contact-subtitle" data-i18n="contact_subtitle">Looking for high-end color grading in Madrid, Mexico City, Sao Paulo, or Oslo? Let's craft the final cinematic touch your project deserves.</p>
+                <p class="contact-subtitle" data-i18n="contact_subtitle">{% if locale.code == 'es' %}¿Buscas etalonaje y postproducción en Madrid, Ciudad de México, São Paulo u Oslo? Demos a tu proyecto el acabado cinematográfico que necesita.{% else %}Looking for high-end color grading in Madrid, Mexico City, Sao Paulo, or Oslo? Let's craft the final cinematic touch your project deserves.{% endif %}</p>
 
                 <div class="contact-grid">
                     <div class="contact-info">
                         <div class="info-block">
-                            <h4 data-i18n="location_madrid">Madrid - ESPAÑA</h4>
+                            <h3 data-i18n="location_madrid">{{ 'Madrid - ESPAÑA' if locale.code == 'es' else 'Madrid - SPAIN' }}</h3>
                             <p>Calle San Sotero #6<br>San Blas-Canillejas, 28037</p>
                         </div>
                         <div class="info-block">
-                            <h4 data-i18n="location_mexico">Mexico City - MEXICO</h4>
+                            <h3 data-i18n="location_mexico">{{ 'Ciudad de México - MÉXICO' if locale.code == 'es' else 'Mexico City - MEXICO' }}</h3>
                             <p>Goethe 39, Anzures</p>
                         </div>
                         <div class="info-block">
-                            <h4 data-i18n="location_saopaulo">Sao Paulo - BRASIL</h4>
+                            <h3 data-i18n="location_saopaulo">Sao Paulo - BRASIL</h3>
                             <p>Rua Sebastião Stokler 21</p>
                         </div>
                         <div class="info-block">
-                            <h4 data-i18n="location_oslo">Oslo - NORUEGA</h4>
+                            <h3 data-i18n="location_oslo">Oslo - NORUEGA</h3>
                             <p>Oscars gate 27, 0352 Oslo</p>
                         </div>
 
@@ -164,18 +186,18 @@ seo_description: "Estudio boutique de postproducción audiovisual y etalonaje di
                             <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
                         </p>
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name"
+                            <input type="text" id="name" name="name" placeholder="{{ 'Tu nombre' if locale.code == 'es' else 'Your Name' }}"
                                 data-i18n-hold="form_name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email Address"
+                            <input type="email" id="email" name="email" placeholder="{{ 'Correo electrónico' if locale.code == 'es' else 'Email Address' }}"
                                 data-i18n-hold="form_email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number"
+                            <input type="tel" id="phone" name="phone" placeholder="{{ 'Número de teléfono' if locale.code == 'es' else 'Phone Number' }}"
                                 data-i18n-hold="form_phone" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">Request a Post-Production Quote</button>
+                        <button type="submit" class="btn btn-primary btn-submit" data-i18n="form_submit">{{ 'Solicitar presupuesto de postproducción' if locale.code == 'es' else 'Request a Post-Production Quote' }}</button>
                     </form>
                 </div>
             </div>
