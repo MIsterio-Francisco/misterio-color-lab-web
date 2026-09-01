@@ -25,6 +25,7 @@ module.exports = function (eleventyConfig) {
     if (item.alt && typeof item.alt === "object") return item.alt[lang] || item.alt.en;
     if (item.alt) return item.alt;
     const knownTitles = {
+      "chichero.jpeg": "Chichero",
       "if_you_really_love_me_outlive_me.jpg": "If You Really Love Me, Outlive Me",
       "fiesta_pagana.jpg": "Fiesta Pagana",
       "dante.jpg": "Dante",

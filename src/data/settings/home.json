@@ -11,6 +11,13 @@
   },
   "carousel": [
     {
+      "image": "img/projects/chichero.jpeg",
+      "alt": {
+        "en": "Chichero — poster",
+        "es": "Chichero — póster"
+      }
+    },
+    {
       "image": "img/projects/if_you_really_love_me_outlive_me.jpg"
     },
     {
@@ -81,6 +88,9 @@
     }
   ],
   "featured_projects": [
+    {
+      "project": "Chichero"
+    },
     {
       "project": "If You Really Love Me, Outlive Me"
     },

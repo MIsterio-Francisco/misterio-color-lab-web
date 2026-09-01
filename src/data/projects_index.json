@@ -647,6 +647,28 @@
   },
   {
     "title": {
+      "en": "Chichero",
+      "es": "Chichero"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Aaron Bromley & Arturo Montenegro",
+    "digitalColor": "Raúl Lavado",
+    "synopsis": {
+      "en": "In the 1980s, armed conflict forces Josué, a young Quechua man, to flee his home in the Peruvian Andes. With his heart set on boxing and the promise of a better future, he migrates to Panama, where he learns to survive between punches, chicha and empanadas, discovering that every victory comes at a price.",
+      "es": "En los años 80, el conflicto armado obliga a Josué, un joven quechua, a abandonar su hogar en los Andes peruanos. Con el corazón puesto en el boxeo y la promesa de un futuro mejor, emigra a Panamá, donde aprende a sobrevivir entre golpes, chicha y empanadas, descubriendo que cada victoria tiene un precio."
+    },
+    "image": "/img/projects/chichero.jpeg",
+    "video": "https://www.youtube.com/watch?v=1VdDk3M7yCU",
+    "featured": true,
+    "stills": [],
+    "slug": "chichero",
+    "id": "chichero"
+  },
+  {
+    "title": {
       "en": "Antes del Amor",
       "es": "Antes del Amor"
     },
