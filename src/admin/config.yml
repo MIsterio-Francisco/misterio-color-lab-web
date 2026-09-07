@@ -201,6 +201,16 @@ collections:
                   - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", name: "item", widget: "string"}}
                   - {label: "Portrait Photo", name: "photo", widget: "image"}
                   - {label: "Featured Project Image", name: "project_image", widget: "image"}
+              - name: "eric"
+                label: "Eric Weidt"
+                widget: "object"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Key Works", name: "works", widget: "list", field: {label: "Project", name: "item", widget: "string"}}
+                  - {label: "Portrait Photo", name: "photo", widget: "image"}
+                  - {label: "Featured Project Image", name: "project_image", widget: "image"}
               - name: "cem"
                 label: "Cem Ozkilicci"
                 widget: "object"

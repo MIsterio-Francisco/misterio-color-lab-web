@@ -211,6 +211,10 @@ body.deck-active .navbar {
     filter: grayscale(1) contrast(1.1) brightness(0.95);
 }
 
+.eric-slide .photo-frame img {
+    object-position: center top;
+}
+
 .talent-info {
     flex: 1;
 }

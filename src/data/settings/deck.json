@@ -44,6 +44,18 @@
       "project_image": "/img/projects/whatsapp-image-2024-08-24-at-12.09_edited.jpg",
       "photo": "/img/team/raul_lavado.jpg"
     },
+    "eric": {
+      "name": "Eric Weidt",
+      "role": "Senior Colorist",
+      "bio": "French-American senior colorist Eric Weidt brings together a background in high-end fashion imagery, visual effects, and cinematic finishing. After 15 years in Paris working with leading photographers and filmmakers, he began collaborating with director David Fincher in 2014.\n\nHis credits include Mindhunter, Mank, and The Killer, developed in close collaboration with cinematographer Erik Messerschmidt ASC. Eric's precise, texture-driven approach combines strong visual sensitivity with advanced Baselight, HDR, and Dolby Vision workflows.\n\nIn 2021, he received the inaugural FilmLight Colour Award for Best Grading in a Theatrical Feature for his work on Mank.",
+      "works": [
+        "Mank (FilmLight Colour Award)",
+        "Mindhunter",
+        "The Killer"
+      ],
+      "project_image": "/img/team/eric_weidt.jpg",
+      "photo": "/img/team/eric_weidt.jpg"
+    },
     "fady": {
       "name": "Fady Melek",
       "role": "Senior Colorist",
