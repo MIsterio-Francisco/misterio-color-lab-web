@@ -669,6 +669,28 @@
   },
   {
     "title": {
+      "en": "Naira",
+      "es": "Naira"
+    },
+    "category": {
+      "en": "Feature Film",
+      "es": "Largometraje"
+    },
+    "director": "Gabriela Quiroz",
+    "digitalColor": "Raúl Lavado Verdú",
+    "synopsis": {
+      "en": "Nine-year-old Naira lives with her mother in precarious conditions in a remote village in the Peruvian Andes. Seeking refuge in imagination and nature, she dreams of changing their fate. Inspired by an ancient legend and determined to save her mother, Naira asks to be transformed into a condor so they can escape.",
+      "es": "Naira, una niña de nueve años, vive con su madre en condiciones precarias en un remoto pueblo de los Andes peruanos. Refugiada en la imaginación y la naturaleza, sueña con cambiar su destino. Inspirada por una antigua leyenda y decidida a salvar a su madre, Naira pide convertirse en cóndor para poder escapar juntas."
+    },
+    "image": "/img/projects/naira.avif",
+    "video": "https://www.youtube.com/watch?v=KxSb4QtzOjY",
+    "featured": true,
+    "stills": [],
+    "slug": "naira",
+    "id": "naira"
+  },
+  {
+    "title": {
       "en": "Antes del Amor",
       "es": "Antes del Amor"
     },
