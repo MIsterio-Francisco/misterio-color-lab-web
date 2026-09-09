@@ -886,6 +886,14 @@ img[src*="eric_weidt.jpg"] {
     transition: var(--transition-fast);
 }
 
+.team-row-bottom .member-role {
+    min-height: 2.8em;
+}
+
+.team-row-bottom .member-email {
+    margin-top: auto;
+}
+
 .member-email:hover {
     color: var(--color-accent-hover);
     text-decoration: underline;
