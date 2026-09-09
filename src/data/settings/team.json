@@ -9,6 +9,14 @@
       "photo": "img/team/raul_lavado.jpg"
     },
     {
+      "name": "Eric Weidt",
+      "role": {
+        "en": "Senior Colorist",
+        "es": "Colorista Senior"
+      },
+      "photo": "img/team/eric_weidt.jpg"
+    },
+    {
       "name": "Fady Melek",
       "role": {
         "en": "Senior Colorist",

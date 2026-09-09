@@ -27,9 +27,28 @@ permalink: /services/
                     </p>
                 </div>
                 <div class="about-visual reveal">
-                    <div class="visual-placeholder">
-                        <img src="/img/logo_white.png" alt="Misterio Color Lab" class="studio-placeholder-logo">
-                        <span class="visual-text">COMING SOON</span>
+                    <div class="facility-carousel" data-facility-carousel aria-label="Misterio Color Lab facilities">
+                        <div class="facility-slides">
+                            <figure class="facility-slide is-active">
+                                <img src="/img/studio/facility-theatre-seating.jpg" alt="Misterio Color Lab screening theatre" width="1800" height="1344" loading="eager" decoding="async">
+                            </figure>
+                            <figure class="facility-slide">
+                                <img src="/img/studio/facility-edit-suite-01.jpg" alt="Misterio Color Lab editing and post-production suite" width="1800" height="1350" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="facility-slide">
+                                <img src="/img/studio/facility-color-suite-02.jpg" alt="Misterio Color Lab color grading suite" width="1800" height="1350" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="facility-slide">
+                                <img src="/img/studio/facility-theatre-console.jpg" alt="Baselight color grading console and cinema projection room" width="1800" height="1344" loading="lazy" decoding="async">
+                            </figure>
+                            <figure class="facility-slide">
+                                <img src="/img/studio/facility-theatre-screen.jpg" alt="Misterio Color Lab cinema projection and review room" width="1800" height="1344" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                        <img src="/img/logo_white.png" alt="" class="facility-carousel-logo" aria-hidden="true">
+                        <button class="facility-arrow facility-prev" type="button" aria-label="Previous image">&#8592;</button>
+                        <button class="facility-arrow facility-next" type="button" aria-label="Next image">&#8594;</button>
+                        <div class="facility-dots" aria-label="Choose facility image"></div>
                     </div>
                 </div>
             </div>
@@ -39,6 +58,115 @@ permalink: /services/
     <style>
         body[data-lang="es"] .lang-en { display: none; }
         body[data-lang="en"] .lang-es { display: none; }
+
+        .facility-carousel {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #080808;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.52);
+        }
+
+        .facility-slides,
+        .facility-slide {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+        }
+
+        .facility-slide {
+            opacity: 0;
+            transition: opacity 900ms ease;
+            pointer-events: none;
+        }
+
+        .facility-slide.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .facility-slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .facility-carousel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,.08) 48%, rgba(0,0,0,.62) 100%);
+            pointer-events: none;
+        }
+
+        .facility-carousel-logo {
+            position: absolute;
+            z-index: 2;
+            top: 1.35rem;
+            left: 1.35rem;
+            width: 82px;
+            height: auto;
+            opacity: .92;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,.72));
+        }
+
+        .facility-arrow {
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 50%;
+            background: rgba(0,0,0,.36);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: background .25s ease, border-color .25s ease;
+        }
+
+        .facility-arrow:hover,
+        .facility-arrow:focus-visible {
+            background: rgba(0,0,0,.72);
+            border-color: rgba(255,255,255,.8);
+        }
+
+        .facility-prev { left: 1rem; }
+        .facility-next { right: 1rem; }
+
+        .facility-dots {
+            position: absolute;
+            z-index: 3;
+            left: 50%;
+            bottom: 1.15rem;
+            display: flex;
+            gap: .55rem;
+            transform: translateX(-50%);
+        }
+
+        .facility-dot {
+            width: 7px;
+            height: 7px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.42);
+            cursor: pointer;
+            transition: transform .25s ease, background .25s ease;
+        }
+
+        .facility-dot.is-active {
+            background: #fff;
+            transform: scale(1.35);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .facility-slide { transition: none; }
+        }
     </style>
 
     <!-- Service Blocks Grid (2 Rows of 3) -->
@@ -142,4 +270,46 @@ permalink: /services/
 
 <script>
     document.body.classList.add('brochure-active');
+
+    (() => {
+        const carousel = document.querySelector('[data-facility-carousel]');
+        if (!carousel) return;
+
+        const slides = [...carousel.querySelectorAll('.facility-slide')];
+        const dotsContainer = carousel.querySelector('.facility-dots');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let current = 0;
+        let timer;
+
+        const dots = slides.map((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = `facility-dot${index === 0 ? ' is-active' : ''}`;
+            dot.setAttribute('aria-label', `Show image ${index + 1}`);
+            dot.addEventListener('click', () => show(index, true));
+            dotsContainer.appendChild(dot);
+            return dot;
+        });
+
+        function show(index, restart = false) {
+            current = (index + slides.length) % slides.length;
+            slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+            dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
+            if (restart) start();
+        }
+
+        function start() {
+            window.clearInterval(timer);
+            if (!prefersReducedMotion) timer = window.setInterval(() => show(current + 1), 4500);
+        }
+
+        carousel.querySelector('.facility-prev').addEventListener('click', () => show(current - 1, true));
+        carousel.querySelector('.facility-next').addEventListener('click', () => show(current + 1, true));
+        carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
+        carousel.addEventListener('mouseleave', start);
+        carousel.addEventListener('focusin', () => window.clearInterval(timer));
+        carousel.addEventListener('focusout', start);
+
+        start();
+    })();
 </script>
