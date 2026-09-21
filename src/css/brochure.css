@@ -34,7 +34,7 @@ body.brochure-active {
 
 .deck-contact p {
     font-size: 1rem;
-    color: var(--color-text-muted, #9ba0a6) !important;
+    color: var(--color-text-muted, #bfbfbf) !important;
     margin-bottom: 0.5rem;
 }
 
@@ -75,7 +75,7 @@ body.brochure-active {
 
 .deck-block:hover {
     transform: translateY(-5px);
-    border-color: var(--color-accent, #ff4500);
+    border-color: var(--color-accent, #8e0000);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -83,7 +83,7 @@ body.brochure-active {
     font-size: 1.6rem !important;
     margin-bottom: 1.5rem;
     font-weight: 800 !important;
-    color: var(--color-accent, #ff4500) !important;
+    color: var(--color-accent, #8e0000) !important;
     font-family: var(--font-heading, 'Outfit', sans-serif) !important;
     letter-spacing: -0.01em;
 }
@@ -97,7 +97,7 @@ body.brochure-active {
 
 .deck-block p {
     font-size: 1rem !important;
-    color: var(--color-text-muted, #9ba0a6) !important;
+    color: var(--color-text-muted, #bfbfbf) !important;
     line-height: 1.7;
     margin-bottom: 1.2rem;
 }

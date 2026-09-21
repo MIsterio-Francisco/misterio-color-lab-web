@@ -4,7 +4,7 @@
     --deck-bg: #050505;
     --deck-accent: #c5a059; /* Muted Gold */
     --deck-text: #ffffff;
-    --deck-text-dim: rgba(255, 255, 255, 0.6);
+    --deck-text-dim: #bfbfbf;
     --deck-glass: rgba(255, 255, 255, 0.03);
     --deck-glass-border: rgba(255, 255, 255, 0.1);
 }

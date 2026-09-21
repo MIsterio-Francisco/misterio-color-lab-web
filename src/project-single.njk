@@ -47,22 +47,22 @@ eleventyComputed:
 
                 {% if project.director %}
                     <p style="font-size: 1.1rem; color: #fff; font-weight: 500; margin-bottom: 0.5rem;">
-                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIRECTOR</span>
+                        <span style="color: #bfbfbf; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIRECTOR</span>
                         {{ project.director }}
                     </p>
                 {% endif %}
 
                 {% if project.digitalColor %}
                     <p style="font-size: 1rem; color: #c9a96e; margin-bottom: 1.5rem;">
-                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIGITAL COLOR</span>
+                        <span style="color: #bfbfbf; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block;">DIGITAL COLOR</span>
                         {{ project.digitalColor }}
                     </p>
                 {% endif %}
 
                 {% set projSynopsis = project.synopsis.en if project.synopsis.en else (project.synopsis.es if project.synopsis.es else project.synopsis) %}
                 {% if projSynopsis %}
-                    <div style="font-size: 1.05rem; line-height: 1.8; color: #ccc; margin-bottom: 2rem;">
-                        <span style="color: #888; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">SYNOPSIS</span>
+                    <div style="font-size: 1.05rem; line-height: 1.8; color: #bfbfbf; margin-bottom: 2rem;">
+                        <span style="color: #bfbfbf; font-weight: 400; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">SYNOPSIS</span>
                         {{ projSynopsis }}
                     </div>
                 {% endif %}
